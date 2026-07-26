@@ -1,0 +1,263 @@
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Success from './components/Success';
+import Courses from './components/Courses';
+import Gateway from './components/Gateway';
+import Partnerships from './components/Partnerships';
+import Testimonials from './components/Testimonials';
+import Footer from './components/Footer';
+import { X, CheckCircle, Trash2 } from 'lucide-react';
+
+function App() {
+  const [cart, setCart] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeFilter, setActiveFilter] = useState('ALL');
+  const [enquirySuccess, setEnquirySuccess] = useState(false);
+  const [enquiryForm, setEnquiryForm] = useState({ name: '', email: '', phone: '', course: '', message: '' });
+
+  const addToCart = (course) => {
+    if (cart.find(item => item.title === course.title)) {
+      alert(`${course.title} is already in your cart.`);
+      return;
+    }
+    setCart([...cart, course]);
+  };
+
+  const removeFromCart = (title) => {
+    setCart(cart.filter(item => item.title !== title));
+  };
+
+  const handleEnquirySubmit = (e) => {
+    e.preventDefault();
+    setEnquirySuccess(true);
+    setTimeout(() => {
+      setEnquirySuccess(false);
+      setEnquiryOpen(false);
+      setEnquiryForm({ name: '', email: '', phone: '', course: '', message: '' });
+    }, 2000);
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans relative">
+      {/* Header */}
+      <Header 
+        cartCount={cart.length} 
+        onCartClick={() => setCartOpen(true)} 
+        onEnquiryClick={() => setEnquiryOpen(true)}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+
+      {/* Main Content */}
+      <main className="flex-grow">
+        <Hero onEnquiryClick={() => setEnquiryOpen(true)} />
+        <Success />
+        <Courses 
+          addToCart={addToCart} 
+          cart={cart}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+        />
+        <Gateway />
+        <Partnerships />
+        <Testimonials onPlayClick={() => setVideoOpen(true)} />
+      </main>
+
+      {/* Custom Footer */}
+      <Footer />
+
+      {/* CART SIDEBAR MODAL */}
+      {cartOpen && (
+        <div className="fixed inset-0 z-50 overflow-hidden">
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-xs transition-opacity" onClick={() => setCartOpen(false)} />
+          <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col font-outfit">
+              <div className="p-6 border-b border-slate-100 flex justify-between items-center">
+                <h2 className="text-xl font-bold text-slate-800">Your Cart ({cart.length})</h2>
+                <button onClick={() => setCartOpen(false)} className="p-2 hover:bg-slate-50 rounded-full transition-colors">
+                  <X className="w-5 h-5 text-slate-500" />
+                </button>
+              </div>
+
+              <div className="flex-grow overflow-y-auto p-6 space-y-4">
+                {cart.length === 0 ? (
+                  <div className="text-center py-12 text-slate-400">
+                    <p className="text-lg font-medium mb-2">Your cart is empty</p>
+                    <p className="text-sm">Explore our courses and add them to your learning path.</p>
+                  </div>
+                ) : (
+                  cart.map((item, index) => (
+                    <div key={index} className="flex gap-4 p-4 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 transition-colors">
+                      <img src={item.image} alt={item.title} className="w-16 h-16 rounded-lg object-cover shrink-0" />
+                      <div className="flex-grow">
+                        <h4 className="font-bold text-sm text-slate-800 line-clamp-1">{item.title}</h4>
+                        <p className="text-xs text-[#2ca785] font-semibold mt-1">{item.price}</p>
+                      </div>
+                      <button 
+                        onClick={() => removeFromCart(item.title)} 
+                        className="text-slate-400 hover:text-red-500 transition-colors self-center p-2 rounded-full hover:bg-red-50"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              {cart.length > 0 && (
+                <div className="p-6 border-t border-slate-100 bg-slate-50">
+                  <div className="flex justify-between items-center mb-6">
+                    <span className="font-medium text-slate-600">Total Price</span>
+                    <span className="text-xl font-extrabold text-[#2ca785]">
+                      ${cart.reduce((sum, item) => sum + parseFloat(item.price.replace('$', '')), 0).toFixed(2)}
+                    </span>
+                  </div>
+                  <button 
+                    onClick={() => {
+                      alert('Thank you for enrolling! Checkout functionality is simulated.');
+                      setCart([]);
+                      setCartOpen(false);
+                    }}
+                    className="w-full bg-[#2ca785] hover:bg-[#238a6d] text-white py-3.5 rounded-xl font-semibold shadow-lg hover:shadow-emerald-100 transition-all duration-200"
+                  >
+                    Enroll Now
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ENQUIRY MODAL */}
+      {enquiryOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-xs" onClick={() => setEnquiryOpen(false)} />
+          <div className="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl relative z-10 font-outfit">
+            
+            <div className="absolute right-4 top-4">
+              <button onClick={() => setEnquiryOpen(false)} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
+                <X className="w-5 h-5 text-slate-500" />
+              </button>
+            </div>
+
+            {enquirySuccess ? (
+              <div className="p-12 text-center flex flex-col items-center justify-center">
+                <CheckCircle className="w-20 h-20 text-[#2ca785] animate-bounce mb-6" />
+                <h3 className="text-2xl font-bold text-slate-800 mb-2">Enquiry Submitted!</h3>
+                <p className="text-slate-500 text-sm max-w-sm">
+                  Our counselors will call you within 24 business hours to guide you through your admissions.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleEnquirySubmit} className="p-8">
+                <h3 className="text-2xl font-bold text-slate-800 mb-2">Admissions & Course Enquiry</h3>
+                <p className="text-sm text-slate-500 mb-6">Fill in details below to receive a direct call back from our academic advisors.</p>
+                
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Full Name</label>
+                    <input 
+                      type="text" 
+                      required 
+                      value={enquiryForm.name}
+                      onChange={(e) => setEnquiryForm({...enquiryForm, name: e.target.value})}
+                      placeholder="e.g., Jane Doe" 
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#2ca785] focus:border-transparent transition-all"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Email ID</label>
+                      <input 
+                        type="email" 
+                        required 
+                        value={enquiryForm.email}
+                        onChange={(e) => setEnquiryForm({...enquiryForm, email: e.target.value})}
+                        placeholder="name@domain.com" 
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#2ca785] focus:border-transparent transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Phone Number</label>
+                      <input 
+                        type="tel" 
+                        required 
+                        value={enquiryForm.phone}
+                        onChange={(e) => setEnquiryForm({...enquiryForm, phone: e.target.value})}
+                        placeholder="+91 XXXXX XXXXX" 
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#2ca785] focus:border-transparent transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Select Course Interest</label>
+                    <select 
+                      required
+                      value={enquiryForm.course}
+                      onChange={(e) => setEnquiryForm({...enquiryForm, course: e.target.value})}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#2ca785] focus:border-transparent transition-all bg-white"
+                    >
+                      <option value="">Choose Course Level</option>
+                      <option value="UG">UG Degrees (B.A, B.Sc, B.Com, BBA, BCA)</option>
+                      <option value="PG">PG Degrees (M.A, M.Sc, M.Com, MBA, MCA)</option>
+                      <option value="10th_12th">10th & 12th NIOS/BOSSE Exams</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Message</label>
+                    <textarea 
+                      rows="3" 
+                      value={enquiryForm.message}
+                      onChange={(e) => setEnquiryForm({...enquiryForm, message: e.target.value})}
+                      placeholder="Write your doubts/questions here..." 
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#2ca785] focus:border-transparent transition-all resize-none"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="w-full bg-[#153fb4] hover:bg-[#123599] text-white py-3.5 rounded-xl font-semibold shadow-lg hover:shadow-indigo-100 transition-all duration-200 mt-6"
+                >
+                  Submit Enquiry
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* VIDEO PLAYER MODAL */}
+      {videoOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-xs" onClick={() => setVideoOpen(false)} />
+          <div className="bg-black rounded-3xl w-full max-w-4xl overflow-hidden shadow-2xl relative z-10 aspect-[16/9] border border-white/10">
+            <button onClick={() => setVideoOpen(false)} className="absolute right-4 top-4 p-2 bg-black/40 hover:bg-black/80 rounded-full transition-colors text-white z-20">
+              <X className="w-5 h-5" />
+            </button>
+            <iframe 
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
