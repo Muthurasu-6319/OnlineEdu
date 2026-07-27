@@ -22,6 +22,12 @@ import BoardDetails from './components/BoardDetails';
 import BoardSteps from './components/BoardSteps';
 import BoardIntro from './components/BoardIntro';
 import BoardOutro from './components/BoardOutro';
+import AboutHero from './components/AboutHero';
+import AboutAcademy from './components/AboutAcademy';
+import AboutPhilosophy from './components/AboutPhilosophy';
+import AboutPartnerships from './components/AboutPartnerships';
+import Contact from './components/Contact';
+import ContactDetails from './components/ContactDetails';
 import Success from './components/Success';
 import Courses from './components/Courses';
 import Gateway from './components/Gateway';
@@ -48,6 +54,24 @@ function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  useEffect(() => {
+    if (currentHash === '#testimonials') {
+      const element = document.getElementById('testimonials');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        setTimeout(() => {
+          const el = document.getElementById('testimonials');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [currentHash]);
 
   const toggleLike = (course) => {
     if (wishlist.find(item => item.title === course.title)) {
@@ -116,6 +140,18 @@ function App() {
             <BoardSteps />
             <BoardIntro />
             <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
+          </>
+        ) : currentHash === '#about' ? (
+          <>
+            <AboutHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <AboutAcademy />
+            <AboutPhilosophy />
+            <AboutPartnerships />
+          </>
+        ) : currentHash === '#contact' ? (
+          <>
+            <Contact />
+            <ContactDetails />
           </>
         ) : (
           <>

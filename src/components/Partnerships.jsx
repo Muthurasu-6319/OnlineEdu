@@ -1,7 +1,7 @@
 import React from 'react';
 import rectangle20 from '../assets/Rectangle 20.png';
-import rectangle23 from '../assets/Rectangle 23.png';
-import rectangle23_1 from '../assets/Rectangle 23.png';
+import alagappaPartnerImg from '../assets/Alagappa-University/Rectangle 20 (1).png';
+import amityPartnerImg from '../assets/Amity/Rectangle 20 (4).png';
 
 export default function Partnerships() {
   const partners = [
@@ -11,11 +11,11 @@ export default function Partnerships() {
     },
     {
       name: 'Alagappa University',
-      image: rectangle23
+      image: alagappaPartnerImg
     },
     {
       name: 'Amity University',
-      image: rectangle23_1
+      image: amityPartnerImg
     }
   ];
 
