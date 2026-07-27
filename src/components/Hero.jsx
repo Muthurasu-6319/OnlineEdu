@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Search, Star } from 'lucide-react';
 import studentImg from '../assets/student.png';
 
-export default function Hero() {
+export default function Hero({ onEnquiryClick }) {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
@@ -68,12 +68,18 @@ export default function Hero() {
 
               {/* View Courses & Consultation Buttons */}
               <div className="flex flex-wrap items-center gap-6 pt-2">
-                <button className="border-2 border-white hover:bg-white hover:text-indigo-950 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105">
+                <a 
+                  href="#course" 
+                  className="border-2 border-white hover:bg-white hover:text-[#31108f] text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 inline-block text-center"
+                >
                   View Courses
-                </button>
-                <a href="#consultation" className="text-white hover:text-indigo-200 font-medium underline underline-offset-4 transition-colors">
-                  Get Free Consultation
                 </a>
+                <button 
+                  onClick={onEnquiryClick}
+                  className="text-white hover:text-indigo-200 font-medium underline underline-offset-4 transition-colors cursor-pointer bg-transparent border-none outline-none"
+                >
+                  Get Free Consultation
+                </button>
               </div>
 
               {/* Search Bar Input */}
@@ -242,15 +248,13 @@ export default function Hero() {
       </section>
 
       {/* Mobile/Tablet Hero version (Fully aligned to match the Figma visual elements beautifully) */}
-      <div className="relative w-full bg-[#FFCF3E] lg:hidden text-slate-800 font-outfit overflow-hidden">
+      <div className="relative w-full lg:hidden text-slate-800 font-outfit overflow-hidden">
         
-        {/* Yellow admissions strip for mobile */}
-        <div className="h-10 w-full flex items-center justify-center px-4 text-xs font-semibold text-slate-800">
-          <span>⚡ Admissions Open for 2026-2027</span>
-        </div>
+        {/* Yellow top strip to match figma desktop header/decoration space */}
+        <div className="w-full h-8 bg-[#FFCF3E]" />
 
         {/* Purple background container */}
-        <div className="custom-gradient-bg text-white px-6 pt-10 pb-6 relative overflow-hidden">
+        <div className="custom-gradient-bg text-white px-6 pt-10 pb-0 relative overflow-hidden flex flex-col justify-between">
           
           {/* Nested Arches at background */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none opacity-10 z-0" style={{ width: '220px', height: '250px' }}>
@@ -288,12 +292,18 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button className="border-2 border-white hover:bg-white hover:text-indigo-950 text-white font-semibold px-6 py-2 rounded-xl text-sm transition-all">
+              <a 
+                href="#course" 
+                className="border-2 border-white hover:bg-white hover:text-indigo-950 text-white font-semibold px-6 py-2 rounded-xl text-sm transition-all inline-block text-center"
+              >
                 View Courses
-              </button>
-              <a href="#consultation" className="text-white hover:text-indigo-200 text-xs font-medium underline underline-offset-4">
-                Get Free Consultation
               </a>
+              <button 
+                onClick={onEnquiryClick}
+                className="text-white hover:text-indigo-200 text-xs font-medium underline underline-offset-4 cursor-pointer bg-transparent border-none outline-none"
+              >
+                Get Free Consultation
+              </button>
             </div>
 
             {/* Search Input */}
@@ -337,12 +347,12 @@ export default function Hero() {
 
           </div>
 
-          {/* Student Image inside the purple container */}
+          {/* Student Image inside the purple container - Aligned flush with bottom */}
           <div className="relative mt-8 flex justify-center z-20">
             <img 
               src={studentImg} 
               alt="Student" 
-              className="w-[280px] sm:w-[320px] object-contain object-bottom" 
+              className="w-[280px] sm:w-[320px] block object-contain object-bottom -mb-8 sm:-mb-10" 
             />
           </div>
 

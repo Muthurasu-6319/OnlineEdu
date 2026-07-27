@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ShoppingCart, User, Search, ChevronDown, Menu, X } from 'lucide-react';
+import { Heart, User, Search, ChevronDown, Menu, X } from 'lucide-react';
 
-export default function Header({ cartCount, onCartClick, onEnquiryClick, searchQuery, setSearchQuery }) {
+export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick, searchQuery, setSearchQuery }) {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -70,15 +70,15 @@ export default function Header({ cartCount, onCartClick, onEnquiryClick, searchQ
               <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
             </div>
 
-            {/* Cart with badge */}
+            {/* Wishlist with badge */}
             <button 
-              onClick={onCartClick}
+              onClick={onWishlistClick}
               className="relative p-2.5 text-slate-600 hover:text-[#2ca785] hover:bg-slate-50 rounded-full cursor-pointer transition-all"
             >
-              <ShoppingCart size={22} />
-              {cartCount > 0 && (
+              <Heart size={22} />
+              {wishlistCount > 0 && (
                 <span className="absolute top-0 right-0 bg-[#2ca785] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white animate-pulse">
-                  {cartCount}
+                  {wishlistCount}
                 </span>
               )}
             </button>
@@ -95,13 +95,13 @@ export default function Header({ cartCount, onCartClick, onEnquiryClick, searchQ
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
             <button 
-              onClick={onCartClick}
+              onClick={onWishlistClick}
               className="relative p-2.5 text-slate-600"
             >
-              <ShoppingCart size={22} />
-              {cartCount > 0 && (
+              <Heart size={22} />
+              {wishlistCount > 0 && (
                 <span className="absolute top-0.5 right-0.5 bg-[#2ca785] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                  {cartCount}
+                  {wishlistCount}
                 </span>
               )}
             </button>

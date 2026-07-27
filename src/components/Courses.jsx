@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import img21 from '../assets/Course-Img/image 21.png';
 import img22 from '../assets/Course-Img/image 22.png';
 import img23 from '../assets/Course-Img/image 23.png';
@@ -7,12 +7,11 @@ import img24 from '../assets/Course-Img/image 24.png';
 import img25 from '../assets/Course-Img/image 25.png';
 import img26 from '../assets/Course-Img/image 26.png';
 
-export default function Courses({ addToCart, cart, searchQuery, setSearchQuery, activeFilter, setActiveFilter }) {
+export default function Courses({ toggleLike, wishlist, searchQuery, setSearchQuery, activeFilter, setActiveFilter }) {
   const courseData = [
     {
       title: 'UG DEGREE',
       category: 'UG',
-      price: '$33.99',
       students: '5,957 Students',
       duration: '01h 49m',
       image: img21
@@ -20,7 +19,6 @@ export default function Courses({ addToCart, cart, searchQuery, setSearchQuery, 
     {
       title: 'PG DEGREE',
       category: 'PG',
-      price: '$45.99',
       students: '5,957 Students',
       duration: '01h 49m',
       image: img22
@@ -28,7 +26,6 @@ export default function Courses({ addToCart, cart, searchQuery, setSearchQuery, 
     {
       title: 'MBA Specializations',
       category: 'PG',
-      price: '$33.99',
       students: '5,957 Students',
       duration: '01h 49m',
       image: img23
@@ -36,7 +33,6 @@ export default function Courses({ addToCart, cart, searchQuery, setSearchQuery, 
     {
       title: 'MCA Specializations',
       category: 'PG',
-      price: '$33.99',
       students: '5,957 Students',
       duration: '01h 49m',
       image: img24
@@ -44,15 +40,6 @@ export default function Courses({ addToCart, cart, searchQuery, setSearchQuery, 
     {
       title: '10th & 12th Board Exams',
       category: 'BOARD',
-      price: '$33.99',
-      students: '5,957 Students',
-      duration: '01h 49m',
-      image: img25
-    },
-    {
-      title: 'All Science Groups',
-      category: 'BOARD',
-      price: '$33.99',
       students: '5,957 Students',
       duration: '01h 49m',
       image: img26
@@ -110,7 +97,7 @@ export default function Courses({ addToCart, cart, searchQuery, setSearchQuery, 
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCourses.map((course, index) => {
-              const isInCart = cart.some(item => item.title === course.title);
+              const isInWishlist = wishlist.some(item => item.title === course.title);
               return (
                 <div 
                   key={index} 
@@ -142,22 +129,17 @@ export default function Courses({ addToCart, cart, searchQuery, setSearchQuery, 
                     </h3>
 
                     {/* Footer Section */}
-                    <div className="mt-auto pt-4 border-t border-gray-50 flex justify-between items-center">
-                      <span className="text-xl font-extrabold text-[#2ca785]">
-                        {course.price}
-                      </span>
-                      
-                      {/* Shopping Cart button */}
+                    <div className="mt-auto pt-4 border-t border-gray-50 flex justify-end">
                       <button 
-                        onClick={() => addToCart(course)}
+                        onClick={() => toggleLike(course)}
                         className={`p-2.5 rounded-full transition-all duration-200 transform active:scale-95 border cursor-pointer ${
-                          isInCart
-                            ? 'bg-[#2ca785] text-white border-[#2ca785]'
-                            : 'bg-slate-50 hover:bg-[#2ca785] text-slate-400 hover:text-white border-slate-100 hover:border-[#2ca785]'
+                          isInWishlist
+                            ? 'bg-rose-50 text-rose-600 border-rose-100'
+                            : 'bg-slate-50 hover:bg-slate-100 text-slate-400 border-slate-100'
                         }`}
-                        title={isInCart ? 'In Cart' : 'Add to Cart'}
+                        title={isInWishlist ? 'Unlike' : 'Like'}
                       >
-                        <ShoppingCart size={18} />
+                        <Heart size={18} className={isInWishlist ? 'fill-rose-600 text-rose-600' : 'text-slate-400'} />
                       </button>
                     </div>
 

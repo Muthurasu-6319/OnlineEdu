@@ -51,7 +51,7 @@ export default function Gateway() {
           {cards.map((card, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-2xl p-8 pt-12 text-slate-800 relative flex flex-col justify-between items-center text-center shadow-lg border border-white/10 hover:shadow-xl transition-shadow duration-300 min-h-[300px]"
+              className="bg-white rounded-2xl p-8 pt-12 text-slate-800 relative flex flex-col justify-start items-center text-center shadow-lg border border-white/10 hover:shadow-xl transition-shadow duration-300"
             >
               
               {/* Floating top circular icon */}
@@ -60,7 +60,7 @@ export default function Gateway() {
               </div>
 
               {/* Card Title */}
-              <h3 className="text-xl font-bold text-slate-900 mb-4 font-outfit">
+              <h3 className="text-xl font-bold text-slate-900 mb-2.5 font-outfit">
                 {card.title}
               </h3>
 

@@ -1,6 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import AlagappaHero from './components/AlagappaHero';
+import AlagappaAbout from './components/AlagappaAbout';
+import AlagappaCollaboration from './components/AlagappaCollaboration';
+import AlagappaDDE from './components/AlagappaDDE';
+import AlagappaPrograms from './components/AlagappaPrograms';
+import BharathidasanHero from './components/BharathidasanHero';
+import BharathidasanAbout from './components/BharathidasanAbout';
+import BharathidasanCollaboration from './components/BharathidasanCollaboration';
+import BharathidasanDetails from './components/BharathidasanDetails';
+import BharathidasanPrograms from './components/BharathidasanPrograms';
+import AmityHero from './components/AmityHero';
+import AmityAbout from './components/AmityAbout';
+import AmityChooseAndMba from './components/AmityChooseAndMba';
+import AmityPrograms from './components/AmityPrograms';
+import BoardHero from './components/BoardHero';
+import BoardAbout from './components/BoardAbout';
+import WhyChooseUs from './components/WhyChooseUs';
+import BoardDetails from './components/BoardDetails';
+import BoardSteps from './components/BoardSteps';
+import BoardIntro from './components/BoardIntro';
+import BoardOutro from './components/BoardOutro';
 import Success from './components/Success';
 import Courses from './components/Courses';
 import Gateway from './components/Gateway';
@@ -10,25 +31,34 @@ import Footer from './components/Footer';
 import { X, CheckCircle, Trash2 } from 'lucide-react';
 
 function App() {
-  const [cart, setCart] = useState([]);
-  const [cartOpen, setCartOpen] = useState(false);
+  const [wishlist, setWishlist] = useState([]);
+  const [wishlistOpen, setWishlistOpen] = useState(false);
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [videoOpen, setVideoOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('ALL');
   const [enquirySuccess, setEnquirySuccess] = useState(false);
   const [enquiryForm, setEnquiryForm] = useState({ name: '', email: '', phone: '', course: '', message: '' });
+  const [currentHash, setCurrentHash] = useState(window.location.hash || '#home');
 
-  const addToCart = (course) => {
-    if (cart.find(item => item.title === course.title)) {
-      alert(`${course.title} is already in your cart.`);
-      return;
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash || '#home');
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const toggleLike = (course) => {
+    if (wishlist.find(item => item.title === course.title)) {
+      setWishlist(wishlist.filter(item => item.title !== course.title));
+    } else {
+      setWishlist([...wishlist, course]);
     }
-    setCart([...cart, course]);
   };
 
-  const removeFromCart = (title) => {
-    setCart(cart.filter(item => item.title !== title));
+  const removeFromWishlist = (title) => {
+    setWishlist(wishlist.filter(item => item.title !== title));
   };
 
   const handleEnquirySubmit = (e) => {
@@ -45,8 +75,8 @@ function App() {
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans relative">
       {/* Header */}
       <Header 
-        cartCount={cart.length} 
-        onCartClick={() => setCartOpen(true)} 
+        wishlistCount={wishlist.length} 
+        onWishlistClick={() => setWishlistOpen(true)} 
         onEnquiryClick={() => setEnquiryOpen(true)}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -54,53 +84,89 @@ function App() {
 
       {/* Main Content */}
       <main className="flex-grow">
-        <Hero onEnquiryClick={() => setEnquiryOpen(true)} />
-        <Success />
-        <Courses 
-          addToCart={addToCart} 
-          cart={cart}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          activeFilter={activeFilter}
-          setActiveFilter={setActiveFilter}
-        />
-        <Gateway />
-        <Partnerships />
-        <Testimonials onPlayClick={() => setVideoOpen(true)} />
+        {currentHash === '#alagappa' ? (
+          <>
+            <AlagappaHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <AlagappaAbout />
+            <AlagappaCollaboration />
+            <AlagappaDDE />
+            <AlagappaPrograms />
+          </>
+        ) : currentHash === '#bharathidasan' ? (
+          <>
+            <BharathidasanHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <BharathidasanAbout />
+            <BharathidasanCollaboration />
+            <BharathidasanDetails />
+            <BharathidasanPrograms />
+          </>
+        ) : currentHash === '#amity' ? (
+          <>
+            <AmityHero />
+            <AmityAbout />
+            <AmityChooseAndMba />
+            <AmityPrograms />
+          </>
+        ) : currentHash === '#board' ? (
+          <>
+            <BoardHero />
+            <BoardAbout />
+            <WhyChooseUs />
+            <BoardDetails />
+            <BoardSteps />
+            <BoardIntro />
+            <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
+          </>
+        ) : (
+          <>
+            <Hero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <Success />
+            <Courses 
+              toggleLike={toggleLike} 
+              wishlist={wishlist}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              activeFilter={activeFilter}
+              setActiveFilter={setActiveFilter}
+            />
+            <Gateway />
+            <Partnerships />
+            <Testimonials onPlayClick={() => setVideoOpen(true)} />
+          </>
+        )}
       </main>
 
       {/* Custom Footer */}
       <Footer />
 
-      {/* CART SIDEBAR MODAL */}
-      {cartOpen && (
+      {/* WISHLIST SIDEBAR MODAL */}
+      {wishlistOpen && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-xs transition-opacity" onClick={() => setCartOpen(false)} />
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-xs transition-opacity" onClick={() => setWishlistOpen(false)} />
           <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
             <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col font-outfit">
               <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-                <h2 className="text-xl font-bold text-slate-800">Your Cart ({cart.length})</h2>
-                <button onClick={() => setCartOpen(false)} className="p-2 hover:bg-slate-50 rounded-full transition-colors">
+                <h2 className="text-xl font-bold text-slate-800">Liked Courses ({wishlist.length})</h2>
+                <button onClick={() => setWishlistOpen(false)} className="p-2 hover:bg-slate-50 rounded-full transition-colors">
                   <X className="w-5 h-5 text-slate-500" />
                 </button>
               </div>
 
               <div className="flex-grow overflow-y-auto p-6 space-y-4">
-                {cart.length === 0 ? (
+                {wishlist.length === 0 ? (
                   <div className="text-center py-12 text-slate-400">
-                    <p className="text-lg font-medium mb-2">Your cart is empty</p>
-                    <p className="text-sm">Explore our courses and add them to your learning path.</p>
+                    <p className="text-lg font-medium mb-2">No liked courses</p>
+                    <p className="text-sm">Explore our courses and hit the Like button on ones you love.</p>
                   </div>
                 ) : (
-                  cart.map((item, index) => (
+                  wishlist.map((item, index) => (
                     <div key={index} className="flex gap-4 p-4 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 transition-colors">
                       <img src={item.image} alt={item.title} className="w-16 h-16 rounded-lg object-cover shrink-0" />
-                      <div className="flex-grow">
+                      <div className="flex-grow flex items-center">
                         <h4 className="font-bold text-sm text-slate-800 line-clamp-1">{item.title}</h4>
-                        <p className="text-xs text-[#2ca785] font-semibold mt-1">{item.price}</p>
                       </div>
                       <button 
-                        onClick={() => removeFromCart(item.title)} 
+                        onClick={() => removeFromWishlist(item.title)} 
                         className="text-slate-400 hover:text-red-500 transition-colors self-center p-2 rounded-full hover:bg-red-50"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -110,23 +176,16 @@ function App() {
                 )}
               </div>
 
-              {cart.length > 0 && (
+              {wishlist.length > 0 && (
                 <div className="p-6 border-t border-slate-100 bg-slate-50">
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="font-medium text-slate-600">Total Price</span>
-                    <span className="text-xl font-extrabold text-[#2ca785]">
-                      ${cart.reduce((sum, item) => sum + parseFloat(item.price.replace('$', '')), 0).toFixed(2)}
-                    </span>
-                  </div>
                   <button 
                     onClick={() => {
-                      alert('Thank you for enrolling! Checkout functionality is simulated.');
-                      setCart([]);
-                      setCartOpen(false);
+                      setWishlistOpen(false);
+                      setEnquiryOpen(true);
                     }}
                     className="w-full bg-[#2ca785] hover:bg-[#238a6d] text-white py-3.5 rounded-xl font-semibold shadow-lg hover:shadow-emerald-100 transition-all duration-200"
                   >
-                    Enroll Now
+                    Enquire Now
                   </button>
                 </div>
               )}
