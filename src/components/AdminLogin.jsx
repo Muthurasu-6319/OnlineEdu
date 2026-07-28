@@ -30,7 +30,7 @@ export default function AdminLogin({ onLoginSuccess }) {
     setIsLoading(true);
 
     try {
-      await fetch('http://localhost:5000/api/forgot-password', {
+      await fetch('/api/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
