@@ -6,8 +6,18 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', location: '', qualification: '' });
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'contact', data: form })
+      });
+    } catch (err) {
+      console.error('Failed to send contact email', err);
+    }
+    
     setSuccess(true);
     setTimeout(() => {
       setSuccess(false);

@@ -4,15 +4,19 @@ import studentImg from '../assets/student.png';
 
 export default function Hero({ onEnquiryClick }) {
   const [scale, setScale] = useState(1);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [showMobileSuggestions, setShowMobileSuggestions] = useState(false);
+
+  const suggestions = [
+    { label: 'UG Degrees (B.A, B.Sc, B.Com, BBA, BCA)', link: '#alagappa' },
+    { label: 'PG Degrees (M.A, M.Sc, M.Com, MBA, MCA)', link: '#alagappa' },
+    { label: '10th & 12th NIOS/BOSSE Exams', link: '#board' },
+  ];
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 1920) {
-        setScale(Math.max(0.5, width / 1920));
-      } else {
-        setScale(1);
-      }
+      setScale(width / 1920);
     };
 
     handleResize();
@@ -24,7 +28,7 @@ export default function Hero({ onEnquiryClick }) {
     <>
       {/* Desktop View (auto-scaled canvas) */}
       <section 
-        className="relative w-full bg-[#FFCF3E] overflow-hidden hidden lg:block"
+        className="relative w-full bg-[#FFCF3E] overflow-hidden"
         style={{ height: `${933 * scale}px`, transition: 'height 0.1s ease-out' }}
       >
         {/* 1920px Centered Canvas Container with Dynamic Scale */}
@@ -83,11 +87,13 @@ export default function Hero({ onEnquiryClick }) {
               </div>
 
               {/* Search Bar Input */}
-              <div className="pt-6 relative w-[540px]">
+              <div className="pt-6 relative w-[540px]" style={{ zIndex: 40 }}>
                 <div className="bg-white p-2 rounded-2xl shadow-xl flex items-center justify-between border border-white/20">
                   <input 
                     type="text" 
-                    placeholder="What do you want to learn today?" 
+                    placeholder="What do you want to learn today?"
+                    onFocus={() => setShowSuggestions(true)}
+                    onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
                     className="w-full px-4 text-slate-800 placeholder-slate-400 focus:outline-none text-base"
                   />
                   <button className="bg-gradient-to-r from-[#3b59df] to-[#513be4] text-white font-medium px-6 py-3 rounded-xl flex items-center gap-2 hover:opacity-90 transition-opacity">
@@ -95,6 +101,22 @@ export default function Hero({ onEnquiryClick }) {
                     <span>Search</span>
                   </button>
                 </div>
+                {/* Suggestion Dropdown */}
+                {showSuggestions && (
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
+                    {suggestions.map((s, i) => (
+                      <a
+                        key={i}
+                        href={s.link}
+                        onMouseDown={(e) => e.preventDefault()}
+                        className="flex items-center gap-3 px-5 py-3.5 hover:bg-indigo-50 transition-colors border-b border-slate-50 last:border-0 group"
+                      >
+                        <Search size={14} className="text-indigo-400 shrink-0" />
+                        <span className="text-slate-700 text-sm font-semibold group-hover:text-indigo-700 transition-colors">{s.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -243,122 +265,8 @@ export default function Hero({ onEnquiryClick }) {
               }}
             />
           </div>
-
         </div>
       </section>
-
-      {/* Mobile/Tablet Hero version (Fully aligned to match the Figma visual elements beautifully) */}
-      <div className="relative w-full lg:hidden text-slate-800 font-outfit overflow-hidden">
-        
-        {/* Yellow top strip to match figma desktop header/decoration space */}
-        <div className="w-full h-8 bg-[#FFCF3E]" />
-
-        {/* Purple background container */}
-        <div className="custom-gradient-bg text-white px-6 pt-10 pb-0 relative overflow-hidden flex flex-col justify-between">
-          
-          {/* Nested Arches at background */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none opacity-10 z-0" style={{ width: '220px', height: '250px' }}>
-            <div className="absolute inset-0 border-[2px] border-white rounded-t-full" />
-            <div className="absolute inset-4 border-[2px] border-white rounded-t-full" />
-            <div className="absolute inset-8 border-[2px] border-white rounded-t-full" />
-          </div>
-
-          {/* Glowing background behind student in mobile */}
-          <div 
-            className="absolute rounded-full bg-[#005FFF] pointer-events-none z-10" 
-            style={{
-              width: '320px',
-              height: '320px',
-              filter: 'blur(70px)',
-              opacity: '0.8',
-              bottom: '10px',
-              left: '50%',
-              transform: 'translateX(-50%)'
-            }}
-          />
-
-          {/* Heading content */}
-          <div className="relative z-10 flex flex-col space-y-4">
-            <span className="text-[10px] font-bold tracking-widest text-[#a78bfa] uppercase">
-              EMPOWERING EDUCATION FOR ALL
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-none">
-              DISTANCE & ONLINE <br />
-              <span className="text-white">EDUCATION</span>
-            </h1>
-            <p className="text-sm font-semibold tracking-wide text-indigo-100 uppercase">
-              UGC APPROVED GOVERNMENT UNIVERSITIES
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a 
-                href="#course" 
-                className="border-2 border-white hover:bg-white hover:text-indigo-950 text-white font-semibold px-6 py-2 rounded-xl text-sm transition-all inline-block text-center"
-              >
-                View Courses
-              </a>
-              <button 
-                onClick={onEnquiryClick}
-                className="text-white hover:text-indigo-200 text-xs font-medium underline underline-offset-4 cursor-pointer bg-transparent border-none outline-none"
-              >
-                Get Free Consultation
-              </button>
-            </div>
-
-            {/* Search Input */}
-            <div className="pt-4 max-w-md">
-              <div className="bg-white p-1.5 rounded-xl flex items-center justify-between border border-white/20">
-                <input 
-                  type="text" 
-                  placeholder="What do you want to learn today?" 
-                  className="w-full px-3 text-slate-800 placeholder-slate-400 focus:outline-none text-xs"
-                />
-                <button className="bg-gradient-to-r from-[#3b59df] to-[#513be4] text-white font-medium px-4 py-2 rounded-lg flex items-center gap-1 text-xs">
-                  <Search size={14} />
-                  <span>Search</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Quote Card (Clean, aligned left of student) */}
-            <div className="pt-6 flex gap-3 max-w-sm">
-              <div className="relative w-[2px] bg-[#2ca785] flex-shrink-0">
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-[#2ca785] text-white rounded-full w-5 h-5 flex items-center justify-center border border-indigo-950">
-                  <span className="text-[10px] font-bold font-serif leading-none mt-0.5">“</span>
-                </div>
-              </div>
-              <div>
-                <p className="text-[11px] text-slate-200 leading-relaxed">
-                  Vnet bharathidasan University and Educational Trust helps learners continue their education with recognized courses and easy EMI options.
-                </p>
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="text-xs font-bold text-[#2ca785]">4.9</span>
-                  <div className="flex text-[#2ca785] gap-0.5">
-                    <Star size={10} fill="currentColor" className="stroke-none" />
-                    <Star size={10} fill="currentColor" className="stroke-none" />
-                    <Star size={10} fill="currentColor" className="stroke-none" />
-                    <Star size={10} fill="currentColor" className="stroke-none" />
-                    <Star size={10} fill="currentColor" className="stroke-none" opacity={0.5} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Student Image inside the purple container - Aligned flush with bottom */}
-          <div className="relative mt-8 flex justify-center z-20">
-            <img 
-              src={studentImg} 
-              alt="Student" 
-              className="w-[280px] sm:w-[320px] block object-contain object-bottom -mb-8 sm:-mb-10" 
-            />
-          </div>
-
-        </div>
-
-      </div>
     </>
   );
 }

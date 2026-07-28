@@ -60,6 +60,7 @@ export default function BharathidasanPrograms() {
     {
       title: 'PG Program Science',
       theme: 'purple',
+      id: 'bharathidasan-pg-science',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80',
       items: [
         '• M.sc Mathematics',
@@ -135,10 +136,11 @@ export default function BharathidasanPrograms() {
             const isYellow = card.theme === 'yellow';
             return (
               <div 
-                key={idx} 
+                key={idx}
+                id={card.id || undefined}
                 className={`rounded-[32px] p-8 shadow-md flex flex-col hover:shadow-lg transition-all duration-300 ${
                   isYellow 
-                    ? 'bg-[#FFCF3E] text-[#1a2b6d]' 
+                    ? 'bg-[#FFCF3E] text-black' 
                     : 'bg-[#8050e6] text-white'
                 }`}
               >
@@ -146,7 +148,7 @@ export default function BharathidasanPrograms() {
                 <div className="flex items-center gap-4 mb-6">
                   <div className={`w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 ${
                     isYellow 
-                      ? 'border-[#1a2b6d]' 
+                      ? 'border-black' 
                       : 'border-[#FFCF3E]'
                   }`}>
                     <img 
@@ -155,15 +157,13 @@ export default function BharathidasanPrograms() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className={`font-extrabold text-base md:text-[17px] tracking-wide uppercase leading-snug ${
-                    isYellow ? 'text-[#1a2b6d]' : 'text-[#FFCF3E]'
-                  }`}>
+                  <h3 className={`font-black text-base md:text-[17px] tracking-wide uppercase leading-snug`}>
                     {card.title}
                   </h3>
                 </div>
 
                 {/* List of items */}
-                <ul className="space-y-3 font-extrabold text-[13px] md:text-[14px] leading-relaxed font-sans">
+                <ul className="space-y-3 font-black text-[13px] md:text-[14px] leading-relaxed font-sans">
                   {card.items.map((item, itemIdx) => (
                     <li key={itemIdx} className="flex items-start gap-1">
                       <span>{item}</span>

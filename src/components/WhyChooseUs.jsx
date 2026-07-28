@@ -8,8 +8,8 @@ export default function WhyChooseUs() {
       description: "Affordable education with the lowest fees, ensuring cost won't stop your learning."
     },
     {
-      title: 'Govt. Exam Classes',
-      description: 'Expert-led classes to help you crack government exams & secure a govt. job.'
+      title: 'Flexible Classes',
+      description: 'Learn at your own pace with pre-recorded lectures, online access, and study-anywhere convenience.'
     },
     {
       title: 'Study Material',

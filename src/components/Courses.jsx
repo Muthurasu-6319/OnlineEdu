@@ -14,35 +14,48 @@ export default function Courses({ toggleLike, wishlist, searchQuery, setSearchQu
       category: 'UG',
       students: '5,957 Students',
       duration: '01h 49m',
-      image: img21
+      image: img21,
+      link: '#ug-courses'
     },
     {
       title: 'PG DEGREE',
       category: 'PG',
       students: '5,957 Students',
       duration: '01h 49m',
-      image: img22
+      image: img22,
+      link: '#pg-courses'
     },
     {
       title: 'MBA Specializations',
       category: 'PG',
       students: '5,957 Students',
       duration: '01h 49m',
-      image: img23
+      image: img23,
+      link: '#alagappa-mba-specializations'
     },
     {
       title: 'MCA Specializations',
       category: 'PG',
       students: '5,957 Students',
       duration: '01h 49m',
-      image: img24
+      image: img25,
+      link: '#amity-mca-msc-specializations'
     },
     {
       title: '10th & 12th Board Exams',
       category: 'BOARD',
       students: '5,957 Students',
       duration: '01h 49m',
-      image: img26
+      image: img26,
+      link: '#board'
+    },
+    {
+      title: 'All Science Groups',
+      category: 'SCIENCE',
+      students: '5,957 Students',
+      duration: '01h 49m',
+      image: img24,
+      link: '#bharathidasan-pg-science'
     }
   ];
 
@@ -50,7 +63,8 @@ export default function Courses({ toggleLike, wishlist, searchQuery, setSearchQu
     { label: 'All Courses', value: 'ALL' },
     { label: 'UG Degrees', value: 'UG' },
     { label: 'PG Degrees', value: 'PG' },
-    { label: 'Board Exams', value: 'BOARD' }
+    { label: 'Board Exams', value: 'BOARD' },
+    { label: 'Science', value: 'SCIENCE' }
   ];
 
   const filteredCourses = courseData.filter(course => {
@@ -99,13 +113,14 @@ export default function Courses({ toggleLike, wishlist, searchQuery, setSearchQu
             {filteredCourses.map((course, index) => {
               const isInWishlist = wishlist.some(item => item.title === course.title);
               return (
-                <div 
+                <a 
                   key={index} 
-                  className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full"
+                  href={course.link}
+                  className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full group"
                 >
                   
                   {/* Card Image Container */}
-                  <div className="w-full h-56 bg-slate-100 relative overflow-hidden group">
+                  <div className="w-full h-56 bg-slate-100 relative overflow-hidden">
                     <img 
                       src={course.image} 
                       alt={course.title} 
@@ -124,14 +139,18 @@ export default function Courses({ toggleLike, wishlist, searchQuery, setSearchQu
                     </div>
 
                     {/* Course Title */}
-                    <h3 className="text-lg font-bold text-[#1e293b] hover:text-[#2ca785] transition-colors duration-200 cursor-pointer mb-6 line-clamp-1">
+                    <h3 className="text-lg font-bold text-[#1e293b] group-hover:text-[#2ca785] transition-colors duration-200 mb-6 line-clamp-1">
                       {course.title}
                     </h3>
 
                     {/* Footer Section */}
                     <div className="mt-auto pt-4 border-t border-gray-50 flex justify-end">
                       <button 
-                        onClick={() => toggleLike(course)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          toggleLike(course);
+                        }}
                         className={`p-2.5 rounded-full transition-all duration-200 transform active:scale-95 border cursor-pointer ${
                           isInWishlist
                             ? 'bg-rose-50 text-rose-600 border-rose-100'
@@ -145,7 +164,7 @@ export default function Courses({ toggleLike, wishlist, searchQuery, setSearchQu
 
                   </div>
 
-                </div>
+                </a>
               );
             })}
           </div>

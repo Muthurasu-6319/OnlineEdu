@@ -7,15 +7,18 @@ export default function Partnerships() {
   const partners = [
     {
       name: 'Bharathidasan University',
-      image: rectangle20
+      image: rectangle20,
+      link: '#bharathidasan'
     },
     {
       name: 'Alagappa University',
-      image: alagappaPartnerImg
+      image: alagappaPartnerImg,
+      link: '#alagappa'
     },
     {
       name: 'Amity University',
-      image: amityPartnerImg
+      image: amityPartnerImg,
+      link: '#amity'
     }
   ];
 
@@ -64,7 +67,7 @@ export default function Partnerships() {
               {/* Centered Button Overlay - Shows on Hover */}
               <div className="absolute inset-0 flex items-center justify-center z-30 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40 backdrop-blur-[2px]">
                 <a 
-                  href="#course" 
+                  href={partner.link} 
                   className="bg-[#2ca785] hover:bg-[#238a6d] text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-transform duration-300 transform scale-90 group-hover:scale-100 cursor-pointer text-center"
                 >
                   View Course

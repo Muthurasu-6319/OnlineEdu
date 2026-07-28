@@ -8,11 +8,7 @@ export default function BharathidasanHero({ onEnquiryClick }) {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 1920) {
-        setScale(Math.max(0.5, width / 1920));
-      } else {
-        setScale(1);
-      }
+      setScale(width / 1920);
     };
 
     handleResize();
@@ -22,12 +18,10 @@ export default function BharathidasanHero({ onEnquiryClick }) {
 
   return (
     <>
-      {/* Desktop View (auto-scaled canvas) */}
       <section 
-        className="relative w-full overflow-hidden hidden lg:block"
+        className="relative w-full overflow-hidden bg-white"
         style={{ height: `${933 * scale}px`, transition: 'height 0.1s ease-out' }}
       >
-        {/* 1920px Centered Canvas Container with Dynamic Scale */}
         <div 
           className="relative origin-top-left"
           style={{ 
@@ -37,14 +31,12 @@ export default function BharathidasanHero({ onEnquiryClick }) {
             transition: 'transform 0.1s ease-out'
           }}
         >
-          {/* Full background image containing background waves and graduate student */}
           <img 
             src={bduHeroBg} 
             alt="Bharathidasan University Hero Background" 
             className="absolute inset-0 w-[1920px] h-[933px] object-cover pointer-events-none"
           />
           
-          {/* Left Column Content overlay */}
           <div 
             className="absolute flex flex-col space-y-6 z-10"
             style={{ left: '115px', top: '242px', width: '680px' }}
@@ -73,7 +65,6 @@ export default function BharathidasanHero({ onEnquiryClick }) {
               </button>
             </div>
 
-            {/* Search Bar Input */}
             <div className="pt-6 relative w-[540px]">
               <div className="bg-white p-2 rounded-2xl shadow-xl flex items-center justify-between border border-slate-200">
                 <input 
@@ -89,7 +80,6 @@ export default function BharathidasanHero({ onEnquiryClick }) {
             </div>
           </div>
 
-          {/* Nested Arch Shapes decoration */}
           <div className="absolute bottom-0 pointer-events-none z-10" style={{ left: '716px', width: '313px', height: '359px' }}>
             <div 
               className="absolute bottom-0 left-0 border-slate-400/20"
@@ -122,7 +112,6 @@ export default function BharathidasanHero({ onEnquiryClick }) {
             />
           </div>
 
-          {/* Floating Trust Card */}
           <div 
             className="absolute flex items-stretch gap-4 z-30"
             style={{ left: '840px', top: '425px', width: '272px', height: '145px' }}
@@ -149,100 +138,8 @@ export default function BharathidasanHero({ onEnquiryClick }) {
               </div>
             </div>
           </div>
-
         </div>
       </section>
-
-      {/* Mobile/Tablet Hero version */}
-      <div className="relative w-full lg:hidden text-slate-800 font-outfit overflow-hidden">
-        
-        {/* Container with background image */}
-        <div 
-          className="text-white px-6 pt-10 pb-0 relative overflow-hidden flex flex-col justify-between"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(${bduHeroBg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          
-          {/* Nested Arches at background */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none opacity-10 z-0" style={{ width: '220px', height: '250px' }}>
-            <div className="absolute inset-0 border-[2px] border-slate-800 rounded-t-full" />
-            <div className="absolute inset-4 border-[2px] border-slate-800 rounded-t-full" />
-            <div className="absolute inset-8 border-[2px] border-slate-800 rounded-t-full" />
-          </div>
-
-          {/* Heading content */}
-          <div className="relative z-10 flex flex-col space-y-4 text-slate-800">
-            <span className="text-[10px] font-bold tracking-widest text-[#0e7490] uppercase">
-              EMPOWERING EDUCATION FOR ALL
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-none">
-              Bharathidasan <br />
-              <span>University</span>
-            </h1>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a 
-                href="#course" 
-                className="border-2 border-slate-800 hover:bg-slate-800 hover:text-white text-slate-800 font-semibold px-6 py-2 rounded-xl text-sm transition-all inline-block text-center"
-              >
-                View Courses
-              </a>
-              <button 
-                onClick={onEnquiryClick}
-                className="text-slate-700 hover:text-slate-900 text-xs font-medium underline underline-offset-4 cursor-pointer bg-transparent border-none outline-none"
-              >
-                Get Free Consultation
-              </button>
-            </div>
-
-            {/* Search Input */}
-            <div className="pt-4 max-w-md">
-              <div className="bg-white p-1.5 rounded-xl flex items-center justify-between border border-slate-300">
-                <input 
-                  type="text" 
-                  placeholder="What do you want to learn today?" 
-                  className="w-full px-3 text-slate-800 placeholder-slate-400 focus:outline-none text-xs bg-transparent"
-                />
-                <button className="bg-gradient-to-r from-[#213fbb] to-[#6c3fda] text-white font-medium px-4 py-2 rounded-lg flex items-center gap-1 text-xs">
-                  <Search size={14} />
-                  <span>Search</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Quote Card */}
-            <div className="pt-6 pb-12 flex gap-3 max-w-sm">
-              <div className="relative w-[2px] bg-[#2ca785] flex-shrink-0">
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-[#2ca785] text-white rounded-full w-5 h-5 flex items-center justify-center border border-slate-200">
-                  <span className="text-[10px] font-bold font-serif leading-none mt-0.5">“</span>
-                </div>
-              </div>
-              <div>
-                <p className="text-[11px] text-slate-600 leading-relaxed">
-                  Vnet bharathidasan University and Educational Trust helps learners continue their education with recognized courses and easy EMI options.
-                </p>
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="text-xs font-bold text-[#2ca785]">4.9</span>
-                  <div className="flex text-[#2ca785] gap-0.5">
-                    <Star size={10} fill="currentColor" className="stroke-none" />
-                    <Star size={10} fill="currentColor" className="stroke-none" />
-                    <Star size={10} fill="currentColor" className="stroke-none" />
-                    <Star size={10} fill="currentColor" className="stroke-none" />
-                    <Star size={10} fill="currentColor" className="stroke-none" opacity={0.5} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
     </>
   );
 }

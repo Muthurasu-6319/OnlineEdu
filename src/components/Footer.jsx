@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import vnetLogo from '../assets/vnet.png';
 
 export default function Footer() {
   return (
@@ -9,11 +10,14 @@ export default function Footer() {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-12">
           
-          {/* Logo / Brand Name */}
-          <div className="md:col-span-4 flex items-center md:items-start">
-            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-white hover:opacity-90 transition-opacity">
-              vnetacademydistance education
-            </h2>
+          {/* Logo */}
+          <div className="md:col-span-4 flex flex-col items-center md:items-start gap-3">
+            <a href="#home">
+              <img src={vnetLogo} alt="VNET Distance Academy" className="h-16 w-auto object-contain brightness-0 invert" />
+            </a>
+            <p className="text-sm text-indigo-200 leading-relaxed font-medium max-w-xs text-center md:text-left">
+              Trusted guidance center for Distance, Online & Part-time education. Branches in Saravanampatti, Gandhipuram (Coimbatore) & Tiruppur.
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -33,6 +37,10 @@ export default function Footer() {
             <div>
               <h3 className="text-lg font-bold mb-6 text-white">Contact us</h3>
               <ul className="space-y-4 text-sm text-indigo-100 font-medium">
+                <li className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-indigo-200 shrink-0" />
+                  <a href="tel:+918870395554" className="hover:text-white transition-colors">+91 88703 95554</a>
+                </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-indigo-200 shrink-0" />
                   <a href="tel:+918870325552" className="hover:text-white transition-colors">+91 88703 25552</a>
@@ -65,8 +73,16 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs md:text-sm text-indigo-200">
-          <p>Copyright 2023 | All Rights Reserved</p>
-          
+          <p>Copyright 2026 | All Rights Reserved</p>
+          <a 
+            href="https://genzneuralx.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors font-medium"
+          >
+            Developed by Gen Z Neural - X
+          </a>
+
           {/* Social Icons */}
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-white transition-colors p-1" aria-label="Facebook">

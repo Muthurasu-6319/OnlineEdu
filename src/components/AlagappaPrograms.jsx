@@ -90,7 +90,7 @@ export default function AlagappaPrograms() {
           </div>
 
           {/* Row 2: MBA Specializations (Full-width Purple Card) */}
-          <div className="w-full">
+          <div className="w-full" id="alagappa-mba-specializations">
             <div className="bg-[#8b5cf6] rounded-3xl p-8 shadow-md text-white hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">

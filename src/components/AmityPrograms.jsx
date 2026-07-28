@@ -97,9 +97,10 @@ export default function AmityPrograms() {
     return (
       <div 
         key={idx} 
+        id={card.title === 'MCA/MSC(CS) WITH SPECIALIZATION' ? 'amity-mca-msc-specializations' : undefined}
         className={`rounded-3xl p-6 md:p-8 shadow-md flex flex-col hover:shadow-lg transition-all duration-300 ${
           isYellow 
-            ? 'bg-[#fdbf46] text-[#1c2d76]' 
+            ? 'bg-[#fdbf46] text-black' 
             : 'bg-[#3b59df] text-white'
         }`}
       >
@@ -107,22 +108,22 @@ export default function AmityPrograms() {
         <div className="flex items-center gap-3 mb-6 border-b pb-4 border-black/10">
           <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 border ${
             isYellow 
-              ? 'bg-[#1c2d76]/10 border-[#1c2d76]/10 text-[#1c2d76]' 
+              ? 'bg-black/10 border-black/10 text-black' 
               : 'bg-white/20 border-white/10 text-white'
           }`}>
             <User size={18} />
           </div>
-          <h3 className="font-extrabold text-base md:text-lg tracking-wide uppercase">
+          <h3 className="font-black text-base md:text-lg tracking-wide uppercase">
             {card.title}
           </h3>
         </div>
 
         {/* List of items */}
-        <ul className="space-y-3 font-bold text-xs md:text-sm leading-relaxed font-sans">
+        <ul className="space-y-3 font-black text-xs md:text-sm leading-relaxed font-sans">
           {card.items.map((item, itemIdx) => (
             <li key={itemIdx} className="flex items-start gap-2.5">
               <span className={`mt-2 w-1.5 h-1.5 rounded-full shrink-0 ${
-                isYellow ? 'bg-[#1c2d76]' : 'bg-white'
+                isYellow ? 'bg-black' : 'bg-white'
               }`} />
               <span>{item}</span>
             </li>

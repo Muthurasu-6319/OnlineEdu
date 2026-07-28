@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { Heart, User, Search, ChevronDown, Menu, X } from 'lucide-react';
+import vnetLogo from '../assets/vnet.png';
 
 export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick, searchQuery, setSearchQuery }) {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
 
   return (
     <header className="bg-white border-b border-gray-100 sticky top-0 z-50 font-outfit">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
-          {/* Logo - OnlineEdu */}
+          {/* Logo - VNET */}
           <div className="flex-shrink-0 flex items-center">
-            <a href="#home" className="text-xl md:text-2xl font-black tracking-wider text-slate-800 flex items-center gap-1.5">
-              <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2ca785] to-[#20a4d5] flex items-center justify-center text-white font-black text-base shadow-md">O</span>
-              OnlineEdu
+            <a href="#home" className="flex items-center gap-2">
+              <img src={vnetLogo} alt="VNET Distance Academy" className="h-12 w-auto object-contain" />
             </a>
           </div>
 
@@ -40,6 +41,24 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
                   <a href="#bharathidasan" className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
                   <a href="#amity" className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
                   <a href="#board" className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">10th & 12th Board Exam</a>
+                </div>
+              )}
+            </div>
+
+            {/* Courses Dropdown */}
+            <div className="relative">
+              <button 
+                onClick={() => setCoursesDropdownOpen(!coursesDropdownOpen)}
+                className="text-slate-800 hover:text-[#2ca785] font-bold text-base flex items-center gap-1 transition-colors duration-200"
+              >
+                Courses
+                <ChevronDown size={16} className={`transform transition-transform ${coursesDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {coursesDropdownOpen && (
+                <div className="absolute left-0 mt-3 w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
+                  <a href="#ug-courses" onClick={() => setCoursesDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
+                  <a href="#pg-courses" onClick={() => setCoursesDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
                 </div>
               )}
             </div>
@@ -144,19 +163,34 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
           </button>
           {dropdownOpen && (
             <div className="pl-6 space-y-1">
-              <a href="#alagappa" className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alagappa University</a>
-              <a href="#bharathidasan" className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Bharathidasan University</a>
-              <a href="#amity" className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Amity University</a>
-              <a href="#board" className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">10th & 12th Board Exam</a>
+              <a href="#alagappa" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alagappa University</a>
+              <a href="#bharathidasan" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Bharathidasan University</a>
+              <a href="#amity" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Amity University</a>
+              <a href="#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">10th & 12th Board Exam</a>
             </div>
           )}
-          <a href="#about" className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
+
+          <button 
+            onClick={() => setCoursesDropdownOpen(!coursesDropdownOpen)}
+            className="w-full flex justify-between items-center px-3 py-2 rounded-md text-slate-600 font-medium text-base"
+          >
+            Courses
+            <ChevronDown size={16} className={`transform ${coursesDropdownOpen ? 'rotate-180' : ''}`} />
+          </button>
+          {coursesDropdownOpen && (
+            <div className="pl-6 space-y-1">
+              <a href="#ug-courses" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">UG Courses</a>
+              <a href="#pg-courses" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">PG Courses</a>
+            </div>
+          )}
+          
+          <a href="#about" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             About
           </a>
-          <a href="#testimonials" className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
+          <a href="#testimonials" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             Testimonials
           </a>
-          <a href="#contact" className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
+          <a href="#contact" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             Contact Us
           </a>
           

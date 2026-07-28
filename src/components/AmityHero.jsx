@@ -15,11 +15,7 @@ export default function AmityHero() {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 1920) {
-        setScale(Math.max(0.5, width / 1920));
-      } else {
-        setScale(1);
-      }
+      setScale(width / 1920);
     };
 
     handleResize();
@@ -31,17 +27,15 @@ export default function AmityHero() {
 
   return (
     <>
-      {/* Desktop View (auto-scaled canvas) */}
       <section 
-        className="relative w-full overflow-hidden hidden lg:block"
-        style={{ height: `${933 * scale}px`, transition: 'height 0.1s ease-out' }}
+        className="relative w-full overflow-hidden bg-white"
+        style={{ height: `${1104 * scale}px`, transition: 'height 0.1s ease-out' }}
       >
-        {/* 1920px Centered Canvas Container with Dynamic Scale */}
         <div 
           className="relative origin-top-left"
           style={{ 
             width: '1920px', 
-            height: '933px',
+            height: '1104px',
             transform: `scale(${scale})`,
             transition: 'transform 0.1s ease-out'
           }}
@@ -49,19 +43,10 @@ export default function AmityHero() {
           <img 
             src={amityHeroBg} 
             alt="Amity University Online Hero" 
-            className="absolute inset-0 w-[1920px] h-[933px] object-cover pointer-events-none"
+            className="absolute inset-0 w-[1920px] h-[1104px] object-cover pointer-events-none"
           />
         </div>
       </section>
-
-      {/* Mobile/Tablet Hero version */}
-      <div className="relative w-full lg:hidden overflow-hidden bg-slate-50">
-        <img 
-          src={amityHeroBg} 
-          alt="Amity University Online Hero Mobile" 
-          className="w-full h-auto object-cover block"
-        />
-      </div>
 
       {/* Yellow Partners Banner (shows on both desktop and mobile below hero) */}
       <div className="bg-[#ffcb05] py-6 border-b border-yellow-400">

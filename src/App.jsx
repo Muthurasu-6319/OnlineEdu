@@ -34,6 +34,9 @@ import Gateway from './components/Gateway';
 import Partnerships from './components/Partnerships';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
+import Blog from './components/Blog';
+import UGCourses from './components/UGCourses';
+import PGCourses from './components/PGCourses';
 import { X, CheckCircle, Trash2 } from 'lucide-react';
 
 function App() {
@@ -55,23 +58,46 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  // Page-level hashes that should always scroll to the very top (hero section)
+  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#about', '#contact', '#blog', '#course', '#testimonials', '#ug-courses', '#pg-courses'];
+
   useEffect(() => {
-    if (currentHash === '#testimonials') {
-      const element = document.getElementById('testimonials');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        setTimeout(() => {
-          const el = document.getElementById('testimonials');
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 100);
-      }
+    if (!currentHash || currentHash === '#home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // If it's a top-level page hash, scroll to very top so the hero is visible
+    const isPageHash = PAGE_HASHES.some(p => currentHash === p);
+    if (isPageHash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // Otherwise it's a sub-section anchor — scroll to the specific element
+    const id = currentHash.replace('#', '');
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      window.scrollTo(0, 0);
+      // Allow time for target components to render
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else if (currentHash.includes('-')) {
+          // Check if there is a part after the first dash to fallback to
+          const parts = id.split('-');
+          const subId = parts.slice(1).join('-');
+          const subEl = document.getElementById(subId);
+          if (subEl) {
+            subEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }, 300);
     }
   }, [currentHash]);
+
 
   const toggleLike = (course) => {
     if (wishlist.find(item => item.title === course.title)) {
@@ -85,8 +111,18 @@ function App() {
     setWishlist(wishlist.filter(item => item.title !== title));
   };
 
-  const handleEnquirySubmit = (e) => {
+  const handleEnquirySubmit = async (e) => {
     e.preventDefault();
+    try {
+      await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'enquiry', data: enquiryForm })
+      });
+    } catch (err) {
+      console.error('Failed to send email', err);
+    }
+    
     setEnquirySuccess(true);
     setTimeout(() => {
       setEnquirySuccess(false);
@@ -108,7 +144,7 @@ function App() {
 
       {/* Main Content */}
       <main className="flex-grow">
-        {currentHash === '#alagappa' ? (
+        {currentHash.startsWith('#alagappa') ? (
           <>
             <AlagappaHero onEnquiryClick={() => setEnquiryOpen(true)} />
             <AlagappaAbout />
@@ -116,7 +152,7 @@ function App() {
             <AlagappaDDE />
             <AlagappaPrograms />
           </>
-        ) : currentHash === '#bharathidasan' ? (
+        ) : currentHash.startsWith('#bharathidasan') ? (
           <>
             <BharathidasanHero onEnquiryClick={() => setEnquiryOpen(true)} />
             <BharathidasanAbout />
@@ -124,14 +160,14 @@ function App() {
             <BharathidasanDetails />
             <BharathidasanPrograms />
           </>
-        ) : currentHash === '#amity' ? (
+        ) : currentHash.startsWith('#amity') ? (
           <>
             <AmityHero />
             <AmityAbout />
             <AmityChooseAndMba />
             <AmityPrograms />
           </>
-        ) : currentHash === '#board' ? (
+        ) : currentHash.startsWith('#board') ? (
           <>
             <BoardHero />
             <BoardAbout />
@@ -141,17 +177,29 @@ function App() {
             <BoardIntro />
             <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
           </>
-        ) : currentHash === '#about' ? (
+        ) : currentHash.startsWith('#about') ? (
           <>
             <AboutHero onEnquiryClick={() => setEnquiryOpen(true)} />
             <AboutAcademy />
             <AboutPhilosophy />
             <AboutPartnerships />
           </>
-        ) : currentHash === '#contact' ? (
+        ) : currentHash.startsWith('#contact') ? (
           <>
             <Contact />
             <ContactDetails />
+          </>
+        ) : currentHash.startsWith('#blog') ? (
+          <>
+            <Blog />
+          </>
+        ) : currentHash.startsWith('#ug-courses') ? (
+          <>
+            <UGCourses />
+          </>
+        ) : currentHash.startsWith('#pg-courses') ? (
+          <>
+            <PGCourses />
           </>
         ) : (
           <>
