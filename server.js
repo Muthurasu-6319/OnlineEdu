@@ -122,6 +122,19 @@ async function initDb() {
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       )
     `);
+
+    // Create student_videos table
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS student_videos (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        url VARCHAR(500) NOT NULL,
+        isYoutube BOOLEAN DEFAULT FALSE,
+        videoId VARCHAR(100),
+        featured BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    `);
     
     // Check if blogs empty
     const [blogRows] = await connection.query('SELECT COUNT(*) as count FROM blogs');
@@ -341,6 +354,64 @@ app.delete('/api/reviews/:id', async (req, res) => {
     res.json({ message: 'Review deleted successfully' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete review' });
+  }
+});
+
+// --- API Routes for Student Videos ---
+
+// GET all videos
+app.get('/api/videos', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM student_videos ORDER BY id DESC');
+    // Convert isYoutube and featured from tinyint to boolean for frontend compatibility
+    const formattedRows = rows.map(r => ({
+      ...r,
+      isYoutube: !!r.isYoutube,
+      featured: !!r.featured
+    }));
+    res.json(formattedRows);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch videos' });
+  }
+});
+
+// POST a new video
+app.post('/api/videos', async (req, res) => {
+  const { url, isYoutube, videoId, featured } = req.body;
+  try {
+    const [result] = await pool.query(
+      'INSERT INTO student_videos (url, isYoutube, videoId, featured) VALUES (?, ?, ?, ?)',
+      [url, isYoutube ? 1 : 0, videoId, featured ? 1 : 0]
+    );
+    res.status(201).json({ id: result.insertId, ...req.body });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to add video' });
+  }
+});
+
+// PUT (update) a video's featured status
+app.put('/api/videos/:id', async (req, res) => {
+  const { id } = req.params;
+  const { featured } = req.body;
+  try {
+    await pool.query(
+      'UPDATE student_videos SET featured = ? WHERE id = ?',
+      [featured ? 1 : 0, id]
+    );
+    res.json({ id, featured });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update video' });
+  }
+});
+
+// DELETE a video
+app.delete('/api/videos/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await pool.query('DELETE FROM student_videos WHERE id = ?', [id]);
+    res.json({ message: 'Video deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete video' });
   }
 });
 

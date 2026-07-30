@@ -18,14 +18,17 @@ export default function TestimonialsPage({ onPlayClick }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const storedVideos = localStorage.getItem('studentVideos');
-    if (storedVideos) {
+    const fetchVideos = async () => {
       try {
-        setVideos(JSON.parse(storedVideos));
+        const response = await fetch('http://localhost:5000/api/videos');
+        if (response.ok) {
+          setVideos(await response.json());
+        }
       } catch (e) {
-        setVideos([]);
+        console.error("Error fetching videos:", e);
       }
-    }
+    };
+    fetchVideos();
   }, []);
 
   // Automatic Slider

@@ -30,16 +30,19 @@ export default function Testimonials({ onPlayClick }) {
 
   useEffect(() => {
     // Load videos
-    const storedVideos = localStorage.getItem('studentVideos');
-    if (storedVideos) {
+    const fetchVideos = async () => {
       try {
-        const allVideos = JSON.parse(storedVideos);
-        const featured = allVideos.filter(v => v.featured).slice(0, 3);
-        setFeaturedVideos(featured);
+        const response = await fetch('http://localhost:5000/api/videos');
+        if (response.ok) {
+          const allVideos = await response.json();
+          const featured = allVideos.filter(v => v.featured).slice(0, 3);
+          setFeaturedVideos(featured);
+        }
       } catch (e) {
-        setFeaturedVideos([]);
+        console.error("Error fetching videos", e);
       }
-    }
+    };
+    fetchVideos();
 
     // Load text reviews
     const fetchReviews = async () => {

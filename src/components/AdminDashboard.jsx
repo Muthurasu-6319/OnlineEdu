@@ -4,6 +4,7 @@ import { LogOut, Plus, Trash2, Edit2, LayoutDashboard, FileText, Settings, Video
 const API_URL = 'http://localhost:5000/api/blogs';
 const COURSES_API_URL = 'http://localhost:5000/api/courses';
 const REVIEWS_API_URL = 'http://localhost:5000/api/reviews';
+const VIDEOS_API_URL = 'http://localhost:5000/api/videos';
 
 export default function AdminDashboard({ onLogout }) {
   const [activeTab, setActiveTab] = useState('blogs'); // 'blogs', 'add', 'courses', 'add_course'
@@ -68,15 +69,18 @@ export default function AdminDashboard({ onLogout }) {
     fetchCourses();
     
     // Load videos
-    const storedVideos = localStorage.getItem('studentVideos');
-    if (storedVideos) {
+    const fetchVideosData = async () => {
       try {
-        setVideos(JSON.parse(storedVideos));
+        const response = await fetch(VIDEOS_API_URL);
+        if (response.ok) {
+          const data = await response.json();
+          setVideos(data);
+        }
       } catch (e) {
-        console.error("Error parsing videos", e);
-        setVideos([]);
+        console.error("Failed to fetch videos:", e);
       }
-    }
+    };
+    fetchVideosData();
 
     const fetchReviews = async () => {
       try {
@@ -93,12 +97,16 @@ export default function AdminDashboard({ onLogout }) {
   }, []);
 
   // Video Handlers
-  const saveVideos = (updatedVideos) => {
-    setVideos(updatedVideos);
-    localStorage.setItem('studentVideos', JSON.stringify(updatedVideos));
+  const refreshVideos = async () => {
+    try {
+      const response = await fetch(VIDEOS_API_URL);
+      if (response.ok) setVideos(await response.json());
+    } catch (e) {
+      console.error(e);
+    }
   };
 
-  const handleAddVideo = (e) => {
+  const handleAddVideo = async (e) => {
     e.preventDefault();
     if (!newUrl) return;
 
@@ -121,29 +129,50 @@ export default function AdminDashboard({ onLogout }) {
     }
 
     const newVideo = {
-      id: Date.now().toString(),
       url: newUrl,
       isYoutube,
       videoId,
-      featured: isFeatured,
-      addedAt: new Date().toISOString()
+      featured: isFeatured
     };
 
-    saveVideos([newVideo, ...videos]);
-    setNewUrl('');
-    setIsFeatured(false);
-  };
-
-  const handleDeleteVideo = (id) => {
-    if (window.confirm("Are you sure you want to delete this video?")) {
-      saveVideos(videos.filter(v => v.id !== id));
+    try {
+      await fetch(VIDEOS_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newVideo)
+      });
+      refreshVideos();
+      setNewUrl('');
+      setIsFeatured(false);
+    } catch (err) {
+      alert('Failed to save video');
     }
   };
 
-  const toggleFeatured = (id) => {
-    saveVideos(videos.map(v => 
-      v.id === id ? { ...v, featured: !v.featured } : v
-    ));
+  const handleDeleteVideo = async (id) => {
+    if (window.confirm("Are you sure you want to delete this video?")) {
+      try {
+        await fetch(`${VIDEOS_API_URL}/${id}`, { method: 'DELETE' });
+        refreshVideos();
+      } catch (err) {
+        alert('Failed to delete video');
+      }
+    }
+  };
+
+  const toggleFeatured = async (id) => {
+    const video = videos.find(v => v.id === id);
+    if (!video) return;
+    try {
+      await fetch(`${VIDEOS_API_URL}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ featured: !video.featured })
+      });
+      refreshVideos();
+    } catch (err) {
+      alert('Failed to update featured status');
+    }
   };
 
   // Text Review Handlers
