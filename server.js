@@ -109,6 +109,19 @@ async function initDb() {
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       )
     `);
+
+    // Create student_reviews table
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS student_reviews (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        avatar VARCHAR(255) DEFAULT 'default',
+        text TEXT NOT NULL,
+        rating INT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    `);
     
     // Check if blogs empty
     const [blogRows] = await connection.query('SELECT COUNT(*) as count FROM blogs');
@@ -130,6 +143,38 @@ async function initDb() {
         await connection.query(
           'INSERT INTO course_categories (level, title, color_theme, courses_list) VALUES (?, ?, ?, ?)',
           [course.level, course.title, course.color_theme, course.courses_list]
+        );
+      }
+    }
+
+    // Check if reviews empty
+    const [reviewRows] = await connection.query('SELECT COUNT(*) as count FROM student_reviews');
+    if (reviewRows[0].count === 0) {
+      console.log('Student Reviews table is empty, inserting initial reviews...');
+      const defaultTestimonials = [
+        {
+          name: 'Ronald Richards',
+          avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
+          text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          rating: 4
+        },
+        {
+          name: 'Wade Warren',
+          avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80',
+          text: 'Cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Reprehenderit in voluptate velit esse',
+          rating: 4
+        },
+        {
+          name: 'Jacob Jones',
+          avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
+          text: 'Esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit',
+          rating: 4
+        }
+      ];
+      for (const review of defaultTestimonials) {
+        await connection.query(
+          'INSERT INTO student_reviews (name, avatar, text, rating) VALUES (?, ?, ?, ?)',
+          [review.name, review.avatar, review.text, review.rating]
         );
       }
     }
@@ -244,6 +289,58 @@ app.delete('/api/courses/:id', async (req, res) => {
     res.json({ message: 'Course category deleted successfully' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete course category' });
+  }
+});
+
+// --- API Routes for Student Reviews ---
+
+// GET all reviews
+app.get('/api/reviews', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM student_reviews ORDER BY id DESC');
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch reviews' });
+  }
+});
+
+// POST a new review
+app.post('/api/reviews', async (req, res) => {
+  const { name, avatar, text, rating } = req.body;
+  try {
+    const [result] = await pool.query(
+      'INSERT INTO student_reviews (name, avatar, text, rating) VALUES (?, ?, ?, ?)',
+      [name, avatar || 'default', text, rating]
+    );
+    res.status(201).json({ id: result.insertId, ...req.body });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to add review' });
+  }
+});
+
+// PUT (update) a review
+app.put('/api/reviews/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, avatar, text, rating } = req.body;
+  try {
+    await pool.query(
+      'UPDATE student_reviews SET name = ?, avatar = ?, text = ?, rating = ? WHERE id = ?',
+      [name, avatar || 'default', text, rating, id]
+    );
+    res.json({ id, ...req.body });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update review' });
+  }
+});
+
+// DELETE a review
+app.delete('/api/reviews/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await pool.query('DELETE FROM student_reviews WHERE id = ?', [id]);
+    res.json({ message: 'Review deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete review' });
   }
 });
 

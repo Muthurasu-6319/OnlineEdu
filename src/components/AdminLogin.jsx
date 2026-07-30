@@ -7,6 +7,7 @@ export default function AdminLogin({ onLoginSuccess }) {
   const [error, setError] = useState('');
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [forgotMessage, setForgotMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();

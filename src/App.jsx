@@ -33,6 +33,7 @@ import Courses from './components/Courses';
 import Gateway from './components/Gateway';
 import Partnerships from './components/Partnerships';
 import Testimonials from './components/Testimonials';
+import TestimonialsPage from './components/TestimonialsPage';
 import Footer from './components/Footer';
 import Blog from './components/Blog';
 import UGCourses from './components/UGCourses';
@@ -43,7 +44,7 @@ function App() {
   const [wishlist, setWishlist] = useState([]);
   const [wishlistOpen, setWishlistOpen] = useState(false);
   const [enquiryOpen, setEnquiryOpen] = useState(false);
-  const [videoOpen, setVideoOpen] = useState(false);
+  const [activeVideoUrl, setActiveVideoUrl] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('ALL');
   const [enquirySuccess, setEnquirySuccess] = useState(false);
@@ -59,7 +60,7 @@ function App() {
   }, []);
 
   // Page-level hashes that should always scroll to the very top (hero section)
-  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#about', '#contact', '#blog', '#course', '#testimonials', '#ug-courses', '#pg-courses'];
+  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#about', '#contact', '#blog', '#course', '#testimonials-page', '#ug-courses', '#pg-courses'];
 
   useEffect(() => {
     if (!currentHash || currentHash === '#home') {
@@ -201,6 +202,10 @@ function App() {
           <>
             <PGCourses />
           </>
+        ) : currentHash.startsWith('#testimonials-page') ? (
+          <>
+            <TestimonialsPage onPlayClick={(video) => setActiveVideoUrl(video || { isYoutube: true, url: 'dQw4w9WgXcQ' })} />
+          </>
         ) : (
           <>
             <Hero onEnquiryClick={() => setEnquiryOpen(true)} />
@@ -215,7 +220,7 @@ function App() {
             />
             <Gateway />
             <Partnerships />
-            <Testimonials onPlayClick={() => setVideoOpen(true)} />
+            <Testimonials onPlayClick={(video) => setActiveVideoUrl(video || { isYoutube: true, url: 'dQw4w9WgXcQ' })} />
           </>
         )}
       </main>
@@ -381,21 +386,34 @@ function App() {
       )}
 
       {/* VIDEO PLAYER MODAL */}
-      {videoOpen && (
+      {activeVideoUrl && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-xs" onClick={() => setVideoOpen(false)} />
-          <div className="bg-black rounded-3xl w-full max-w-4xl overflow-hidden shadow-2xl relative z-10 aspect-[16/9] border border-white/10">
-            <button onClick={() => setVideoOpen(false)} className="absolute right-4 top-4 p-2 bg-black/40 hover:bg-black/80 rounded-full transition-colors text-white z-20">
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-xs" onClick={() => setActiveVideoUrl(null)} />
+          <div className={`bg-black rounded-3xl w-full overflow-hidden shadow-2xl relative z-10 border border-white/10 ${
+            activeVideoUrl.isYoutube === false 
+              ? "max-w-[400px] aspect-[9/16]" 
+              : "max-w-4xl aspect-[16/9]"
+          }`}>
+            <button onClick={() => setActiveVideoUrl(null)} className="absolute right-4 top-4 p-2 bg-black/40 hover:bg-black/80 rounded-full transition-colors text-white z-20">
               <X className="w-5 h-5" />
             </button>
-            <iframe 
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
-              title="YouTube video player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
-            ></iframe>
+            {activeVideoUrl.isYoutube === false ? (
+              <video 
+                className="w-full h-full outline-none object-cover"
+                src={activeVideoUrl.url}
+                controls
+                autoPlay
+              />
+            ) : (
+              <iframe 
+                className="w-full h-full"
+                src={`https://www.youtube.com/embed/${activeVideoUrl.videoId || activeVideoUrl.url}?autoplay=1`}
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            )}
           </div>
         </div>
       )}

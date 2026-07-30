@@ -37,10 +37,10 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
               
               {dropdownOpen && (
                 <div className="absolute left-0 mt-3 w-64 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
-                  <a href="#alagappa" className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alagappa University</a>
-                  <a href="#bharathidasan" className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
-                  <a href="#amity" className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
-                  <a href="#board" className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">10th & 12th Board Exam</a>
+                  <a href="#alagappa" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alagappa University</a>
+                  <a href="#bharathidasan" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
+                  <a href="#amity" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
+                  <a href="#board" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">10th & 12th Board Exam</a>
                 </div>
               )}
             </div>
@@ -66,7 +66,7 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             <a href="#about" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200">
               About
             </a>
-            <a href="#testimonials" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200">
+            <a href="#testimonials-page" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200">
               Testimonials
             </a>
             <a href="#contact" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200">
@@ -187,7 +187,7 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
           <a href="#about" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             About
           </a>
-          <a href="#testimonials" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
+          <a href="#testimonials-page" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             Testimonials
           </a>
           <a href="#contact" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Star } from 'lucide-react';
+import { Search, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import bduHeroBg from '../assets/Bharathithasan/Rectangle 8668.png';
+import bduHeroBg2 from '../assets/Bharathithasan/image copy 2.png';
 
 export default function BharathidasanHero({ onEnquiryClick }) {
   const [scale, setScale] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [bduHeroBg, bduHeroBg2];
 
   useEffect(() => {
     const handleResize = () => {
@@ -15,6 +18,21 @@ export default function BharathidasanHero({ onEnquiryClick }) {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(slideInterval);
+  }, [slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
 
   return (
     <>
@@ -31,12 +49,40 @@ export default function BharathidasanHero({ onEnquiryClick }) {
             transition: 'transform 0.1s ease-out'
           }}
         >
-          <img 
-            src={bduHeroBg} 
-            alt="Bharathidasan University Hero Background" 
-            className="absolute inset-0 w-[1920px] h-[933px] object-cover pointer-events-none"
-          />
+          {slides.map((slide, index) => (
+            <img 
+              key={index}
+              src={slide} 
+              alt={`Bharathidasan University Hero Background ${index + 1}`} 
+              className={`absolute inset-0 w-[1920px] h-[933px] object-cover pointer-events-none transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
+            />
+          ))}
+
+          {/* Slider Controls */}
+          <button 
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all cursor-pointer"
+          >
+            <ChevronLeft size={32} />
+          </button>
+          <button 
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-all cursor-pointer"
+          >
+            <ChevronRight size={32} />
+          </button>
           
+          {/* Slide Indicators */}
+          <div className="absolute bottom-[200px] left-1/2 -translate-x-1/2 z-20 flex gap-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all cursor-pointer shadow-md ${index === currentSlide ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'}`}
+              />
+            ))}
+          </div>
+
           <div 
             className="absolute flex flex-col space-y-6 z-10"
             style={{ left: '115px', top: '242px', width: '680px' }}

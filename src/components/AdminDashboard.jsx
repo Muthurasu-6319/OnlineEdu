@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { LogOut, Plus, Trash2, Edit2, LayoutDashboard, FileText, Settings } from 'lucide-react';
+import { LogOut, Plus, Trash2, Edit2, LayoutDashboard, FileText, Settings, Video, Star, MessageSquare } from 'lucide-react';
 
 const API_URL = 'http://localhost:5000/api/blogs';
 const COURSES_API_URL = 'http://localhost:5000/api/courses';
+const REVIEWS_API_URL = 'http://localhost:5000/api/reviews';
 
 export default function AdminDashboard({ onLogout }) {
   const [activeTab, setActiveTab] = useState('blogs'); // 'blogs', 'add', 'courses', 'add_course'
@@ -25,7 +26,19 @@ export default function AdminDashboard({ onLogout }) {
   const [courseColor, setCourseColor] = useState('blue');
   const [coursesList, setCoursesList] = useState('');
 
-  // Load data from backend API
+  // Video State
+  const [videos, setVideos] = useState([]);
+  const [newUrl, setNewUrl] = useState('');
+  const [isFeatured, setIsFeatured] = useState(false);
+
+  // Text Review State
+  const [textReviews, setTextReviews] = useState([]);
+  const [newReviewName, setNewReviewName] = useState('');
+  const [newReviewRating, setNewReviewRating] = useState(5);
+  const [newReviewContent, setNewReviewContent] = useState('');
+  const [editingReviewId, setEditingReviewId] = useState(null);
+
+  // Load data from backend API and LocalStorage
   const fetchBlogs = async () => {
     try {
       const response = await fetch(API_URL);
@@ -53,7 +66,171 @@ export default function AdminDashboard({ onLogout }) {
   useEffect(() => {
     fetchBlogs();
     fetchCourses();
+    
+    // Load videos
+    const storedVideos = localStorage.getItem('studentVideos');
+    if (storedVideos) {
+      try {
+        setVideos(JSON.parse(storedVideos));
+      } catch (e) {
+        console.error("Error parsing videos", e);
+        setVideos([]);
+      }
+    }
+
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch(REVIEWS_API_URL);
+        if (response.ok) {
+          const data = await response.json();
+          setTextReviews(data);
+        }
+      } catch (e) {
+        console.error("Failed to fetch reviews:", e);
+      }
+    };
+    fetchReviews();
   }, []);
+
+  // Video Handlers
+  const saveVideos = (updatedVideos) => {
+    setVideos(updatedVideos);
+    localStorage.setItem('studentVideos', JSON.stringify(updatedVideos));
+  };
+
+  const handleAddVideo = (e) => {
+    e.preventDefault();
+    if (!newUrl) return;
+
+    let isYoutube = false;
+    let videoId = null;
+    
+    if (newUrl.includes('youtube.com') || newUrl.includes('youtu.be')) {
+      isYoutube = true;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      const match = newUrl.match(regExp);
+      videoId = (match && match[2].length === 11) ? match[2] : null;
+      
+      if (!videoId) {
+        alert("Please enter a valid YouTube URL");
+        return;
+      }
+    } else if (!newUrl.startsWith('http')) {
+      alert("Please enter a valid URL (starting with http:// or https://)");
+      return;
+    }
+
+    const newVideo = {
+      id: Date.now().toString(),
+      url: newUrl,
+      isYoutube,
+      videoId,
+      featured: isFeatured,
+      addedAt: new Date().toISOString()
+    };
+
+    saveVideos([newVideo, ...videos]);
+    setNewUrl('');
+    setIsFeatured(false);
+  };
+
+  const handleDeleteVideo = (id) => {
+    if (window.confirm("Are you sure you want to delete this video?")) {
+      saveVideos(videos.filter(v => v.id !== id));
+    }
+  };
+
+  const toggleFeatured = (id) => {
+    saveVideos(videos.map(v => 
+      v.id === id ? { ...v, featured: !v.featured } : v
+    ));
+  };
+
+  // Text Review Handlers
+  const fetchReviewsData = async () => {
+    try {
+      const response = await fetch(REVIEWS_API_URL);
+      if (response.ok) setTextReviews(await response.json());
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleAddTextReview = async (e) => {
+    e.preventDefault();
+    if (!newReviewName || !newReviewContent) return;
+
+    const reviewData = {
+      name: newReviewName,
+      rating: Number(newReviewRating),
+      text: newReviewContent,
+      avatar: 'default'
+    };
+
+    try {
+      if (editingReviewId) {
+        await fetch(`${REVIEWS_API_URL}/${editingReviewId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(reviewData)
+        });
+      } else {
+        await fetch(REVIEWS_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(reviewData)
+        });
+      }
+      
+      setNewReviewName('');
+      setNewReviewRating(5);
+      setNewReviewContent('');
+      setEditingReviewId(null);
+      fetchReviewsData();
+    } catch (err) {
+      console.error(err);
+      alert('Failed to save review');
+    }
+  };
+
+  const handleEditReview = (review) => {
+    setEditingReviewId(review.id);
+    setNewReviewName(review.name);
+    setNewReviewRating(review.rating);
+    setNewReviewContent(review.text);
+    setActiveTab('text_reviews');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleDuplicateReview = async (review) => {
+    const reviewData = {
+      name: review.name + ' (Copy)',
+      rating: review.rating,
+      text: review.text,
+      avatar: review.avatar
+    };
+    try {
+      await fetch(REVIEWS_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reviewData)
+      });
+      fetchReviewsData();
+    } catch (err) {
+      alert('Failed to duplicate review');
+    }
+  };
+
+  const handleDeleteTextReview = async (id) => {
+    if (window.confirm("Are you sure you want to delete this review?")) {
+      try {
+        await fetch(`${REVIEWS_API_URL}/${id}`, { method: 'DELETE' });
+        fetchReviewsData();
+      } catch (err) {
+        alert('Failed to delete review');
+      }
+    }
+  };
 
   const handlePostBlog = async (e) => {
     e.preventDefault();
@@ -244,6 +421,26 @@ export default function AdminDashboard({ onLogout }) {
           >
             <Plus size={18} />
             Add Course Category
+          </button>
+
+          <button 
+            onClick={() => handleTabChange('videos')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors cursor-pointer ${
+              activeTab === 'videos' ? 'bg-white/10 text-white' : 'text-blue-200 hover:bg-white/5 hover:text-white'
+            }`}
+          >
+            <Video size={18} />
+            Manage Videos
+          </button>
+
+          <button 
+            onClick={() => handleTabChange('text_reviews')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors cursor-pointer ${
+              activeTab === 'text_reviews' ? 'bg-white/10 text-white' : 'text-blue-200 hover:bg-white/5 hover:text-white'
+            }`}
+          >
+            <MessageSquare size={18} />
+            Text Reviews
           </button>
         </nav>
 
@@ -591,6 +788,247 @@ export default function AdminDashboard({ onLogout }) {
               </div>
 
             </form>
+          </div>
+        )}
+
+        {activeTab === 'videos' && (
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold text-slate-800">Manage Student Review Videos</h1>
+              <p className="text-slate-500 mt-1 text-sm">Add, remove, and feature YouTube videos.</p>
+            </div>
+
+            {/* Add Video Form */}
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-8">
+              <h2 className="text-xl font-bold text-slate-800 mb-4">Add New Video</h2>
+              <form onSubmit={handleAddVideo} className="flex flex-col md:flex-row gap-4 items-end">
+                <div className="flex-grow w-full">
+                  <label className="block text-sm font-medium text-slate-700 mb-1">YouTube URL</label>
+                  <input 
+                    type="text" 
+                    value={newUrl}
+                    onChange={(e) => setNewUrl(e.target.value)}
+                    placeholder="https://www.youtube.com/watch?v=..."
+                    className="w-full px-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2ca785] focus:border-transparent outline-none"
+                    required
+                  />
+                </div>
+                <div className="flex items-center mb-3">
+                  <input 
+                    type="checkbox" 
+                    id="featured"
+                    checked={isFeatured}
+                    onChange={(e) => setIsFeatured(e.target.checked)}
+                    className="w-4 h-4 text-[#2ca785] rounded border-slate-300 focus:ring-[#2ca785]"
+                  />
+                  <label htmlFor="featured" className="ml-2 text-sm font-medium text-slate-700 cursor-pointer">
+                    Featured (Home Page)
+                  </label>
+                </div>
+                <button 
+                  type="submit"
+                  className="bg-[#153fb4] hover:bg-[#123599] text-white px-6 py-2.5 rounded-xl font-medium transition-colors flex items-center gap-2"
+                >
+                  <Plus size={18} /> Add Video
+                </button>
+              </form>
+            </div>
+
+            {/* Video List */}
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+              <h2 className="text-xl font-bold text-slate-800 mb-4">Saved Videos ({videos.length})</h2>
+              
+              {videos.length === 0 ? (
+                <div className="text-center py-10 text-slate-500">
+                  No videos added yet.
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {videos.map((video) => (
+                    <div key={video.id} className="flex items-center gap-4 p-4 border border-slate-100 rounded-xl bg-slate-50">
+                      {/* Thumbnail */}
+                      <div className="w-32 h-20 bg-black rounded-lg overflow-hidden shrink-0 flex items-center justify-center relative">
+                        {video.isYoutube ? (
+                          <img 
+                            src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`} 
+                            alt="Thumbnail"
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <video 
+                            src={`${video.url}#t=0.5`} 
+                            className="w-full h-full object-cover"
+                            preload="metadata"
+                          />
+                        )}
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                          <Video className="w-6 h-6 text-white opacity-80" />
+                        </div>
+                      </div>
+                      
+                      {/* Info */}
+                      <div className="flex-grow min-w-0">
+                        <a href={video.url} target="_blank" rel="noreferrer" className="text-sm font-medium text-[#153fb4] hover:underline truncate block">
+                          {video.url}
+                        </a>
+                        <div className="text-xs text-slate-500 mt-1 flex items-center gap-2">
+                          Type: {video.isYoutube ? 'YouTube' : 'Direct MP4'}
+                          {video.featured && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-xs font-medium">
+                              <Star size={12} className="fill-amber-500" /> Featured
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Actions */}
+                      <div className="flex items-center gap-2 shrink-0">
+                        <button 
+                          onClick={() => toggleFeatured(video.id)}
+                          className={`p-2 rounded-lg border transition-colors ${video.featured ? 'bg-amber-50 border-amber-200 text-amber-600' : 'bg-white border-slate-200 text-slate-400 hover:text-amber-500'}`}
+                          title="Toggle Featured"
+                        >
+                          <Star size={18} className={video.featured ? 'fill-current' : ''} />
+                        </button>
+                        <button 
+                          onClick={() => handleDeleteVideo(video.id)}
+                          className="p-2 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-red-500 hover:border-red-200 transition-colors"
+                          title="Delete"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'text_reviews' && (
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold text-slate-800">Manage Text Reviews</h1>
+              <p className="text-slate-500 mt-1 text-sm">Add and remove student written reviews.</p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-8">
+              <h2 className="text-xl font-bold text-slate-800 mb-4">Add New Review</h2>
+              <form onSubmit={handleAddTextReview} className="space-y-4">
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div className="flex-1">
+                    <label className="block text-sm font-medium text-slate-700 mb-1">Student Name</label>
+                    <input 
+                      type="text" 
+                      value={newReviewName}
+                      onChange={(e) => setNewReviewName(e.target.value)}
+                      placeholder="E.g., John Doe"
+                      className="w-full px-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2ca785] outline-none"
+                      required
+                    />
+                  </div>
+                  <div className="w-32">
+                    <label className="block text-sm font-medium text-slate-700 mb-1">Rating (1-5)</label>
+                    <input 
+                      type="number" 
+                      min="1" max="5"
+                      value={newReviewRating}
+                      onChange={(e) => setNewReviewRating(e.target.value)}
+                      className="w-full px-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2ca785] outline-none"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Review Content</label>
+                  <textarea 
+                    value={newReviewContent}
+                    onChange={(e) => setNewReviewContent(e.target.value)}
+                    placeholder="Write the review content..."
+                    className="w-full px-4 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2ca785] outline-none min-h-[100px]"
+                    required
+                  />
+                </div>
+                <div className="flex items-center gap-4">
+                  <button 
+                    type="submit"
+                    className="bg-[#153fb4] hover:bg-[#123599] text-white px-6 py-2.5 rounded-xl font-medium transition-colors flex items-center gap-2"
+                  >
+                    {editingReviewId ? <Edit2 size={18} /> : <Plus size={18} />} 
+                    {editingReviewId ? 'Update Review' : 'Add Review'}
+                  </button>
+                  {editingReviewId && (
+                    <button 
+                      type="button"
+                      onClick={() => {
+                        setEditingReviewId(null);
+                        setNewReviewName('');
+                        setNewReviewRating(5);
+                        setNewReviewContent('');
+                      }}
+                      className="bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-2.5 rounded-xl font-medium transition-colors"
+                    >
+                      Cancel Edit
+                    </button>
+                  )}
+                </div>
+              </form>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+              <h2 className="text-xl font-bold text-slate-800 mb-4">Saved Reviews ({textReviews.length})</h2>
+              
+              {textReviews.length === 0 ? (
+                <div className="text-center py-10 text-slate-500">
+                  No text reviews added yet.
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {textReviews.map((review) => (
+                    <div key={review.id} className="flex items-start gap-4 p-4 border border-slate-100 rounded-xl bg-slate-50">
+                      <div className="flex-grow min-w-0">
+                        <h3 className="font-bold text-slate-800">{review.name}</h3>
+                        <div className="flex items-center gap-1 mb-2">
+                          {[...Array(5)].map((_, i) => (
+                            <Star 
+                              key={i} 
+                              size={14}
+                              className={i < review.rating ? 'fill-amber-400 text-amber-400' : 'fill-slate-200 text-slate-200'} 
+                            />
+                          ))}
+                        </div>
+                        <p className="text-sm text-slate-600 line-clamp-2">{review.text}</p>
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <button 
+                          onClick={() => handleDuplicateReview(review)}
+                          className="p-2 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-blue-500 hover:border-blue-200 transition-colors"
+                          title="Duplicate"
+                        >
+                          <Plus size={18} />
+                        </button>
+                        <button 
+                          onClick={() => handleEditReview(review)}
+                          className="p-2 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-amber-500 hover:border-amber-200 transition-colors"
+                          title="Edit"
+                        >
+                          <Edit2 size={18} />
+                        </button>
+                        <button 
+                          onClick={() => handleDeleteTextReview(review.id)}
+                          className="p-2 rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-red-500 hover:border-red-200 transition-colors"
+                          title="Delete"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         )}
 
