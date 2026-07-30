@@ -191,6 +191,16 @@ async function initDb() {
         );
       }
     }
+
+    // Check if videos empty
+    const [videoRows] = await connection.query('SELECT COUNT(*) as count FROM student_videos');
+    if (videoRows[0].count === 0) {
+      console.log('Student Videos table is empty, inserting initial video...');
+      await connection.query(
+        'INSERT INTO student_videos (url, isYoutube, videoId, featured) VALUES (?, ?, ?, ?)',
+        ['https://www.youtube.com/watch?v=LXb3EKWsInQ', 1, 'LXb3EKWsInQ', 1]
+      );
+    }
     
     connection.release();
     console.log('Database initialization complete.');
@@ -476,6 +486,10 @@ app.post('/api/forgot-password', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Backend server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Backend server running on port ${PORT}`);
+  });
+}
+
+export default app;

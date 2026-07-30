@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { LogOut, Plus, Trash2, Edit2, LayoutDashboard, FileText, Settings, Video, Star, MessageSquare } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000/api/blogs';
-const COURSES_API_URL = 'http://localhost:5000/api/courses';
-const REVIEWS_API_URL = 'http://localhost:5000/api/reviews';
-const VIDEOS_API_URL = 'http://localhost:5000/api/videos';
+const API_URL = '/api/blogs';
+const COURSES_API_URL = '/api/courses';
+const REVIEWS_API_URL = '/api/reviews';
+const VIDEOS_API_URL = '/api/videos';
 
 export default function AdminDashboard({ onLogout }) {
   const [activeTab, setActiveTab] = useState('blogs'); // 'blogs', 'add', 'courses', 'add_course'

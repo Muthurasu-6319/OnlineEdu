@@ -32,7 +32,7 @@ export default function Testimonials({ onPlayClick }) {
     // Load videos
     const fetchVideos = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/videos');
+        const response = await fetch('/api/videos');
         if (response.ok) {
           const allVideos = await response.json();
           const featured = allVideos.filter(v => v.featured).slice(0, 3);
@@ -47,7 +47,7 @@ export default function Testimonials({ onPlayClick }) {
     // Load text reviews
     const fetchReviews = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/reviews');
+        const response = await fetch('/api/reviews');
         if (response.ok) {
           const data = await response.json();
           if (data && data.length > 0) {

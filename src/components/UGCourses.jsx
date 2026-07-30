@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { User } from 'lucide-react';
 import ugHero from '../assets/ug_hero.png';
 
-const COURSES_API_URL = 'http://localhost:5000/api/courses';
+const COURSES_API_URL = '/api/courses';
 
 export default function UGCourses() {
   const [courses, setCourses] = useState([]);
