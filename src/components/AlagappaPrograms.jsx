@@ -16,8 +16,8 @@ export default function AlagappaPrograms() {
         {/* Programs Grid */}
         <div className="space-y-6">
           
-          {/* Row 1: UG Programs (3 Column Cards) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Row 1: UG Programs (2 Column Cards) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Card 1: UG Program Arts */}
             <div className="bg-[#FFCF3E] rounded-3xl p-6 shadow-md text-slate-900 flex flex-col h-full hover:shadow-lg transition-shadow">
@@ -27,11 +27,7 @@ export default function AlagappaPrograms() {
                 </div>
                 <h3 className="font-extrabold text-base uppercase tracking-wider">UG Program Arts</h3>
               </div>
-              <ul className="space-y-3 font-semibold text-sm leading-relaxed">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-900 shrink-0" />
-                  <span>UG Program Arts</span>
-                </li>
+              <ul className="space-y-3 font-bold text-sm leading-relaxed">
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-900 shrink-0" />
                   <span>B.A. TAMIL</span>
@@ -40,38 +36,6 @@ export default function AlagappaPrograms() {
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-900 shrink-0" />
                   <span>B.A. ENGLISH</span>
                 </li>
-              </ul>
-            </div>
-
-            {/* Card 2: UG Program Science */}
-            <div className="bg-[#FFCF3E] rounded-3xl p-6 shadow-md text-slate-900 flex flex-col h-full hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-white/30 flex items-center justify-center">
-                  <BookOpen size={20} className="text-slate-800" />
-                </div>
-                <h3 className="font-extrabold text-base uppercase tracking-wider">UG Program Science</h3>
-              </div>
-              <ul className="space-y-3 font-semibold text-sm leading-relaxed">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-900 shrink-0" />
-                  <span>B.SC. MATHEMATICS</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-900 shrink-0" />
-                  <span>B.SC. COMPUTER SCIENCE</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 3: UG Program Management */}
-            <div className="bg-[#FFCF3E] rounded-3xl p-6 shadow-md text-slate-900 flex flex-col h-full hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-white/30 flex items-center justify-center">
-                  <Briefcase size={20} className="text-slate-800" />
-                </div>
-                <h3 className="font-extrabold text-base uppercase tracking-wider">UG Program Management</h3>
-              </div>
-              <ul className="space-y-3 font-semibold text-sm leading-relaxed">
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-900 shrink-0" />
                   <span>B.COM.</span>
@@ -87,18 +51,38 @@ export default function AlagappaPrograms() {
               </ul>
             </div>
 
+            {/* Card 2: UG Program Science */}
+            <div className="bg-[#FFCF3E] rounded-3xl p-6 shadow-md text-slate-900 flex flex-col h-full hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-white/30 flex items-center justify-center">
+                  <BookOpen size={20} className="text-slate-800" />
+                </div>
+                <h3 className="font-extrabold text-base uppercase tracking-wider">UG Program Science</h3>
+              </div>
+              <ul className="space-y-3 font-bold text-sm leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-900 shrink-0" />
+                  <span>B.SC. MATHEMATICS</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-900 shrink-0" />
+                  <span>B.SC. COMPUTER SCIENCE</span>
+                </li>
+              </ul>
+            </div>
+
           </div>
 
           {/* Row 2: MBA Specializations (Full-width Purple Card) */}
           <div className="w-full" id="alagappa-mba-specializations">
             <div className="bg-[#8b5cf6] rounded-3xl p-8 shadow-md text-white hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex flex-col items-center text-center gap-3 mb-8">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <Award size={20} className="text-white" />
                 </div>
-                <h3 className="font-extrabold text-lg uppercase tracking-wider">MBA SPECIALIZATIONS</h3>
+                <h3 className="font-black text-xl uppercase tracking-wider">MBA SPECIALIZATIONS</h3>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 font-semibold text-sm md:text-base leading-relaxed">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 font-bold text-sm md:text-base leading-relaxed">
                 <div className="space-y-4">
                   <div className="flex items-start gap-2">
                     <span className="mt-2 w-1.5 h-1.5 rounded-full bg-white shrink-0" />

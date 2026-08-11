@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import aboutHeroBg from '../assets/About/image 20.png';
+import aboutHeroBg from '../assets/About/about_hero_banner.png';
 
 export default function AboutHero({ onEnquiryClick }) {
   const [scale, setScale] = useState(1);
@@ -64,9 +64,6 @@ export default function AboutHero({ onEnquiryClick }) {
               <span className="text-white">ACADEMY</span>
             </h1>
 
-            <p className="text-lg font-bold tracking-wide text-white font-sans max-w-xl leading-relaxed mt-2">
-              INDIA'S FIRST UNIVERSITY TO GET APPROVAL TO OFFER ONLINE DEGREE
-            </p>
           </div>
 
           <div className="absolute bottom-0 pointer-events-none z-10" style={{ left: '716px', width: '313px', height: '359px' }}>

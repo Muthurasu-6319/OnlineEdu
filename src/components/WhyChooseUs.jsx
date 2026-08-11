@@ -39,7 +39,7 @@ export default function WhyChooseUs() {
             WHY CHOOSE US ?
           </h2>
           <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-800 max-w-4xl mx-auto leading-tight">
-            vnet Distance education Provides Best Services With Low Fees....
+            VNET Distance education Provides Best Services With Low Fees....
           </p>
         </div>
 

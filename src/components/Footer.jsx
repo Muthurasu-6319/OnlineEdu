@@ -16,7 +16,7 @@ export default function Footer() {
               <img src={vnetLogo} alt="VNET Distance Academy" className="h-16 w-auto object-contain brightness-0 invert" />
             </a>
             <p className="text-sm text-indigo-200 leading-relaxed font-medium max-w-xs text-center md:text-left">
-              Trusted guidance center for Distance, Online & Part-time education. Branches in Saravanampatti, Gandhipuram (Coimbatore) & Tiruppur.
+              Trusted guidance center for Distance & Online education. Branches in Saravanampatti, Gandhipuram (Coimbatore) & Tiruppur.
             </p>
           </div>
 
@@ -57,11 +57,19 @@ export default function Footer() {
             {/* Address */}
             <div>
               <h3 className="text-lg font-bold mb-6 text-white opacity-0 hidden sm:block">Address</h3>
-              <div className="flex gap-3 text-sm text-indigo-100 font-medium">
-                <MapPin className="w-5 h-5 text-indigo-200 shrink-0 mt-0.5" />
-                <p className="leading-relaxed">
-                  Kalyan jewelers Backside, 291/1, 5th St Ext, 5th Street Extension, Gandhipuram, Coimbatore, Tamil Nadu 641012
-                </p>
+              <div className="space-y-4">
+                <div className="flex gap-3 text-sm text-indigo-100 font-medium">
+                  <MapPin className="w-5 h-5 text-indigo-200 shrink-0 mt-0.5" />
+                  <p className="leading-relaxed">
+                    Kalyan jewelers Backside, 291/1, 5th St Ext, 5th Street Extension, Gandhipuram, Coimbatore, Tamil Nadu 641012
+                  </p>
+                </div>
+                <div className="flex gap-3 text-sm text-indigo-100 font-medium">
+                  <MapPin className="w-5 h-5 text-indigo-200 shrink-0 mt-0.5" />
+                  <p className="leading-relaxed">
+                    144 Kumaran Road, Near Shiva Textiles, Opposite Shabnam Readymades, Tirupur - 641601
+                  </p>
+                </div>
               </div>
             </div>
           </div>

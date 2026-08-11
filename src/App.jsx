@@ -19,6 +19,9 @@ import BoardHero from './components/BoardHero';
 import BoardAbout from './components/BoardAbout';
 import WhyChooseUs from './components/WhyChooseUs';
 import BoardDetails from './components/BoardDetails';
+import BoardCourses from './components/BoardCourses';
+import BoardMIOS from './components/BoardMIOS';
+import BoardPlacement from './components/BoardPlacement';
 import BoardSteps from './components/BoardSteps';
 import BoardIntro from './components/BoardIntro';
 import BoardOutro from './components/BoardOutro';
@@ -172,11 +175,14 @@ function App() {
           <>
             <BoardHero />
             <BoardAbout />
-            <WhyChooseUs />
+            <BoardCourses />
+            <BoardMIOS />
+            <BoardPlacement />
+            <BoardIntro />
             <BoardDetails />
             <BoardSteps />
-            <BoardIntro />
             <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
+            <WhyChooseUs />
           </>
         ) : currentHash.startsWith('#about') ? (
           <>

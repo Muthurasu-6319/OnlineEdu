@@ -8,7 +8,7 @@ export default function AmityChooseAndMba() {
     { title: 'MOCKTEST & INTERVIEW PREPARATION' },
     { title: 'RECORDED VIDEO SECTION' },
     { title: '100% PLACEMENT ASSISTANCE' },
-    { title: '100% PLACEMENT ASSISTANCE' },
+    { title: 'INDUSTRY EXPERT MENTORSHIP' },
     { title: '600+ TOP HIRING PARTNERS' }
   ];
 

@@ -20,7 +20,7 @@ export default function AboutPartnerships() {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
             <span className="text-[#1c2d76]">UNIVERSITY</span>{' '}
-            <span className="text-[#2ca785]">PARTNERSHIPS</span>
+            <span className="text-[#2ca785]">COLLABORATIONS</span>
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
             TOTC is a platform that allows educators to create online classes whereby they can store the course materials online; manage assignments, quizzes and exams; monitor due dates; grade results and provide students with feedback all in one place.
@@ -46,7 +46,7 @@ export default function AboutPartnerships() {
         {/* Text and Courses Details */}
         <div className="w-full max-w-4xl space-y-6 text-[#1c2d76]">
           <p className="text-slate-600 text-sm md:text-base leading-relaxed font-sans font-medium">
-            We offer a wide range of Undergraduate, Postgraduate, Diploma, Polytechnic, Engineering, and School Education Programs through Distance Education, Online Learning, and Part-Time Study Modes. Our programs are designed to meet the evolving needs of today’s learners while maintaining high academic standards. VNET Distance Academy is associated with UGC-DEB approved and government-recognized universities, providing students with credible qualifications that are widely accepted for higher education, employment, and career growth.
+            We offer a wide range of Undergraduate, Postgraduate, Diploma, Polytechnic, Engineering, and School Education Programs through Distance Education and Online Learning. Our programs are designed to meet the evolving needs of today’s learners while maintaining high academic standards. VNET Distance Academy is associated with UGC-DEB approved and government-recognized universities, providing students with credible qualifications that are widely accepted for higher education, employment, and career growth.
           </p>
 
           <h3 className="text-xl font-bold text-[#1c2d76] pt-4">

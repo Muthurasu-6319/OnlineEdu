@@ -40,7 +40,6 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
                   <a href="#alagappa" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alagappa University</a>
                   <a href="#bharathidasan" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
                   <a href="#amity" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
-                  <a href="#board" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">10th & 12th Board Exam</a>
                 </div>
               )}
             </div>
@@ -62,6 +61,10 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
                 </div>
               )}
             </div>
+
+            <a href="#board" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200 whitespace-nowrap">
+              10th &amp; 12th
+            </a>
 
             <a href="#about" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200">
               About
@@ -166,7 +169,6 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
               <a href="#alagappa" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alagappa University</a>
               <a href="#bharathidasan" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Bharathidasan University</a>
               <a href="#amity" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Amity University</a>
-              <a href="#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">10th & 12th Board Exam</a>
             </div>
           )}
 
@@ -184,6 +186,10 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             </div>
           )}
           
+          <a href="#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base whitespace-nowrap">
+            10th &amp; 12th
+          </a>
+
           <a href="#about" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             About
           </a>

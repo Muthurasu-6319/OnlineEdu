@@ -30,10 +30,10 @@ export default function Partnerships() {
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl xl:text-4xl font-extrabold tracking-tight mb-6">
             <span className="text-[#153fb4]">UNIVERSITY</span>{' '}
-            <span className="text-[#2ca785]">PARTNERSHIPS</span>
+            <span className="text-[#2ca785]">COLLABORATIONS</span>
           </h2>
           <p className="text-sm xl:text-base text-slate-500 font-medium leading-relaxed">
-            TOTC is a platform that allows educators to create online classes whereby they can store the course materials online; manage assignments, quizzes and exams; monitor due dates; grade results and provide students with feedback all in one place.
+            VNET Distance Academy is proud to collaborate with UGC‑DEB approved, government‑recognised universities, offering students credible and widely accepted qualifications. Our university collaborations open doors to quality Distance and Online education — empowering learners across Tamil Nadu to advance their careers without compromising their commitments.
           </p>
         </div>
 
@@ -57,7 +57,7 @@ export default function Partnerships() {
               {/* Top content: University Name Label */}
               <div className="relative z-20">
                 <span className="text-xs font-bold tracking-widest text-[#2ca785] uppercase block mb-1">
-                  PARTNER CAMPUS
+                  COLLABORATING CAMPUS
                 </span>
                 <h3 className="text-xl font-bold text-white leading-snug drop-shadow-sm">
                   {partner.name}

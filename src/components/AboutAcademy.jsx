@@ -18,7 +18,7 @@ export default function AboutAcademy() {
 
         {/* Intro Paragraph */}
         <p className="text-slate-600 text-sm md:text-base leading-relaxed font-sans max-w-3xl mb-12">
-          VNET Distance Academy is a trusted educational guidance and admission support center dedicated to making quality education accessible, flexible, and career-oriented for students from all walks of life. With branches in Saravanampatti (Coimbatore), Gandhipuram (Coimbatore), and Tiruppur, we have been helping students achieve their academic goals through recognized distance, online, and part-time education programs.
+          VNET Distance Academy is a trusted educational guidance and admission support center dedicated to making quality education accessible, flexible, and career-oriented for students from all walks of life. With branches in Saravanampatti (Coimbatore), Gandhipuram (Coimbatore), and Tiruppur, we have been helping students achieve their academic goals through recognized distance and online education programs.
         </p>
 
         {/* Main Banner Image */}
@@ -31,9 +31,14 @@ export default function AboutAcademy() {
         </div>
 
         {/* Highlight Card containing the core message */}
-        <div className="w-full bg-[#ebf5ff] rounded-2xl p-6 sm:p-8 md:p-10 border border-blue-100/50 shadow-xs text-left">
+        <div className="w-full bg-[#ebf5ff] rounded-2xl p-6 sm:p-8 md:p-10 border border-blue-100/50 shadow-xs text-left space-y-4">
+          <h3 className="text-[#1c2d76] text-lg md:text-xl font-extrabold">Our Mission</h3>
           <p className="text-[#1c2d76] text-sm md:text-base leading-relaxed font-sans font-medium">
-            VNET Distance Academy is a trusted educational guidance and admission support center dedicated to making quality education accessible, flexible, and career-oriented for students from all walks of life. With branches in Saravanampatti (Coimbatore), Gandhipuram (Coimbatore), and Tiruppur, we have been helping students achieve their academic goals through recognized distance, online, and part-time education programs.
+            Our mission is to bridge the gap between aspiring students and quality higher education by providing expert guidance, seamless admission support, and continuous academic assistance — all under one roof.
+          </p>
+          <h3 className="text-[#1c2d76] text-lg md:text-xl font-extrabold pt-2">Our Vision</h3>
+          <p className="text-[#1c2d76] text-sm md:text-base leading-relaxed font-sans font-medium">
+            We envision a future where every student — regardless of age, background, or circumstances — has the opportunity to earn a recognized degree and build a successful career. Through our partnerships with UGC-DEB approved universities, we ensure that your qualification is credible, valued, and opens doors across India.
           </p>
         </div>
 
