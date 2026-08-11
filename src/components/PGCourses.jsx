@@ -77,32 +77,31 @@ function CourseCard({ course }) {
     .filter(item => item.length > 0);
 
   return (
-    <div className={`rounded-3xl p-8 shadow-sm h-full ${
-      isYellow ? 'bg-[#ffc84b] text-black' : 'bg-[#3b60e4] text-white'
-    }`}>
-      {/* Header */}
-      <div className="flex items-center gap-4 mb-6 border-b border-black/10 pb-4">
-        <div className={`p-3 rounded-full ${
-          isYellow ? 'bg-black/10' : 'bg-white/20'
-        }`}>
-          <User size={24} className={isYellow ? 'text-black' : 'text-white'} />
-        </div>
-        <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide">
-          {course.title}
-        </h3>
-      </div>
+    <div className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-100 h-full overflow-hidden transition-all duration-300 hover:bg-[#0ea5e9] hover:text-white hover:-translate-y-1 text-slate-600">
+      {/* Decorative Circle */}
+      <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-blue-50/70 rounded-full group-hover:bg-white/10 transition-colors duration-300 pointer-events-none"></div>
 
-      {/* List */}
-      <ul className="space-y-4 px-2">
-        {courseListArray.map((item, index) => (
-          <li key={index} className="flex items-start gap-3 font-bold text-sm md:text-base">
-            <span className={`mt-2 w-1.5 h-1.5 rounded-full shrink-0 ${
-              isYellow ? 'bg-black' : 'bg-white'
-            }`}></span>
-            {item}
-          </li>
-        ))}
-      </ul>
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="mb-6">
+          <div className="p-3.5 rounded-xl bg-blue-50 w-fit text-[#0ea5e9] group-hover:bg-white/20 group-hover:text-white transition-colors duration-300 mb-5">
+            <User size={32} />
+          </div>
+          <h3 className="text-2xl md:text-3xl font-extrabold text-slate-800 group-hover:text-white transition-colors duration-300 leading-tight">
+            {course.title}
+          </h3>
+        </div>
+
+        {/* List */}
+        <ul className="space-y-4 px-1">
+          {courseListArray.map((item, index) => (
+            <li key={index} className="flex items-start gap-3 font-semibold text-base md:text-lg">
+              <span className="mt-2.5 w-2 h-2 rounded-full bg-[#0ea5e9] shrink-0 group-hover:bg-white transition-colors duration-300"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

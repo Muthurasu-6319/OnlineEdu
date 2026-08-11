@@ -31,7 +31,7 @@ export default function BoardIntro() {
             What is Open Schooling?
           </h3>
           <p className="text-slate-700 text-sm md:text-base leading-relaxed font-sans font-medium">
-            Open Schooling is a flexible learning system designed for students who cannot attend regular school. Through recognized boards like NIOS (National Institute of Open Schooling) and BOSSE (Board of Open Schooling & Skill Education), you can study at your own pace and still earn a government-recognized certificate for Class 10th (Secondary) or Class 12th (Senior Secondary).
+            Open Schooling is a flexible learning system designed for students who cannot attend regular school. Through recognized boards like BOSSE (Board of Open Schooling & Skill Education), you can study at your own pace and still earn a government-recognized certificate for Class 10th (Secondary) or Class 12th (Senior Secondary).
           </p>
         </div>
 

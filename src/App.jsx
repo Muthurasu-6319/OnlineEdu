@@ -177,13 +177,18 @@ function App() {
             <BoardHero />
             <BoardAbout />
             <BoardCourses />
-            <BoardMIOS />
             <BoardPlacement />
             <BoardIntro />
             <BoardDetails />
             <BoardSteps />
-            <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
             <WhyChooseUs />
+            <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
+          </>
+        ) : currentHash.startsWith('#nios') ? (
+          <>
+            <BoardHero />
+            <BoardMIOS />
+            <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
           </>
         ) : currentHash.startsWith('#about') ? (
           <>

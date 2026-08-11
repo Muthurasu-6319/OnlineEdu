@@ -4,7 +4,7 @@ import { BookOpen, GraduationCap, Award, Clock } from 'lucide-react';
 const courses = [
   {
     level: '10th Standard',
-    board: 'NIOS / BOSSE',
+    board: 'BOSSE',
     icon: <BookOpen className="w-7 h-7" />,
     color: 'from-[#1c2d76] to-[#2d4bc4]',
     badge: 'Secondary',
@@ -14,7 +14,7 @@ const courses = [
   },
   {
     level: '12th Standard',
-    board: 'NIOS / BOSSE',
+    board: 'BOSSE',
     icon: <GraduationCap className="w-7 h-7" />,
     color: 'from-[#2ca785] to-[#1e8c6e]',
     badge: 'Senior Secondary',
@@ -39,7 +39,7 @@ export default function BoardCourses() {
             <span className="text-[#2ca785]">Board Courses</span>
           </h2>
           <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-medium">
-            Government-recognised certificates through NIOS &amp; BOSSE — flexible, affordable, and accepted across India for jobs, higher education, and government exams.
+            Government-recognised certificates through BOSSE — flexible, affordable, and accepted across India for jobs, higher education, and government exams.
           </p>
         </div>
 

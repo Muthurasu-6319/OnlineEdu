@@ -6,6 +6,7 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
+  const [boardDropdownOpen, setBoardDropdownOpen] = useState(false);
 
   return (
     <header className="bg-white border-b border-gray-100 sticky top-0 z-50 font-outfit">
@@ -62,9 +63,23 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
               )}
             </div>
 
-            <a href="#board" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200 whitespace-nowrap">
-              10th &amp; 12th
-            </a>
+            {/* 10th & 12th Dropdown */}
+            <div className="relative">
+              <button 
+                onClick={() => setBoardDropdownOpen(!boardDropdownOpen)}
+                className="text-slate-800 hover:text-[#2ca785] font-bold text-base flex items-center gap-1 transition-colors duration-200 whitespace-nowrap"
+              >
+                10th &amp; 12th
+                <ChevronDown size={16} className={`transform transition-transform ${boardDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {boardDropdownOpen && (
+                <div className="absolute left-0 mt-3 w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
+                  <a href="#board" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Courses</a>
+                  <a href="#nios" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">NIOS</a>
+                </div>
+              )}
+            </div>
 
             <a href="#about" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200">
               About
@@ -186,9 +201,19 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             </div>
           )}
           
-          <a href="#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base whitespace-nowrap">
+          <button 
+            onClick={() => setBoardDropdownOpen(!boardDropdownOpen)}
+            className="w-full flex justify-between items-center px-3 py-2 rounded-md text-slate-600 font-medium text-base whitespace-nowrap"
+          >
             10th &amp; 12th
-          </a>
+            <ChevronDown size={16} className={`transform ${boardDropdownOpen ? 'rotate-180' : ''}`} />
+          </button>
+          {boardDropdownOpen && (
+            <div className="pl-6 space-y-1">
+              <a href="#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Courses</a>
+              <a href="#nios" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">NIOS</a>
+            </div>
+          )}
 
           <a href="#about" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             About

@@ -9,7 +9,7 @@ export default function BoardOutro({ onEnquiryClick }) {
         <div className="space-y-6">
           <div className="bg-white rounded-3xl p-8 md:p-10 shadow-lg shadow-blue-100/50 border border-white">
             <p className="text-lg md:text-xl font-bold text-[#2ca785] leading-relaxed">
-              NIOS & BOSSE certificates are valid across India for jobs, higher education, and government exams.
+              BOSSE certificates are valid across India for jobs, higher education, and government exams.
             </p>
           </div>
 
@@ -23,7 +23,7 @@ export default function BoardOutro({ onEnquiryClick }) {
         {/* CTA Area */}
         <div className="pt-6 space-y-6">
           <h3 className="text-xl md:text-2xl font-extrabold text-[#1c2d76] tracking-tight">
-            Take the First Step Today – Contact vnet distance academy
+            Take the First Step Today – Contact VNET DISTANCE ACADEMY
           </h3>
           <button 
             onClick={onEnquiryClick}

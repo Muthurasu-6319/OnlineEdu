@@ -98,37 +98,32 @@ export default function AmityPrograms() {
       <div 
         key={idx} 
         id={card.title === 'MCA/MSC(CS) WITH SPECIALIZATION' ? 'amity-mca-msc-specializations' : undefined}
-        className={`rounded-3xl p-6 md:p-8 shadow-md flex flex-col hover:shadow-lg transition-all duration-300 ${
-          isYellow 
-            ? 'bg-[#fdbf46] text-black' 
-            : 'bg-[#3b59df] text-white'
-        }`}
+        className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-100 flex flex-col h-full hover:shadow-lg transition-all duration-300 hover:bg-[#0ea5e9] hover:text-white hover:-translate-y-1 text-slate-600 overflow-hidden"
       >
-        {/* Card Header with Student Avatar Icon */}
-        <div className="flex items-center gap-3 mb-6 border-b pb-4 border-black/10">
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 border ${
-            isYellow 
-              ? 'bg-black/10 border-black/10 text-black' 
-              : 'bg-white/20 border-white/10 text-white'
-          }`}>
-            <User size={18} />
-          </div>
-          <h3 className="font-black text-base md:text-lg tracking-wide uppercase">
-            {card.title}
-          </h3>
-        </div>
+        {/* Decorative Circle */}
+        <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-blue-50/70 rounded-full group-hover:bg-white/10 transition-colors duration-300 pointer-events-none"></div>
 
-        {/* List of items */}
-        <ul className="space-y-3 font-black text-xs md:text-sm leading-relaxed font-sans">
-          {card.items.map((item, itemIdx) => (
-            <li key={itemIdx} className="flex items-start gap-2.5">
-              <span className={`mt-2 w-1.5 h-1.5 rounded-full shrink-0 ${
-                isYellow ? 'bg-black' : 'bg-white'
-              }`} />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="relative z-10 flex flex-col h-full">
+          {/* Card Header */}
+          <div className="mb-6">
+            <div className="p-3.5 rounded-xl bg-blue-50 w-fit text-[#0ea5e9] group-hover:bg-white/20 group-hover:text-white transition-colors duration-300 mb-5">
+              <User size={32} />
+            </div>
+            <h3 className="font-extrabold text-2xl md:text-3xl tracking-wide uppercase leading-tight text-slate-800 group-hover:text-white transition-colors duration-300">
+              {card.title}
+            </h3>
+          </div>
+
+          {/* List of items */}
+          <ul className="space-y-4 font-semibold text-base md:text-lg leading-relaxed font-sans mb-8 flex-grow">
+            {card.items.map((item, itemIdx) => (
+              <li key={itemIdx} className="flex items-start gap-3">
+                <span className="mt-2.5 w-2 h-2 rounded-full bg-[#0ea5e9] shrink-0 group-hover:bg-white transition-colors duration-300"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     );
   };

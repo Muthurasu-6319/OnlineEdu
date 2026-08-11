@@ -1,119 +1,111 @@
 import React from 'react';
+import { BookOpen, GraduationCap, Briefcase, FileText, User, Award, Monitor } from 'lucide-react';
 
 export default function BharathidasanPrograms() {
   const cards = [
     {
       title: 'UG Program Arts',
-      theme: 'yellow',
-      avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=100&h=100&q=80',
+      icon: GraduationCap,
       items: [
-        '• B.A Tamil',
-        '• B.Lit Tamil',
-        '• B.A. Economics',
-        '• B.A English',
-        '• B.A History',
-        '• B.A Public Administration',
-        '• B.A Political Scienc'
+        'B.A Tamil',
+        'B.Lit Tamil',
+        'B.A. Economics',
+        'B.A English',
+        'B.A History',
+        'B.A Public Administration',
+        'B.A Political Scienc'
       ]
     },
     {
       title: 'UG Program Science',
-      theme: 'purple',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100&q=80',
+      icon: BookOpen,
       items: [
-        '• B.Sc. MATHEMATICS',
-        '• B.Sc. Physics',
-        '• B.Sc. Chemistry',
-        '• B.Sc. Botany',
-        '• B.Sc. Zoology',
-        '• B.Sc. Geography',
-        '• B.Sc. Computer Science',
-        '• B.Sc. Information Technology'
+        'B.Sc. MATHEMATICS',
+        'B.Sc. Physics',
+        'B.Sc. Chemistry',
+        'B.Sc. Botany',
+        'B.Sc. Zoology',
+        'B.Sc. Geography',
+        'B.Sc. Computer Science',
+        'B.Sc. Information Technology'
       ]
     },
     {
       title: 'UG Program - Management & Commerce',
-      theme: 'yellow',
-      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&h=100&q=80',
+      icon: Briefcase,
       items: [
-        '• B.COM.',
-        '• B.com (Bank Management)',
-        '• B.B.A.',
-        '• B.B.A. (Retail Management)',
-        '• BLIS (one year programmes)'
+        'B.COM.',
+        'B.com (Bank Management)',
+        'B.B.A.',
+        'B.B.A. (Retail Management)',
+        'BLIS (one year programmes)'
       ]
     },
     {
       title: 'PG - Program Arts',
-      theme: 'yellow',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80',
+      icon: GraduationCap,
       items: [
-        '• M.A Tamil',
-        '• M.A English',
-        '• M.A. History',
-        '• M.A Ecnomics',
-        '• M.A Public Administration',
-        '• M.A Political Science',
-        '• M.A. Human Resources'
+        'M.A Tamil',
+        'M.A English',
+        'M.A. History',
+        'M.A Ecnomics',
+        'M.A Public Administration',
+        'M.A Political Science',
+        'M.A. Human Resources'
       ]
     },
     {
       title: 'PG Program Science',
-      theme: 'purple',
       id: 'bharathidasan-pg-science',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80',
+      icon: BookOpen,
       items: [
-        '• M.sc Mathematics',
-        '• M.sc. Physics',
-        '• M.sc. Chemistry',
-        '• M.sc. Zoology',
-        '• M.sc. Botany',
-        '• M.sc. Geography',
-        '• M.sc. Computer Science'
+        'M.sc Mathematics',
+        'M.sc. Physics',
+        'M.sc. Chemistry',
+        'M.sc. Zoology',
+        'M.sc. Botany',
+        'M.sc. Geography',
+        'M.sc. Computer Science'
       ]
     },
     {
       title: 'PG Commerce & Management',
-      theme: 'yellow',
-      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80',
+      icon: Briefcase,
       items: [
-        '• M.COM',
-        '• M.com (Bank Management)',
-        '• M.com (Financial Management)',
-        '• M.B.A. (Human Resource Management)',
-        '• MBA (Marketing Management)',
-        '• MBA (Financial Management)',
-        '• MBA (Operations)',
-        '• MBA (System)'
+        'M.COM',
+        'M.com (Bank Management)',
+        'M.com (Financial Management)',
+        'M.B.A. (Human Resource Management)',
+        'MBA (Marketing Management)',
+        'MBA (Financial Management)',
+        'MBA (Operations)',
+        'MBA (System)'
       ]
     },
     {
       title: 'UG Program Computer Science',
-      theme: 'yellow',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80',
+      icon: Monitor,
       items: [
-        '• B.Sc. Computer Science',
-        '• B.sc. Information Technology',
-        '• BCA (Computer Application)'
+        'B.Sc. Computer Science',
+        'B.sc. Information Technology',
+        'BCA (Computer Application)'
       ]
     },
     {
       title: 'PG Program Computer Science',
-      theme: 'purple',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80',
+      icon: Monitor,
       items: [
-        '• M.sc. Computer Science',
-        '• M.sc. Information Technology',
-        '• MCA (Computer Application)'
+        'M.sc. Computer Science',
+        'M.sc. Information Technology',
+        'MCA (Computer Application)'
       ]
     },
     {
       title: 'UG & PG LIBRARY & INFORMATION SCIENCE (ONE Year Programme)',
-      theme: 'yellow',
-      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&h=100&q=80',
+      icon: FileText,
       items: [
-        '• BLIS',
-        '• MLIS (Library & Information Science)'
+        'BLIS',
+        'MLIS (Library & Information Science)'
       ]
     }
   ];
@@ -133,43 +125,37 @@ export default function BharathidasanPrograms() {
         {/* Programs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cards.map((card, idx) => {
-            const isYellow = card.theme === 'yellow';
+            const Icon = card.icon;
             return (
               <div 
                 key={idx}
                 id={card.id || undefined}
-                className={`rounded-[32px] p-8 shadow-md flex flex-col hover:shadow-lg transition-all duration-300 ${
-                  isYellow 
-                    ? 'bg-[#FFCF3E] text-black' 
-                    : 'bg-[#8050e6] text-white'
-                }`}
+                className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-100 flex flex-col h-full hover:shadow-lg transition-all duration-300 hover:bg-[#0ea5e9] hover:text-white hover:-translate-y-1 text-slate-600 overflow-hidden"
               >
-                {/* Card Header with Student Avatar Icon */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 ${
-                    isYellow 
-                      ? 'border-black' 
-                      : 'border-[#FFCF3E]'
-                  }`}>
-                    <img 
-                      src={card.avatar} 
-                      alt="Student Avatar" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h3 className={`font-black text-base md:text-[17px] tracking-wide uppercase leading-snug`}>
-                    {card.title}
-                  </h3>
-                </div>
+                {/* Decorative Circle */}
+                <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-blue-50/70 rounded-full group-hover:bg-white/10 transition-colors duration-300 pointer-events-none"></div>
 
-                {/* List of items */}
-                <ul className="space-y-3 font-black text-[13px] md:text-[14px] leading-relaxed font-sans">
-                  {card.items.map((item, itemIdx) => (
-                    <li key={itemIdx} className="flex items-start gap-1">
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Card Header with Icon */}
+                  <div className="mb-6">
+                    <div className="p-3.5 rounded-xl bg-blue-50 w-fit text-[#0ea5e9] group-hover:bg-white/20 group-hover:text-white transition-colors duration-300 mb-5">
+                      <Icon size={32} />
+                    </div>
+                    <h3 className="font-extrabold text-2xl md:text-3xl tracking-wide uppercase leading-tight text-slate-800 group-hover:text-white transition-colors duration-300">
+                      {card.title}
+                    </h3>
+                  </div>
+
+                  {/* List of items */}
+                  <ul className="space-y-4 font-semibold text-base md:text-lg leading-relaxed font-sans mb-8 flex-grow">
+                    {card.items.map((item, itemIdx) => (
+                      <li key={itemIdx} className="flex items-start gap-3">
+                        <span className="mt-2.5 w-2 h-2 rounded-full bg-[#0ea5e9] shrink-0 group-hover:bg-white transition-colors duration-300"></span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             );
           })}

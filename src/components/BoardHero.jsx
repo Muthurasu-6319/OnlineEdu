@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import boardHeroBg from '../assets/10th&12th/Rectangle 8668 (1).png';
+import boardHeroBg from '../assets/10th&12th/image.png';
 
 export default function BoardHero() {
   const [scale, setScale] = useState(1);
