@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Star, ChevronLeft, ChevronRight, User } from 'lucide-react';
 import studentReviewImg from '../assets/Rectangle 8691.png';
+import BASE_URL from '../api.js';
 
 export default function Testimonials({ onPlayClick }) {
   const defaultTestimonials = [
@@ -32,7 +33,7 @@ export default function Testimonials({ onPlayClick }) {
     // Load videos
     const fetchVideos = async () => {
       try {
-        const response = await fetch('/api/videos');
+        const response = await fetch(`${BASE_URL}/api/videos`);
         if (response.ok) {
           const allVideos = await response.json();
           const featured = allVideos.filter(v => v.featured).slice(0, 3);
@@ -47,7 +48,7 @@ export default function Testimonials({ onPlayClick }) {
     // Load text reviews
     const fetchReviews = async () => {
       try {
-        const response = await fetch('/api/reviews');
+        const response = await fetch(`${BASE_URL}/api/reviews`);
         if (response.ok) {
           const data = await response.json();
           if (data && data.length > 0) {

@@ -8,7 +8,25 @@ import { initialBlogPosts } from './src/data/blogData.js';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// CORS - allow Vercel frontend and localhost
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  process.env.FRONTEND_URL, // Set this in Render env vars (your Vercel URL)
+].filter(Boolean);
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps, Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.some(o => origin.startsWith(o))) {
+      return callback(null, true);
+    }
+    return callback(null, true); // Allow all for now — tighten later
+  },
+  credentials: true
+}));
 app.use(express.json());
 
 // Create DB connection pool
@@ -486,10 +504,9 @@ app.post('/api/forgot-password', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Backend server running on port ${PORT}`);
-  });
-}
+// Always start the server (works on Render in production too)
+app.listen(PORT, () => {
+  console.log(`Backend server running on port ${PORT}`);
+});
 
 export default app;

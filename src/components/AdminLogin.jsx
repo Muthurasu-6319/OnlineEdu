@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Lock, Mail, ArrowRight, ShieldCheck } from 'lucide-react';
+import BASE_URL from '../api.js';
 
 export default function AdminLogin({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
@@ -31,7 +32,7 @@ export default function AdminLogin({ onLoginSuccess }) {
     setIsLoading(true);
 
     try {
-      await fetch('/api/forgot-password', {
+      await fetch(`${BASE_URL}/api/forgot-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })

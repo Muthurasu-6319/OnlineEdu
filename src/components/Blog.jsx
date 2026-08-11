@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, User, ArrowRight, Search, X } from 'lucide-react';
 
-const API_URL = '/api/blogs';
+import BASE_URL from '../api.js';
+
+const API_URL = `${BASE_URL}/api/blogs`;
 
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');

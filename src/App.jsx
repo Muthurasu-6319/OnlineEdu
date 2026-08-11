@@ -25,6 +25,7 @@ import BoardPlacement from './components/BoardPlacement';
 import BoardSteps from './components/BoardSteps';
 import BoardIntro from './components/BoardIntro';
 import BoardOutro from './components/BoardOutro';
+import BASE_URL from './api.js';
 import AboutHero from './components/AboutHero';
 import AboutAcademy from './components/AboutAcademy';
 import AboutPhilosophy from './components/AboutPhilosophy';
@@ -118,7 +119,7 @@ function App() {
   const handleEnquirySubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('/api/send-email', {
+      await fetch(`${BASE_URL}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: 'enquiry', data: enquiryForm })

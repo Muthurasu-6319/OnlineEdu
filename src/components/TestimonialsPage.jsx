@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
+import BASE_URL from '../api.js';
 import img1 from '../assets/Testimonials/image.png';
 import img2 from '../assets/Testimonials/image copy.png';
 import img3 from '../assets/Testimonials/image copy 2.png';
@@ -20,7 +21,7 @@ export default function TestimonialsPage({ onPlayClick }) {
     window.scrollTo(0, 0);
     const fetchVideos = async () => {
       try {
-        const response = await fetch('/api/videos');
+        const response = await fetch(`${BASE_URL}/api/videos`);
         if (response.ok) {
           setVideos(await response.json());
         }

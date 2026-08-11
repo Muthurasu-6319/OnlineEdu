@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import BASE_URL from '../api.js';
 import { CheckCircle } from 'lucide-react';
 import contactBg from '../assets/Alagappa-University/hero.png';
 
@@ -9,7 +10,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('/api/send-email', {
+      await fetch(`${BASE_URL}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: 'contact', data: form })
