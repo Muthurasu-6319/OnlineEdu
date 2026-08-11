@@ -9,7 +9,7 @@ export default function AboutPhilosophy() {
         {/* Left Text Column */}
         <div className="flex flex-col space-y-6 text-[#1c2d76]">
           <p className="text-slate-600 text-sm md:text-base leading-relaxed font-sans font-medium">
-            We believe that education should never be limited by age, location, or personal commitments. Whether you are a working professional, entrepreneur, homemaker, school dropout, or a student looking to pursue higher education, VNET Distance Academy provides the right guidance to help you build a successful future.
+            We believe that education should never be limited by age, location, or personal commitments. Whether you are a working professional, entrepreneur, homemaker, school dropout, or a student looking to pursue higher education, VNET DISTANCE ACADEMY provides the right guidance to help you build a successful future.
           </p>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed font-sans font-medium">
             Our academy offers admission guidance for Undergraduate (UG), Postgraduate (PG), Open Schooling, Diploma, Polytechnic, and Engineering programs through recognized universities and institutions. From course selection and admissions to academic support, our experienced counselors are committed to assisting students at every stage of their educational journey.

@@ -29,7 +29,6 @@ export default function BoardSteps() {
   return (
     <section className="bg-[#e6f2ff] py-16 md:py-24 font-outfit">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
         {/* Left Image Column */}
         <div className="w-full">
           <img 

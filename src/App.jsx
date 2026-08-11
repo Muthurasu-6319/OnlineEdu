@@ -180,8 +180,8 @@ function App() {
             <BoardPlacement />
             <BoardIntro />
             <BoardDetails />
-            <BoardSteps />
             <WhyChooseUs />
+            <BoardSteps />
             <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
           </>
         ) : currentHash.startsWith('#nios') ? (

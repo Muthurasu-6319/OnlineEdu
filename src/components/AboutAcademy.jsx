@@ -9,7 +9,7 @@ export default function AboutAcademy() {
         {/* Title Heading with custom underline styling */}
         <div className="relative mb-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c2d76] tracking-tight uppercase">
-            About Us Vnet Distance Academy
+            About Us VNET DISTANCE ACADEMY
           </h2>
           <div className="mt-3 mx-auto w-40 h-[4px] bg-blue-500 rounded-full relative">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow-xs" />
@@ -18,14 +18,14 @@ export default function AboutAcademy() {
 
         {/* Intro Paragraph */}
         <p className="text-slate-600 text-sm md:text-base leading-relaxed font-sans max-w-3xl mb-12">
-          VNET Distance Academy is a trusted educational guidance and admission support center dedicated to making quality education accessible, flexible, and career-oriented for students from all walks of life. With branches in Saravanampatti (Coimbatore), Gandhipuram (Coimbatore), and Tiruppur, we have been helping students achieve their academic goals through recognized distance and online education programs.
+          VNET DISTANCE ACADEMY is a trusted educational guidance and admission support center dedicated to making quality education accessible, flexible, and career-oriented for students from all walks of life. With branches in Saravanampatti (Coimbatore), Gandhipuram (Coimbatore), and Tiruppur, we have been helping students achieve their academic goals through recognized distance and online education programs.
         </p>
 
         {/* Main Banner Image */}
         <div className="w-full mb-12 rounded-3xl overflow-hidden shadow-lg border border-slate-100">
           <img 
             src={academyImage} 
-            alt="Students collaborating at VNET Distance Academy" 
+            alt="Students collaborating at VNET DISTANCE ACADEMY" 
             className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"
           />
         </div>

@@ -46,7 +46,7 @@ export default function AboutPartnerships() {
         {/* Text and Courses Details */}
         <div className="w-full max-w-4xl space-y-6 text-[#1c2d76]">
           <p className="text-slate-600 text-sm md:text-base leading-relaxed font-sans font-medium">
-            We offer a wide range of Undergraduate, Postgraduate, Diploma, Polytechnic, Engineering, and School Education Programs through Distance Education and Online Learning. Our programs are designed to meet the evolving needs of today’s learners while maintaining high academic standards. VNET Distance Academy is associated with UGC-DEB approved and government-recognized universities, providing students with credible qualifications that are widely accepted for higher education, employment, and career growth.
+            We offer a wide range of Undergraduate, Postgraduate, Diploma, Polytechnic, Engineering, and School Education Programs through Distance Education and Online Learning. Our programs are designed to meet the evolving needs of today’s learners while maintaining high academic standards. VNET DISTANCE ACADEMY is associated with UGC-DEB approved and government-recognized universities, providing students with credible qualifications that are widely accepted for higher education, employment, and career growth.
           </p>
 
           <h3 className="text-xl font-bold text-[#1c2d76] pt-4">

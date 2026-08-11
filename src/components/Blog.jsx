@@ -38,7 +38,7 @@ export default function Blog() {
   // Dynamic SEO Meta Tags
   useEffect(() => {
     if (selectedPost) {
-      document.title = `${selectedPost.title} | VNET Academy Blog`;
+      document.title = `${selectedPost.title} | VNET ACADEMY Blog`;
       
       const setMeta = (name, content) => {
         let meta = document.querySelector(`meta[name="${name}"]`) || document.querySelector(`meta[property="${name}"]`);
@@ -56,11 +56,11 @@ export default function Blog() {
       setMeta('og:title', selectedPost.title);
       setMeta('og:description', selectedPost.snippet);
     } else {
-      document.title = 'VNET Distance Academy | Best Online Education in Coimbatore';
+      document.title = 'VNET DISTANCE ACADEMY | Best Online Education in Coimbatore';
       const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute('content', 'VNET Distance Academy provides UGC-approved online MBA, MCA, UG & PG degrees in Coimbatore and Tirupur.');
+      if (metaDesc) metaDesc.setAttribute('content', 'VNET DISTANCE ACADEMY provides UGC-approved online MBA, MCA, UG & PG degrees in Coimbatore and Tirupur.');
       const metaKeywords = document.querySelector('meta[name="keywords"]');
-      if (metaKeywords) metaKeywords.setAttribute('content', 'distance education, online degree, Coimbatore, VNET Academy, Alagappa University distance education');
+      if (metaKeywords) metaKeywords.setAttribute('content', 'distance education, online degree, Coimbatore, VNET ACADEMY, Alagappa University distance education');
     }
   }, [selectedPost]);
 
@@ -78,7 +78,7 @@ export default function Blog() {
         {/* Page Title */}
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            VNET Distance Academy <span className="text-[#2ca785]">Educational Blog</span>
+            VNET DISTANCE ACADEMY <span className="text-[#2ca785]">Educational Blog</span>
           </h1>
           <p className="text-slate-500 mt-3 text-base sm:text-lg max-w-3xl mx-auto font-medium">
             Stay updated with the latest insights on distance learning, online MBA & MCA specializations, board exams prep, and career opportunities.

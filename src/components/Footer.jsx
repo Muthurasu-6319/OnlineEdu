@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="md:col-span-4 flex flex-col items-center md:items-start gap-3">
             <a href="#home">
-              <img src={vnetLogo} alt="VNET Distance Academy" className="h-16 w-auto object-contain brightness-0 invert" />
+              <img src={vnetLogo} alt="VNET DISTANCE ACADEMY" className="h-16 w-auto object-contain brightness-0 invert" />
             </a>
             <p className="text-sm text-indigo-200 leading-relaxed font-medium max-w-xs text-center md:text-left">
               Trusted guidance center for Distance & Online education. Branches in Saravanampatti, Gandhipuram (Coimbatore) & Tiruppur.

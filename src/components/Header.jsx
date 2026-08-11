@@ -16,13 +16,13 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
           {/* Logo - VNET */}
           <div className="flex-shrink-0 flex items-center">
             <a href="#home" className="flex items-center gap-2">
-              <img src={vnetLogo} alt="VNET Distance Academy" className="h-12 w-auto object-contain" />
+              <img src={vnetLogo} alt="VNET DISTANCE ACADEMY" className="h-12 w-auto object-contain" />
             </a>
           </div>
 
           {/* Navigation Links - Desktop */}
           <nav className="hidden md:flex space-x-8 items-center">
-            <a href="#home" className="text-[#2ca785] font-semibold text-base transition-colors duration-200">
+            <a href="#home" className="text-[#2ca785] font-semibold text-sm transition-colors duration-200">
               Home
             </a>
             
@@ -30,17 +30,17 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             <div className="relative">
               <button 
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="text-slate-800 hover:text-[#2ca785] font-bold text-base flex items-center gap-1 transition-colors duration-200"
+                className="text-slate-800 hover:text-[#2ca785] font-semibold text-sm flex items-center gap-1 transition-colors duration-200"
               >
                 Universities
-                <ChevronDown size={16} className={`transform transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={14} className={`transform transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {dropdownOpen && (
                 <div className="absolute left-0 mt-3 w-64 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
-                  <a href="#alagappa" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alagappa University</a>
-                  <a href="#bharathidasan" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
-                  <a href="#amity" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
+                  <a href="#alagappa" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alagappa University</a>
+                  <a href="#bharathidasan" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
+                  <a href="#amity" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
                 </div>
               )}
             </div>
@@ -49,16 +49,16 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             <div className="relative">
               <button 
                 onClick={() => setCoursesDropdownOpen(!coursesDropdownOpen)}
-                className="text-slate-800 hover:text-[#2ca785] font-bold text-base flex items-center gap-1 transition-colors duration-200"
+                className="text-slate-800 hover:text-[#2ca785] font-semibold text-sm flex items-center gap-1 transition-colors duration-200"
               >
                 Courses
-                <ChevronDown size={16} className={`transform transition-transform ${coursesDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={14} className={`transform transition-transform ${coursesDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {coursesDropdownOpen && (
                 <div className="absolute left-0 mt-3 w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
-                  <a href="#ug-courses" onClick={() => setCoursesDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
-                  <a href="#pg-courses" onClick={() => setCoursesDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
+                  <a href="#ug-courses" onClick={() => setCoursesDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
+                  <a href="#pg-courses" onClick={() => setCoursesDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
                 </div>
               )}
             </div>
@@ -67,27 +67,27 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             <div className="relative">
               <button 
                 onClick={() => setBoardDropdownOpen(!boardDropdownOpen)}
-                className="text-slate-800 hover:text-[#2ca785] font-bold text-base flex items-center gap-1 transition-colors duration-200 whitespace-nowrap"
+                className="text-slate-800 hover:text-[#2ca785] font-semibold text-sm flex items-center gap-1 transition-colors duration-200 whitespace-nowrap"
               >
                 10th &amp; 12th
-                <ChevronDown size={16} className={`transform transition-transform ${boardDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={14} className={`transform transition-transform ${boardDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {boardDropdownOpen && (
                 <div className="absolute left-0 mt-3 w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
-                  <a href="#board" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Courses</a>
-                  <a href="#nios" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-base text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">NIOS</a>
+                  <a href="#board" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">BOSSE</a>
+                  <a href="#nios" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">NIOS</a>
                 </div>
               )}
             </div>
 
-            <a href="#about" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200">
+            <a href="#about" className="text-slate-700 hover:text-[#2ca785] font-semibold text-sm transition-colors duration-200">
               About
             </a>
-            <a href="#testimonials-page" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200">
+            <a href="#testimonials-page" className="text-slate-700 hover:text-[#2ca785] font-semibold text-sm transition-colors duration-200">
               Testimonials
             </a>
-            <a href="#contact" className="text-slate-700 hover:text-[#2ca785] font-semibold text-base transition-colors duration-200">
+            <a href="#contact" className="text-slate-700 hover:text-[#2ca785] font-semibold text-sm transition-colors duration-200 whitespace-nowrap">
               Contact Us
             </a>
           </nav>
@@ -107,19 +107,6 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
               <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
             </div>
 
-            {/* Wishlist with badge */}
-            <button 
-              onClick={onWishlistClick}
-              className="relative p-2.5 text-slate-600 hover:text-[#2ca785] hover:bg-slate-50 rounded-full cursor-pointer transition-all"
-            >
-              <Heart size={22} />
-              {wishlistCount > 0 && (
-                <span className="absolute top-0 right-0 bg-[#2ca785] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white animate-pulse">
-                  {wishlistCount}
-                </span>
-              )}
-            </button>
-
             {/* Enquiry Button */}
             <button 
               onClick={onEnquiryClick}
@@ -131,18 +118,6 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <button 
-              onClick={onWishlistClick}
-              className="relative p-2.5 text-slate-600"
-            >
-              <Heart size={22} />
-              {wishlistCount > 0 && (
-                <span className="absolute top-0.5 right-0.5 bg-[#2ca785] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                  {wishlistCount}
-                </span>
-              )}
-            </button>
-            
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-slate-600 hover:text-[#2ca785] focus:outline-none"
@@ -210,7 +185,7 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
           </button>
           {boardDropdownOpen && (
             <div className="pl-6 space-y-1">
-              <a href="#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Courses</a>
+              <a href="#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">BOSSE</a>
               <a href="#nios" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">NIOS</a>
             </div>
           )}

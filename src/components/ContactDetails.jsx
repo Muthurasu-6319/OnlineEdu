@@ -31,7 +31,7 @@ export default function ContactDetails() {
 
         {/* Intro Paragraph */}
         <p className="text-slate-600 text-sm md:text-base leading-relaxed font-sans font-medium text-center max-w-4xl mb-16">
-          VNET Distance Academy is committed to making quality education accessible through flexible and affordable learning solutions. We offer a wide range of UG, PG, Diploma, Engineering, Polytechnic, and 10th & 12th programs through recognized universities and institutions. With EMI facilities, expert academic guidance, and student-focused support, we help learners achieve their educational and career goals without compromising their personal or professional commitments. At VNET Distance Academy, we believe education should be accessible to everyone, anytime and anywhere.
+          VNET DISTANCE ACADEMY is committed to making quality education accessible through flexible and affordable learning solutions. We offer a wide range of UG, PG, Diploma, Engineering, Polytechnic, and 10th & 12th programs through recognized universities and institutions. With EMI facilities, expert academic guidance, and student-focused support, we help learners achieve their educational and career goals without compromising their personal or professional commitments. At VNET DISTANCE ACADEMY, we believe education should be accessible to everyone, anytime and anywhere.
         </p>
 
         {/* Two Column Grid */}
