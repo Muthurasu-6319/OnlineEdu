@@ -19,7 +19,7 @@ export default function BharathidasanCollaboration() {
         <div className="flex flex-col space-y-6">
           <div className="space-y-2">
             <span className="text-[#2ca785] font-extrabold text-lg md:text-xl block">
-              Collaboration!
+              Links!
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#1a2b6d] tracking-tight leading-tight">
               Association with Bharathidasan University

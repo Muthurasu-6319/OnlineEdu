@@ -42,7 +42,7 @@ import Footer from './components/Footer';
 import Blog from './components/Blog';
 import UGCourses from './components/UGCourses';
 import PGCourses from './components/PGCourses';
-import { X, CheckCircle, Trash2 } from 'lucide-react';
+import { X, CheckCircle, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
 
 function App() {
   const [wishlist, setWishlist] = useState([]);
@@ -216,7 +216,7 @@ function App() {
           </>
         ) : currentHash.startsWith('#testimonials-page') ? (
           <>
-            <TestimonialsPage onPlayClick={(video) => setActiveVideoUrl(video || { isYoutube: true, url: 'dQw4w9WgXcQ' })} />
+            <TestimonialsPage onPlayClick={(data) => setActiveVideoUrl(data || { video: { isYoutube: true, url: 'dQw4w9WgXcQ' } })} />
           </>
         ) : (
           <>
@@ -232,7 +232,7 @@ function App() {
             />
             <Gateway />
             <Partnerships />
-            <Testimonials onPlayClick={(video) => setActiveVideoUrl(video || { isYoutube: true, url: 'dQw4w9WgXcQ' })} />
+            <Testimonials onPlayClick={(data) => setActiveVideoUrl(data || { video: { isYoutube: true, url: 'dQw4w9WgXcQ' } })} />
           </>
         )}
       </main>
@@ -398,28 +398,53 @@ function App() {
       )}
 
       {/* VIDEO PLAYER MODAL */}
-      {activeVideoUrl && (
+      {activeVideoUrl && activeVideoUrl.video && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-xs" onClick={() => setActiveVideoUrl(null)} />
           <div className={`bg-black rounded-3xl w-full overflow-hidden shadow-2xl relative z-10 border border-white/10 ${
-            activeVideoUrl.isYoutube === false 
+            activeVideoUrl.video.isYoutube === false 
               ? "max-w-[400px] aspect-[9/16]" 
               : "max-w-4xl aspect-[16/9]"
           }`}>
-            <button onClick={() => setActiveVideoUrl(null)} className="absolute right-4 top-4 p-2 bg-black/40 hover:bg-black/80 rounded-full transition-colors text-white z-20">
+            <button onClick={() => setActiveVideoUrl(null)} className="absolute right-4 top-14 p-2 bg-black/40 hover:bg-black/80 rounded-full transition-colors text-white z-20">
               <X className="w-5 h-5" />
             </button>
-            {activeVideoUrl.isYoutube === false ? (
+
+            {activeVideoUrl.playlist && activeVideoUrl.index > 0 && (
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveVideoUrl({ ...activeVideoUrl, video: activeVideoUrl.playlist[activeVideoUrl.index - 1], index: activeVideoUrl.index - 1 });
+                }} 
+                className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/40 hover:bg-black/80 rounded-full transition-colors text-white z-20"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+            )}
+
+            {activeVideoUrl.playlist && activeVideoUrl.index < activeVideoUrl.playlist.length - 1 && (
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveVideoUrl({ ...activeVideoUrl, video: activeVideoUrl.playlist[activeVideoUrl.index + 1], index: activeVideoUrl.index + 1 });
+                }} 
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/40 hover:bg-black/80 rounded-full transition-colors text-white z-20"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            )}
+
+            {activeVideoUrl.video.isYoutube === false ? (
               <video 
                 className="w-full h-full outline-none object-cover"
-                src={activeVideoUrl.url}
+                src={activeVideoUrl.video.url}
                 controls
                 autoPlay
               />
             ) : (
               <iframe 
                 className="w-full h-full"
-                src={`https://www.youtube.com/embed/${activeVideoUrl.videoId || activeVideoUrl.url}?autoplay=1`}
+                src={`https://www.youtube.com/embed/${activeVideoUrl.video.videoId || activeVideoUrl.video.url}?autoplay=1`}
                 title="YouTube video player" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

@@ -19,7 +19,7 @@ export default function AlagappaCollaboration() {
         <div className="flex flex-col space-y-6 md:col-span-7">
           <div className="space-y-2">
             <span className="text-[#2ca785] font-bold text-lg block">
-              Collaboration!
+              Links!
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#1a2b6d] tracking-tight leading-tight">
               Association with Alagappa University
@@ -34,7 +34,7 @@ export default function AlagappaCollaboration() {
               The University offers education through Regular, Distance, Online and Collaborative modes. Through all modes of education, the University caters to the needs of the student community of around 1.12 lakhs. As a member of the Association of Indian Universities (AIU), as well as the member of the Association of Commonwealth Universities (ACU), it has rewarding relations with other academic institutions, research laboratories and industrial establishments that promise a spectacular future.
             </p>
             <p>
-              The University is having International Collaborations with Universities / Institutions of Higher Learning in countries like U.S.A, UK, Australia, Singapore, China, Malaysia and South Korea.
+              The University is having International Links with Universities / Institutions of Higher Learning in countries like U.S.A, UK, Australia, Singapore, China, Malaysia and South Korea.
             </p>
             <p className="italic font-medium">
               The University's motto is "Excellence in Action" and the University keeps before it the vision of excellence in all spheres of its action.

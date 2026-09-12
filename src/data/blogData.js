@@ -30,7 +30,7 @@ At VNET, we facilitate a direct admission process, avoiding complex entrance tes
     date: 'July 22, 2026',
     author: 'IT Careers Advisor',
     snippet: 'Explore Amity University Online MCA and MSC(CS) programs with specialization in Data Engineering, Software Engineering, and Cyber Security through VNET ACADEMY.',
-    content: `The IT industry is expanding rapidly, and specialized computer application degrees are in high demand. Amity University Online degrees, particularly the Online MCA and MSC(CS) with Specializations, provide top-tier industry curricula. Through VNET ACADEMY, you can enroll in specialized tracks such as Data Engineering, Software Engineering, Cloud & Security, Data Analytics, and Cyber Security (in collaboration with HCL Tech).
+    content: `The IT industry is expanding rapidly, and specialized computer application degrees are in high demand. Amity University Online degrees, particularly the Online MCA and MSC(CS) with Specializations, provide top-tier industry curricula. Through VNET ACADEMY, you can enroll in specialized tracks such as Data Engineering, Software Engineering, Cloud & Security, Data Analytics, and Cyber Security (in links with HCL Tech).
 
 These programs offer an elite learning experience with live session webinars, industry mentors, and TCS iON integrations. Studying Amity Online MCA with VNET allows you to gain specialized knowledge and hands-on skills from home, preparing you for high-paying roles in database management, software development, and network security.`,
     keywords: 'Amity Online MCA, Amity University Online degrees, Online MCA with specialization, MSC Computer Science distance, VNET ACADEMY online classes'

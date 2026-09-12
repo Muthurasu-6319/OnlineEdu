@@ -129,7 +129,7 @@ export default function ContactDetails() {
               {/* Map 2: Gandhipuram */}
               <div className="bg-slate-50 border border-slate-100 rounded-3xl p-5 shadow-xs hover:shadow-md transition-shadow">
                 <h4 className="font-extrabold text-[#1c2d76] text-sm mb-3">
-                  Branch 2: Vnet Bharathidasan University (Gandhipuram)
+                  Branch 2: VNET DISTANCE UNIVERSITY (Gandhipuram)
                 </h4>
                 <div className="rounded-2xl overflow-hidden h-[240px] border border-slate-200/60 shadow-inner">
                   <iframe 

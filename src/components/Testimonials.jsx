@@ -6,22 +6,28 @@ import BASE_URL from '../api.js';
 export default function Testimonials({ onPlayClick }) {
   const defaultTestimonials = [
     {
-      name: 'Ronald Richards',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
-      text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      rating: 4
+      name: 'Sabapathy Sabapathy',
+      avatar: 'default',
+      text: 'I am sabapathi BBA degree taken on vnet Distance academy very helpful wonderful service thanks vnet Distance academy',
+      rating: 5
     },
     {
-      name: 'Wade Warren',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80',
-      text: 'Cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Reprehenderit in voluptate velit esse',
-      rating: 4
+      name: 'Karthi L',
+      avatar: 'default',
+      text: 'I am Kannan. I have completed my B.Sc. (IT) through VNET Distance Education. I am passionate about Information Technology and committed to learning and providing quality service with professionalism and dedication.',
+      rating: 5
     },
     {
-      name: 'Jacob Jones',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
-      text: 'Esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit',
-      rating: 4
+      name: 'Sudha Karan',
+      avatar: 'default',
+      text: 'I studied in b.sc (cs)V.net distance academy\nThis institution usefull for mee .... And great teaching and good guidance....',
+      rating: 5
+    },
+    {
+      name: 'Ashok Kumar S',
+      avatar: 'default',
+      text: 'I studying in vnet so I complete in BBA course and they are good and helpfull supportive.',
+      rating: 5
     }
   ];
 
@@ -113,7 +119,7 @@ export default function Testimonials({ onPlayClick }) {
               {featuredVideos.map(video => (
                 <div 
                   key={video.id} 
-                  onClick={() => onPlayClick(video)}
+                  onClick={() => onPlayClick({ video, playlist: featuredVideos, index: featuredVideos.indexOf(video) })}
                   className="relative rounded-3xl overflow-hidden shadow-xl group cursor-pointer aspect-[9/16] bg-black"
                 >
                   {video.isYoutube ? (
@@ -138,7 +144,7 @@ export default function Testimonials({ onPlayClick }) {
                       <button 
                         onClick={(e) => {
                           e.stopPropagation();
-                          onPlayClick(video);
+                          onPlayClick({ video, playlist: featuredVideos, index: featuredVideos.indexOf(video) });
                         }}
                         className="relative w-12 h-12 rounded-full bg-gradient-to-tr from-[#2ca785] to-[#20a4d5] flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-110 active:scale-95 cursor-pointer z-10 pl-1"
                       >

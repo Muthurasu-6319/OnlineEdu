@@ -70,7 +70,7 @@ export default function TestimonialsPage({ onPlayClick }) {
               {videos.map((video) => (
                 <div 
                   key={video.id} 
-                  onClick={() => onPlayClick(video)}
+                  onClick={() => onPlayClick({ video, playlist: videos, index: videos.indexOf(video) })}
                   className="relative rounded-3xl overflow-hidden shadow-xl group cursor-pointer aspect-[9/16] bg-black"
                 >
                   {video.isYoutube ? (

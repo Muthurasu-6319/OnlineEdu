@@ -20,7 +20,7 @@ export default function AboutPartnerships() {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
             <span className="text-[#1c2d76]">UNIVERSITY</span>{' '}
-            <span className="text-[#2ca785]">COLLABORATIONS</span>
+            <span className="text-[#2ca785]">LINKS</span>
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
             TOTC is a platform that allows educators to create online classes whereby they can store the course materials online; manage assignments, quizzes and exams; monitor due dates; grade results and provide students with feedback all in one place.

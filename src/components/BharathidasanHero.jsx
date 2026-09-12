@@ -170,7 +170,7 @@ export default function BharathidasanHero({ onEnquiryClick }) {
 
             <div className="flex flex-col justify-between w-[240px]">
               <p className="text-[13px] text-slate-700 leading-normal font-sans">
-                Vnet bharathidasan University and Educational Trust helps learners continue their education with recognized courses and easy EMI options.
+                VNET DISTANCE UNIVERSITY and Educational Trust helps learners continue their education with recognized courses and easy EMI options.
               </p>
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-sm font-bold text-[#2ca785]">4.9</span>

@@ -30,10 +30,10 @@ export default function Partnerships() {
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl xl:text-4xl font-extrabold tracking-tight mb-6">
             <span className="text-[#153fb4]">UNIVERSITY</span>{' '}
-            <span className="text-[#2ca785]">COLLABORATIONS</span>
+            <span className="text-[#2ca785]">LINKS</span>
           </h2>
           <p className="text-sm xl:text-base text-slate-500 font-medium leading-relaxed">
-            VNET DISTANCE ACADEMY is proud to collaborate with UGC‑DEB approved, government‑recognised universities, offering students credible and widely accepted qualifications. Our university collaborations open doors to quality Distance and Online education — empowering learners across Tamil Nadu to advance their careers without compromising their commitments.
+            VNET DISTANCE ACADEMY proudly presents its university links with UGC-DEB approved and government-recognised universities, helping students explore credible Distance and Online education opportunities.
           </p>
         </div>
 
