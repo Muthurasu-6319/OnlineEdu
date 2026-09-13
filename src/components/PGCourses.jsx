@@ -6,7 +6,7 @@ import BASE_URL from '../api.js';
 
 const COURSES_API_URL = `${BASE_URL}/api/courses`;
 
-export default function PGCourses() {
+export default function PGCourses({ mode = 'Distance' }) {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -16,14 +16,14 @@ export default function PGCourses() {
         if (response.ok) {
           const data = await response.json();
           // Filter only PG courses
-          setCourses(data.filter(c => c.level === 'PG'));
+          setCourses(data.filter(c => c.level === 'PG' && c.mode === mode));
         }
       } catch (err) {
         console.error('Failed to fetch PG courses:', err);
       }
     };
     fetchCourses();
-  }, []);
+  }, [mode]);
 
   return (
     <div className="bg-slate-50 min-h-screen pb-20 font-outfit">
@@ -47,7 +47,7 @@ export default function PGCourses() {
       {/* Courses Grid */}
       <div className="max-w-7xl mx-auto px-6 mt-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1c2d76] mb-3">Explore Our PG Categories</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1c2d76] mb-3">Explore Our {mode} PG Categories</h2>
           <div className="w-24 h-1 bg-[#3b60e4] mx-auto rounded-full"></div>
         </div>
 

@@ -24,6 +24,7 @@ export default function AdminDashboard({ onLogout }) {
   // Course Form State
   const [allCourses, setAllCourses] = useState([]);
   const [editingCourseId, setEditingCourseId] = useState(null);
+  const [courseMode, setCourseMode] = useState('Distance');
   const [courseLevel, setCourseLevel] = useState('UG');
   const [courseTitle, setCourseTitle] = useState('');
   const [courseColor, setCourseColor] = useState('blue');
@@ -361,6 +362,7 @@ export default function AdminDashboard({ onLogout }) {
 
   const handleEditCourse = (course) => {
     setEditingCourseId(course.id);
+    setCourseMode(course.mode || 'Distance');
     setCourseLevel(course.level);
     setCourseTitle(course.title);
     setCourseColor(course.color_theme);
@@ -391,6 +393,7 @@ export default function AdminDashboard({ onLogout }) {
 
   const resetCourseForm = () => {
     setEditingCourseId(null);
+    setCourseMode('Distance');
     setCourseLevel('UG');
     setCourseTitle('');
     setCourseColor('blue');
@@ -753,7 +756,20 @@ export default function AdminDashboard({ onLogout }) {
             <form onSubmit={handlePostCourse} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 space-y-6">
               
               <div className="grid grid-cols-2 gap-6">
+                
                 <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">Mode</label>
+                  <select 
+                    value={courseMode}
+                    onChange={(e) => setCourseMode(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2ca785] focus:border-transparent font-medium"
+                  >
+                    <option value="Distance">Distance</option>
+                    <option value="Online">Online</option>
+                  </select>
+                </div>
+
+<div>
                   <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Level</label>
                   <select 
                     value={courseLevel}

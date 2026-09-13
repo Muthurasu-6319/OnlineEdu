@@ -6,7 +6,7 @@ import BASE_URL from '../api.js';
 
 const COURSES_API_URL = `${BASE_URL}/api/courses`;
 
-export default function UGCourses() {
+export default function UGCourses({ mode = 'Distance' }) {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -16,14 +16,14 @@ export default function UGCourses() {
         if (response.ok) {
           const data = await response.json();
           // Filter only UG courses
-          setCourses(data.filter(c => c.level === 'UG'));
+          setCourses(data.filter(c => c.level === 'UG' && c.mode === mode));
         }
       } catch (err) {
         console.error('Failed to fetch UG courses:', err);
       }
     };
     fetchCourses();
-  }, []);
+  }, [mode]);
 
   return (
     <div className="bg-slate-50 min-h-screen pb-20 font-outfit">
@@ -36,7 +36,7 @@ export default function UGCourses() {
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
-            Undergraduate <span className="text-yellow-400">Programs</span>
+            {mode} Undergraduate <span className="text-yellow-400">Programs</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-200 max-w-2xl font-medium">
             Build a strong foundation for your career with our industry-aligned, UGC-approved undergraduate degrees. Flexible learning tailored for ambitious minds.
@@ -47,7 +47,7 @@ export default function UGCourses() {
       {/* Courses Grid */}
       <div className="max-w-7xl mx-auto px-6 mt-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1c2d76] mb-3">Explore Our UG Categories</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1c2d76] mb-3">Explore Our {mode} UG Categories</h2>
           <div className="w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
         </div>
 

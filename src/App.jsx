@@ -208,11 +208,11 @@ function App() {
           </>
         ) : currentHash.startsWith('#ug-courses') ? (
           <>
-            <UGCourses />
+            <UGCourses mode={currentHash.includes('online') ? 'Online' : 'Distance'} />
           </>
         ) : currentHash.startsWith('#pg-courses') ? (
           <>
-            <PGCourses />
+            <PGCourses mode={currentHash.includes('online') ? 'Online' : 'Distance'} />
           </>
         ) : currentHash.startsWith('#testimonials-page') ? (
           <>

@@ -56,36 +56,42 @@ const transporter = nodemailer.createTransport({
 
 const initialCourses = [
   {
+    mode: 'Distance',
     level: 'UG',
     title: 'UG ARTS & HUMANITIES',
     color_theme: 'yellow',
     courses_list: 'B.A Tamil, B.A English, B.A History, B.A Economics, B.A Public Administration, B.A Political Science'
   },
   {
+    mode: 'Distance',
     level: 'UG',
     title: 'UG COMMERCE',
     color_theme: 'blue',
     courses_list: 'B.Com General, B.Com Computer Applications, BBA (Bachelor of Business Administration)'
   },
   {
+    mode: 'Distance',
     level: 'UG',
     title: 'UG SCIENCE & IT',
     color_theme: 'yellow',
     courses_list: 'B.Sc Mathematics, B.Sc Computer Science, B.Sc Psychology, BCA (Bachelor of Computer Applications)'
   },
   {
+    mode: 'Distance',
     level: 'PG',
     title: 'PG ARTS & HUMANITIES',
     color_theme: 'blue',
     courses_list: 'M.A Tamil, M.A English, M.A History, M.A Economics, M.A Political Science'
   },
   {
+    mode: 'Distance',
     level: 'PG',
     title: 'PG COMMERCE & MANAGEMENT',
     color_theme: 'yellow',
     courses_list: 'M.Com, MBA General, MBA Human Resource, MBA Finance, MBA Marketing, MBA Hospital Management'
   },
   {
+    mode: 'Distance',
     level: 'PG',
     title: 'PG SCIENCE & IT',
     color_theme: 'blue',
@@ -119,6 +125,7 @@ async function initDb() {
     await connection.query(`
       CREATE TABLE IF NOT EXISTS course_categories (
         id INT AUTO_INCREMENT PRIMARY KEY,
+        mode VARCHAR(20) DEFAULT 'Distance',
         level VARCHAR(10) NOT NULL, -- 'UG' or 'PG'
         title VARCHAR(255) NOT NULL,
         color_theme VARCHAR(50) NOT NULL, -- 'yellow' or 'blue'
@@ -184,22 +191,28 @@ async function initDb() {
       console.log('Student Reviews table is empty, inserting initial reviews...');
       const defaultTestimonials = [
         {
-          name: 'Ronald Richards',
-          avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
-          text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-          rating: 4
+          name: 'Sabapathy Sabapathy',
+          avatar: 'default',
+          text: 'I am sabapathi BBA degree taken on vnet Distance academy very helpful wonderful service thanks vnet Distance academy',
+          rating: 5
         },
         {
-          name: 'Wade Warren',
-          avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80',
-          text: 'Cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Reprehenderit in voluptate velit esse',
-          rating: 4
+          name: 'Karthi L',
+          avatar: 'default',
+          text: 'I am Kannan. I have completed my B.Sc. (IT) through VNET Distance Education. I am passionate about Information Technology and committed to learning and providing quality service with professionalism and dedication.',
+          rating: 5
         },
         {
-          name: 'Jacob Jones',
-          avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
-          text: 'Esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit',
-          rating: 4
+          name: 'Sudha Karan',
+          avatar: 'default',
+          text: 'I studied in b.sc (cs)V.net distance academy\nThis institution usefull for mee .... And great teaching and good guidance....',
+          rating: 5
+        },
+        {
+          name: 'Ashok Kumar S',
+          avatar: 'default',
+          text: 'I studying in vnet so I complete in BBA course and they are good and helpfull supportive.',
+          rating: 5
         }
       ];
       for (const review of defaultTestimonials) {
@@ -295,7 +308,7 @@ app.get('/api/courses', async (req, res) => {
 
 // POST a new course category
 app.post('/api/courses', async (req, res) => {
-  const { level, title, color_theme, courses_list } = req.body;
+  const { mode, level, title, color_theme, courses_list } = req.body;
   try {
     const [result] = await pool.query(
       'INSERT INTO course_categories (level, title, color_theme, courses_list) VALUES (?, ?, ?, ?)',

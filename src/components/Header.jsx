@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, User, Search, ChevronDown, Menu, X } from 'lucide-react';
+import { Heart, User, Search, ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
 import vnetLogo from '../assets/vnet.png';
 
 export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick, searchQuery, setSearchQuery }) {
@@ -27,40 +27,82 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             </a>
             
             {/* Universities Dropdown */}
-            <div className="relative">
+            <div className="relative group py-4">
               <button 
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="text-slate-800 hover:text-[#2ca785] font-semibold text-sm flex items-center gap-1 transition-colors duration-200"
+                className="text-slate-800 group-hover:text-[#2ca785] font-semibold text-sm flex items-center gap-1 transition-colors duration-200"
               >
                 Universities
-                <ChevronDown size={14} className={`transform transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={14} className="transform transition-transform group-hover:rotate-180" />
               </button>
               
-              {dropdownOpen && (
-                <div className="absolute left-0 mt-3 w-64 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
-                  <a href="#alagappa" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alagappa University</a>
-                  <a href="#bharathidasan" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
-                  <a href="#amity" onClick={() => setDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
+              <div className="absolute left-0 top-full hidden group-hover:block w-56 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
+                {/* Distance */}
+                <div className="relative group/distance">
+                  <div className="px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium flex justify-between items-center cursor-pointer">
+                    Distance
+                    <ChevronRight size={14} />
+                  </div>
+                  <div className="absolute left-full top-0 hidden group-hover/distance:block w-64 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50 -ml-1">
+                    <a href="#alagappa" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alagappa University</a>
+                    <a href="#bharathidasan" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
+                  </div>
                 </div>
-              )}
+
+                {/* Online */}
+                <div className="relative group/online">
+                  <div className="px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium flex justify-between items-center cursor-pointer">
+                    Online
+                    <ChevronRight size={14} />
+                  </div>
+                  <div className="absolute left-full top-0 hidden group-hover/online:block w-72 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50 -ml-1 max-h-[70vh] overflow-y-auto">
+                    <a href="#amity" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
+                    <a href="#vit-vellore" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">VIT Vellore</a>
+                    <a href="#alliance" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alliance Bangalore</a>
+                    <a href="#christ" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Christ Bangalore</a>
+                    <a href="#andhra" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Andhra University Vishakapatnam</a>
+                    <a href="#jain" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Jain University</a>
+                    <a href="#sikkim-manipal" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Sikkim Manipal University</a>
+                    <a href="#manipal-jaipur" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Manipal University Jaipur</a>
+                    <a href="#dhayananth-sagar" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Dhayananth Sagar University Bangalore</a>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Courses Dropdown */}
-            <div className="relative">
+            <div className="relative group py-4">
               <button 
-                onClick={() => setCoursesDropdownOpen(!coursesDropdownOpen)}
-                className="text-slate-800 hover:text-[#2ca785] font-semibold text-sm flex items-center gap-1 transition-colors duration-200"
+                className="text-slate-800 group-hover:text-[#2ca785] font-semibold text-sm flex items-center gap-1 transition-colors duration-200"
               >
                 Courses
-                <ChevronDown size={14} className={`transform transition-transform ${coursesDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={14} className="transform transition-transform group-hover:rotate-180" />
               </button>
               
-              {coursesDropdownOpen && (
-                <div className="absolute left-0 mt-3 w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
-                  <a href="#ug-courses" onClick={() => setCoursesDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
-                  <a href="#pg-courses" onClick={() => setCoursesDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
+              <div className="absolute left-0 top-full hidden group-hover:block w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
+                {/* Distance */}
+                <div className="relative group/distanceCourse">
+                  <div className="px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium flex justify-between items-center cursor-pointer">
+                    Distance
+                    <ChevronRight size={14} />
+                  </div>
+                  <div className="absolute left-full top-0 hidden group-hover/distanceCourse:block w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50 -ml-1">
+                    <a href="#ug-courses-distance" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
+                    <a href="#pg-courses-distance" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
+                  </div>
                 </div>
-              )}
+
+                {/* Online */}
+                <div className="relative group/onlineCourse">
+                  <div className="px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium flex justify-between items-center cursor-pointer">
+                    Online
+                    <ChevronRight size={14} />
+                  </div>
+                  <div className="absolute left-full top-0 hidden group-hover/onlineCourse:block w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50 -ml-1">
+                    <a href="#ug-courses-online" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
+                    <a href="#pg-courses-online" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* 10th & 12th Dropdown */}
@@ -155,10 +197,24 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             <ChevronDown size={16} className={`transform ${dropdownOpen ? 'rotate-180' : ''}`} />
           </button>
           {dropdownOpen && (
-            <div className="pl-6 space-y-1">
-              <a href="#alagappa" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alagappa University</a>
-              <a href="#bharathidasan" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Bharathidasan University</a>
-              <a href="#amity" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Amity University</a>
+            <div className="pl-6 space-y-2">
+              <div className="text-sm font-semibold text-slate-700 py-1">Distance</div>
+              <div className="pl-4 space-y-1 border-l-2 border-slate-100">
+                <a href="#alagappa" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alagappa University</a>
+                <a href="#bharathidasan" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Bharathidasan University</a>
+              </div>
+              <div className="text-sm font-semibold text-slate-700 py-1 mt-2">Online</div>
+              <div className="pl-4 space-y-1 border-l-2 border-slate-100">
+                <a href="#amity" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Amity University</a>
+                <a href="#vit-vellore" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">VIT Vellore</a>
+                <a href="#alliance" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alliance Bangalore</a>
+                <a href="#christ" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Christ Bangalore</a>
+                <a href="#andhra" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Andhra University Vishakapatnam</a>
+                <a href="#jain" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Jain University</a>
+                <a href="#sikkim-manipal" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Sikkim Manipal University</a>
+                <a href="#manipal-jaipur" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Manipal University Jaipur</a>
+                <a href="#dhayananth-sagar" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Dhayananth Sagar University Bangalore</a>
+              </div>
             </div>
           )}
 
@@ -170,9 +226,17 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             <ChevronDown size={16} className={`transform ${coursesDropdownOpen ? 'rotate-180' : ''}`} />
           </button>
           {coursesDropdownOpen && (
-            <div className="pl-6 space-y-1">
-              <a href="#ug-courses" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">UG Courses</a>
-              <a href="#pg-courses" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">PG Courses</a>
+            <div className="pl-6 space-y-2">
+              <div className="text-sm font-semibold text-slate-700 py-1">Distance</div>
+              <div className="pl-4 space-y-1 border-l-2 border-slate-100">
+                <a href="#ug-courses-distance" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">UG Courses</a>
+                <a href="#pg-courses-distance" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">PG Courses</a>
+              </div>
+              <div className="text-sm font-semibold text-slate-700 py-1 mt-2">Online</div>
+              <div className="pl-4 space-y-1 border-l-2 border-slate-100">
+                <a href="#ug-courses-online" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">UG Courses</a>
+                <a href="#pg-courses-online" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">PG Courses</a>
+              </div>
             </div>
           )}
           
