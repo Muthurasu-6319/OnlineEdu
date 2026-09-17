@@ -25,6 +25,23 @@ import BoardPlacement from './components/BoardPlacement';
 import BoardSteps from './components/BoardSteps';
 import BoardIntro from './components/BoardIntro';
 import BoardOutro from './components/BoardOutro';
+import VITHero from './components/VITHero';
+import VITAbout from './components/VITAbout';
+import VITWhyChoose from './components/VITWhyChoose';
+import VITPrograms from './components/VITPrograms';
+import VITFaq from './components/VITFaq';
+import VITHiringPartners from './components/VITHiringPartners';
+import VITContact from './components/VITContact';
+import ManipalHero from './components/ManipalHero';
+import ManipalAbout from './components/ManipalAbout';
+import ManipalWhyChoose from './components/ManipalWhyChoose';
+import ManipalPrograms from './components/ManipalPrograms';
+import ManipalFaq from './components/ManipalFaq';
+import ChristHero from './components/ChristHero';
+import ChristAbout from './components/ChristAbout';
+import ChristWhyChoose from './components/ChristWhyChoose';
+import ChristPrograms from './components/ChristPrograms';
+import ChristFaq from './components/ChristFaq';
 import BASE_URL from './api.js';
 import AboutHero from './components/AboutHero';
 import AboutAcademy from './components/AboutAcademy';
@@ -64,7 +81,7 @@ function App() {
   }, []);
 
   // Page-level hashes that should always scroll to the very top (hero section)
-  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#about', '#contact', '#blog', '#course', '#testimonials-page', '#ug-courses', '#pg-courses'];
+  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#vit', '#manipal', '#christ', '#about', '#contact', '#blog', '#course', '#testimonials-page', '#ug-courses', '#pg-courses'];
 
   useEffect(() => {
     if (!currentHash || currentHash === '#home') {
@@ -171,6 +188,36 @@ function App() {
             <AmityAbout />
             <AmityChooseAndMba />
             <AmityPrograms />
+          </>
+        ) : currentHash.startsWith('#vit') ? (
+          <>
+            <VITHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <VITAbout />
+            <VITWhyChoose />
+            <VITPrograms />
+            <VITFaq />
+            <VITHiringPartners />
+            <VITContact />
+          </>
+        ) : currentHash.startsWith('#manipal') ? (
+          <>
+            <ManipalHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <ManipalAbout />
+            <ManipalWhyChoose />
+            <ManipalPrograms />
+            <ManipalFaq />
+            <VITHiringPartners />
+            <VITContact />
+          </>
+        ) : currentHash.startsWith('#christ') ? (
+          <>
+            <ChristHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <ChristAbout />
+            <ChristWhyChoose />
+            <ChristPrograms />
+            <ChristFaq />
+            <VITHiringPartners />
+            <VITContact />
           </>
         ) : currentHash.startsWith('#board') ? (
           <>
