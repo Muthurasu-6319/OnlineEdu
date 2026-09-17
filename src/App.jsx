@@ -42,6 +42,23 @@ import ChristAbout from './components/ChristAbout';
 import ChristWhyChoose from './components/ChristWhyChoose';
 import ChristPrograms from './components/ChristPrograms';
 import ChristFaq from './components/ChristFaq';
+import AndhraHero from './components/AndhraHero';
+import AndhraAbout from './components/AndhraAbout';
+import AndhraWhyChoose from './components/AndhraWhyChoose';
+import AndhraPrograms from './components/AndhraPrograms';
+import AndhraFaq from './components/AndhraFaq';
+import AndhraContact from './components/AndhraContact';
+import DayanandaHero from './components/DayanandaHero';
+import DayanandaAbout from './components/DayanandaAbout';
+import DayanandaWhyChoose from './components/DayanandaWhyChoose';
+import DayanandaPrograms from './components/DayanandaPrograms';
+import DayanandaFaq from './components/DayanandaFaq';
+import DayanandaContact from './components/DayanandaContact';
+import AllianceHero from './components/AllianceHero';
+import AllianceAbout from './components/AllianceAbout';
+import JainHero from './components/JainHero';
+import JainAbout from './components/JainAbout';
+import JainWhyChoose from './components/JainWhyChoose';
 import BASE_URL from './api.js';
 import AboutHero from './components/AboutHero';
 import AboutAcademy from './components/AboutAcademy';
@@ -81,7 +98,7 @@ function App() {
   }, []);
 
   // Page-level hashes that should always scroll to the very top (hero section)
-  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#vit', '#manipal', '#christ', '#about', '#contact', '#blog', '#course', '#testimonials-page', '#ug-courses', '#pg-courses'];
+  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#vit', '#manipal', '#christ', '#andhra', '#dhayananth-sagar', '#alliance', '#jain', '#about', '#contact', '#blog', '#course', '#testimonials-page', '#ug-courses', '#pg-courses'];
 
   useEffect(() => {
     if (!currentHash || currentHash === '#home') {
@@ -216,6 +233,46 @@ function App() {
             <ChristWhyChoose />
             <ChristPrograms />
             <ChristFaq />
+            <VITHiringPartners />
+            <VITContact />
+          </>
+        ) : currentHash.startsWith('#andhra') ? (
+          <>
+            <AndhraHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <AndhraAbout />
+            <AndhraWhyChoose />
+            <AndhraPrograms />
+            <AndhraFaq />
+            <VITHiringPartners />
+            <AndhraContact />
+          </>
+        ) : currentHash.startsWith('#dhayananth-sagar') ? (
+          <>
+            <DayanandaHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <DayanandaAbout />
+            <ManipalWhyChoose />
+            <ManipalPrograms />
+            <ManipalFaq />
+            <VITHiringPartners />
+            <VITContact />
+          </>
+        ) : currentHash.startsWith('#alliance') ? (
+          <>
+            <AllianceHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <AllianceAbout />
+            <ManipalWhyChoose />
+            <ManipalPrograms />
+            <ManipalFaq />
+            <VITHiringPartners />
+            <VITContact />
+          </>
+        ) : currentHash.startsWith('#jain') ? (
+          <>
+            <JainHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <JainAbout />
+            <JainWhyChoose />
+            <ManipalPrograms />
+            <ManipalFaq />
             <VITHiringPartners />
             <VITContact />
           </>
