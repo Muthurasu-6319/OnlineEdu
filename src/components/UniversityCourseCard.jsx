@@ -4,7 +4,7 @@ import BASE_URL from '../api.js';
 
 export default function UniversityCourseCard({ course, onApplyClick }) {
   // Use absolute URL for images if not already absolute
-  const imageUrl = course.image_url.startsWith('http') ? course.image_url : \`\${BASE_URL}\${course.image_url}\`;
+  const imageUrl = course.image ? (course.image.startsWith('http') || course.image.startsWith('data:') ? course.image : `${BASE_URL}${course.image}`) : '';
 
   return (
     <div className="bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 p-4 font-sans flex flex-col h-full transition-shadow duration-300">

@@ -461,6 +461,18 @@ export default function AdminDashboard({ onLogout }) {
           </button>
 
           <button 
+            onClick={() => handleTabChange('university_courses')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors cursor-pointer ${
+              activeTab === 'university_courses' ? 'bg-white/10 text-white' : 'text-blue-200 hover:bg-white/5 hover:text-white'
+            }`}
+          >
+            <LayoutDashboard size={18} />
+            University Courses
+          </button>
+
+
+
+          <button 
             onClick={() => handleTabChange('videos')}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors cursor-pointer ${
               activeTab === 'videos' ? 'bg-white/10 text-white' : 'text-blue-200 hover:bg-white/5 hover:text-white'
@@ -506,6 +518,7 @@ export default function AdminDashboard({ onLogout }) {
       <div className="flex-1 overflow-y-auto p-8">
         
         {activeTab === 'enquiries' && <AdminEnquiries />}
+        {activeTab === 'university_courses' && <AdminUniversityCourses />}
 
         {activeTab === 'blogs' && (
           <div className="max-w-5xl mx-auto">

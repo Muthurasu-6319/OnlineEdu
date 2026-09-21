@@ -292,7 +292,7 @@ export default function AdminUniversityCourses() {
                 {courses.map(course => (
                   <tr key={course.id} className="hover:bg-slate-50">
                     <td className="py-4">
-                      <img src={`${BASE_URL}${course.image_url}`} alt={course.title} className="w-16 h-10 object-cover rounded-md border border-slate-200" />
+                      <img src={course.image ? (course.image.startsWith('http') || course.image.startsWith('data:') ? course.image : `${BASE_URL}${course.image}`) : ''} alt={course.title} className="w-16 h-10 object-cover rounded-md border border-slate-200" />
                     </td>
                     <td className="py-4">
                       <p className="font-bold text-slate-800">{course.title}</p>

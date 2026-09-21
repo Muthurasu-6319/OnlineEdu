@@ -3,11 +3,22 @@ import mysql from 'mysql2/promise';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
+import multer from 'multer';
+import ImageKit from 'imagekit';
 import { initialBlogPosts } from './src/data/blogData.js';
 
 dotenv.config();
 
 const app = express();
+
+import fs from 'fs';
+const upload = multer({ dest: 'uploads/' });
+
+const imagekit = new ImageKit({
+  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
+});
 
 // CORS - allow Vercel frontend and localhost
 const allowedOrigins = [
@@ -106,6 +117,21 @@ async function initDb() {
     console.log('Connected to TiDB successfully!');
     
     await connection.query(`CREATE TABLE IF NOT EXISTS enquiries (id INT AUTO_INCREMENT PRIMARY KEY, type VARCHAR(50), name VARCHAR(255), email VARCHAR(255), phone VARCHAR(50), course VARCHAR(255), location VARCHAR(255), qualification VARCHAR(255), message TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);`);
+
+    // Create university_courses table
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS university_courses (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        mode VARCHAR(20) NOT NULL,
+        university VARCHAR(100) NOT NULL,
+        level VARCHAR(10) NOT NULL,
+        title VARCHAR(100) NOT NULL,
+        description TEXT NOT NULL,
+        image LONGTEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    `);
 
     // Create blogs table if it doesn't exist
     await connection.query(`
@@ -243,6 +269,61 @@ async function initDb() {
 }
 
 initDb();
+
+// --- API Routes for University Courses ---
+
+app.get('/api/university-courses', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM university_courses ORDER BY created_at DESC');
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch university courses' });
+  }
+});
+
+app.post('/api/university-courses', upload.single('image'), async (req, res) => {
+  try {
+    const { mode, university, level, title, description } = req.body;
+    
+    if (!req.file) {
+      return res.status(400).json({ error: 'Image is required' });
+    }
+
+    // Upload to ImageKit using ReadStream
+    const uploadResponse = await imagekit.upload({
+      file: fs.createReadStream(req.file.path),
+      fileName: req.file.originalname || `course_image_${Date.now()}`,
+      folder: '/Vnetacademy/courses'
+    });
+
+    // Delete the temporary file
+    fs.unlinkSync(req.file.path);
+
+    const imageUrl = uploadResponse.url;
+
+    const [result] = await pool.query(
+      'INSERT INTO university_courses (mode, university, level, title, description, image) VALUES (?, ?, ?, ?, ?, ?)',
+      [mode, university, level, title, description, imageUrl]
+    );
+
+    res.status(201).json({ id: result.insertId, message: 'Course added successfully' });
+  } catch (err) {
+    import('fs').then(fs => fs.writeFileSync('last_error.txt', err.stack || err.message));
+    console.error(err);
+    res.status(500).json({ error: 'Failed to add university course: ' + err.message });
+  }
+});
+
+app.delete('/api/university-courses/:id', async (req, res) => {
+  try {
+    await pool.query('DELETE FROM university_courses WHERE id = ?', [req.params.id]);
+    res.json({ message: 'Course deleted successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to delete course' });
+  }
+});
 
 // --- API Routes for Blogs ---
 
