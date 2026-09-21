@@ -4,7 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
 import multer from 'multer';
-import ImageKit from 'imagekit';
+import { v2 as cloudinary } from 'cloudinary';
 import { initialBlogPosts } from './src/data/blogData.js';
 
 dotenv.config();
@@ -14,10 +14,10 @@ const app = express();
 import fs from 'fs';
 const upload = multer({ dest: 'uploads/' });
 
-const imagekit = new ImageKit({
-  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
-  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
-  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 // CORS - allow Vercel frontend and localhost
@@ -290,17 +290,15 @@ app.post('/api/university-courses', upload.single('image'), async (req, res) => 
       return res.status(400).json({ error: 'Image is required' });
     }
 
-    // Upload to ImageKit using ReadStream
-    const uploadResponse = await imagekit.upload({
-      file: fs.createReadStream(req.file.path),
-      fileName: req.file.originalname || `course_image_${Date.now()}`,
-      folder: '/Vnetacademy/courses'
+    // Upload to Cloudinary
+    const uploadResponse = await cloudinary.uploader.upload(req.file.path, {
+      folder: 'Vnetacademy/courses'
     });
 
     // Delete the temporary file
     fs.unlinkSync(req.file.path);
 
-    const imageUrl = uploadResponse.url;
+    const imageUrl = uploadResponse.secure_url;
 
     const [result] = await pool.query(
       'INSERT INTO university_courses (mode, university, level, title, description, image) VALUES (?, ?, ?, ?, ?, ?)',
@@ -322,6 +320,42 @@ app.delete('/api/university-courses/:id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to delete course' });
+  }
+});
+
+app.put('/api/university-courses/:id', upload.single('image'), async (req, res) => {
+  try {
+    const { mode, university, level, title, description } = req.body;
+    const courseId = req.params.id;
+    
+    let imageUrl = null;
+
+    if (req.file) {
+      // Upload to Cloudinary
+      const uploadResponse = await cloudinary.uploader.upload(req.file.path, {
+        folder: 'Vnetacademy/courses'
+      });
+      fs.unlinkSync(req.file.path);
+      imageUrl = uploadResponse.secure_url;
+    }
+
+    if (imageUrl) {
+      await pool.query(
+        'UPDATE university_courses SET mode = ?, university = ?, level = ?, title = ?, description = ?, image = ? WHERE id = ?',
+        [mode, university, level, title, description, imageUrl, courseId]
+      );
+    } else {
+      await pool.query(
+        'UPDATE university_courses SET mode = ?, university = ?, level = ?, title = ?, description = ? WHERE id = ?',
+        [mode, university, level, title, description, courseId]
+      );
+    }
+
+    res.json({ message: 'Course updated successfully' });
+  } catch (err) {
+    import('fs').then(fs => fs.writeFileSync('last_error.txt', err.stack || err.message));
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update university course: ' + err.message });
   }
 });
 

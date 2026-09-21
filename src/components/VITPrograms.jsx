@@ -62,7 +62,7 @@ export default function VITPrograms({ onEnquiryClick }) {
             const courseObj = {
               title: c.title,
               subtitle: c.description,
-              image: `${BASE_URL}${c.image_url}`
+              image: c.image ? (c.image.startsWith('http') || c.image.startsWith('data:') ? c.image : `${BASE_URL}${c.image}`) : ''
             };
             if (c.level === 'UG') grouped.UG.push(courseObj);
             else if (c.level === 'PG') grouped.PG.push(courseObj);

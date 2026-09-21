@@ -21,6 +21,7 @@ export default function AdminUniversityCourses() {
   
   const [formData, setFormData] = useState(initialFormState);
   const [imagePreview, setImagePreview] = useState(null);
+  const [editingId, setEditingId] = useState(null);
 
   const onlineUniversities = [
     'VIT Vellore',
@@ -78,13 +79,33 @@ export default function AdminUniversityCourses() {
     }
   };
 
+  const handleEdit = (course) => {
+    setEditingId(course.id);
+    setFormData({
+      mode: course.mode,
+      university: course.university,
+      level: course.level,
+      title: course.title,
+      description: course.description,
+      image: null
+    });
+    setImagePreview(course.image ? (course.image.startsWith('http') || course.image.startsWith('data:') ? course.image : `${BASE_URL}${course.image}`) : null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const cancelEdit = () => {
+    setEditingId(null);
+    setFormData(initialFormState);
+    clearImage();
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
     setSuccess('');
 
-    if (!formData.image) {
+    if (!editingId && !formData.image) {
       setError('Please upload an image for the course.');
       setLoading(false);
       return;
@@ -102,17 +123,23 @@ export default function AdminUniversityCourses() {
     data.append('level', formData.level);
     data.append('title', formData.title);
     data.append('description', formData.description);
-    data.append('image', formData.image);
+    if (formData.image) {
+      data.append('image', formData.image);
+    }
 
     try {
-      const res = await fetch(`${BASE_URL}/api/university-courses`, {
-        method: 'POST',
-        body: data, // No Content-Type header needed for FormData, browser sets it with boundary
+      const url = editingId ? `${BASE_URL}/api/university-courses/${editingId}` : `${BASE_URL}/api/university-courses`;
+      const method = editingId ? 'PUT' : 'POST';
+
+      const res = await fetch(url, {
+        method,
+        body: data,
       });
 
       if (res.ok) {
-        setSuccess('Course added successfully!');
+        setSuccess(editingId ? 'Course updated successfully!' : 'Course added successfully!');
         setFormData(initialFormState);
+        setEditingId(null);
         clearImage();
         fetchCourses();
       } else {
@@ -146,7 +173,19 @@ export default function AdminUniversityCourses() {
     <div className="space-y-8 font-outfit">
       {/* Add New Course Form */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
-        <h2 className="text-2xl font-bold text-slate-800 mb-6">Add New University Course</h2>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold text-slate-800">
+            {editingId ? 'Edit University Course' : 'Add New University Course'}
+          </h2>
+          {editingId && (
+            <button 
+              onClick={cancelEdit}
+              className="px-4 py-2 text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+            >
+              Cancel Edit
+            </button>
+          )}
+        </div>
         
         {error && <div className="bg-red-50 text-red-600 p-4 rounded-xl mb-6 text-sm font-medium">{error}</div>}
         {success && <div className="bg-emerald-50 text-emerald-600 p-4 rounded-xl mb-6 text-sm font-medium flex items-center gap-2"><Check size={18} /> {success}</div>}
@@ -229,7 +268,9 @@ export default function AdminUniversityCourses() {
                 <label className="flex items-center justify-center w-full px-4 py-6 border-2 border-dashed border-slate-300 rounded-xl cursor-pointer hover:border-[#2ca785] hover:bg-[#2ca785]/5 transition-colors bg-slate-50">
                   <div className="flex flex-col items-center">
                     <Upload className="w-8 h-8 text-slate-400 mb-2" />
-                    <span className="text-sm text-slate-500 font-medium">Click to upload image</span>
+                    <span className="text-sm text-slate-500 font-medium">
+                      {editingId ? 'Click to change image (optional)' : 'Click to upload image'}
+                    </span>
                   </div>
                   <input
                     type="file"
@@ -265,7 +306,7 @@ export default function AdminUniversityCourses() {
             disabled={loading}
             className="w-full md:w-auto px-8 py-3.5 bg-[#2ca785] hover:bg-[#238b6f] text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-70"
           >
-            {loading ? 'Adding Course...' : 'Add Course'}
+            {loading ? (editingId ? 'Updating...' : 'Adding Course...') : (editingId ? 'Update Course' : 'Add Course')}
           </button>
         </form>
       </div>
@@ -307,7 +348,14 @@ export default function AdminUniversityCourses() {
                         {course.level}
                       </span>
                     </td>
-                    <td className="py-4 text-right">
+                    <td className="py-4 text-right space-x-2">
+                      <button 
+                        onClick={() => handleEdit(course)}
+                        className="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors"
+                        title="Edit Course"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                      </button>
                       <button 
                         onClick={() => handleDelete(course.id)}
                         className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
