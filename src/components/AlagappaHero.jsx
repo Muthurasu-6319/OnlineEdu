@@ -103,7 +103,7 @@ export default function AlagappaHero({ onEnquiryClick }) {
 
             <div className="flex flex-wrap items-center gap-6 pt-2">
               <a 
-                href="#course" 
+                href="/#course" 
                 className="border-2 border-white hover:bg-white hover:text-[#7C1844] text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 inline-block text-center"
               >
                 View Courses

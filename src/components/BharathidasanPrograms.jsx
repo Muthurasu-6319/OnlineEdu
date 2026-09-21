@@ -1,7 +1,7 @@
 import React from 'react';
 import { BookOpen, GraduationCap, Briefcase, FileText, User, Award, Monitor } from 'lucide-react';
 
-export default function BharathidasanPrograms() {
+export default function BharathidasanPrograms({ onEnquiryClick }) {
   const cards = [
     {
       title: 'UG Program Arts',

@@ -15,7 +15,7 @@ export default function BharathidasanAbout() {
             Bharathidasan University is a reputed State Government University located in Karaikudi, Tamil Nadu. Known for its commitment to academic excellence, quality education, innovation, and research, the university provides a supportive learning environment that helps students enhance their knowledge, skills, and career opportunities
           </p>
           <a 
-            href="#course"
+            href="/#course"
             className="bg-[#48b0a9] hover:bg-[#3ba29b] text-white font-bold px-8 py-3.5 rounded-xl transition-all duration-200 w-fit text-center shadow-md hover:shadow-teal-100/50 text-sm"
           >
             View courses

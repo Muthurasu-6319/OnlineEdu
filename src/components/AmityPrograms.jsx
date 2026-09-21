@@ -1,7 +1,7 @@
 import React from 'react';
 import { User } from 'lucide-react';
 
-export default function AmityPrograms() {
+export default function AmityPrograms({ onEnquiryClick }) {
   const col1 = [
     {
       title: 'UG ARTS & HUMANITIES',

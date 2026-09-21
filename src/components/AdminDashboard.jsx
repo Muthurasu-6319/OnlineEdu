@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import AdminUniversityCourses from './AdminUniversityCourses';
+import AdminSecondaryCourses from './AdminSecondaryCourses';
+import AdminEnquiries from './AdminEnquiries';
 import { LogOut, Plus, Trash2, Edit2, LayoutDashboard, FileText, Settings, Video, Star, MessageSquare } from 'lucide-react';
 
 import BASE_URL from '../api.js';
@@ -468,6 +471,16 @@ export default function AdminDashboard({ onLogout }) {
           </button>
 
           <button 
+            onClick={() => handleTabChange('enquiries')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors cursor-pointer ${
+              activeTab === 'enquiries' ? 'bg-white/10 text-white' : 'text-blue-200 hover:bg-white/5 hover:text-white'
+            }`}
+          >
+            <MessageSquare size={18} />
+            Enquiries
+          </button>
+
+          <button 
             onClick={() => handleTabChange('text_reviews')}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors cursor-pointer ${
               activeTab === 'text_reviews' ? 'bg-white/10 text-white' : 'text-blue-200 hover:bg-white/5 hover:text-white'
@@ -492,6 +505,8 @@ export default function AdminDashboard({ onLogout }) {
       {/* Main Content Area */}
       <div className="flex-1 overflow-y-auto p-8">
         
+        {activeTab === 'enquiries' && <AdminEnquiries />}
+
         {activeTab === 'blogs' && (
           <div className="max-w-5xl mx-auto">
             <div className="flex justify-between items-center mb-8">

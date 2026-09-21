@@ -12,7 +12,7 @@ export default function Footer() {
           
           {/* Logo */}
           <div className="md:col-span-4 flex flex-col items-center md:items-start gap-3">
-            <a href="#home">
+            <a href="/#home">
               <img src={vnetLogo} alt="VNET DISTANCE ACADEMY" className="h-16 w-auto object-contain brightness-0 invert" />
             </a>
             <p className="text-sm text-indigo-200 leading-relaxed font-medium max-w-xs text-center md:text-left">
@@ -24,10 +24,10 @@ export default function Footer() {
           <div className="md:col-span-3">
             <h3 className="text-lg font-bold mb-6 text-white">Quick Links</h3>
             <div className="grid grid-cols-2 gap-y-3 gap-x-4 text-sm text-indigo-100 font-medium">
-              <a href="#about" className="hover:text-white transition-colors">About</a>
-              <a href="#blog" className="hover:text-white transition-colors">Blog</a>
-              <a href="#course" className="hover:text-white transition-colors">Course</a>
-              <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+              <a href="/#about" className="hover:text-white transition-colors">About</a>
+              <a href="/#blog" className="hover:text-white transition-colors">Blog</a>
+              <a href="/#course" className="hover:text-white transition-colors">Course</a>
+              <a href="/#contact" className="hover:text-white transition-colors">Contact</a>
             </div>
           </div>
 
@@ -93,17 +93,17 @@ export default function Footer() {
 
           {/* Social Icons */}
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-white transition-colors p-1" aria-label="Facebook">
+            <a href="/#" className="hover:text-white transition-colors p-1" aria-label="Facebook">
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/>
               </svg>
             </a>
-            <a href="#" className="hover:text-white transition-colors p-1" aria-label="Twitter">
+            <a href="/#" className="hover:text-white transition-colors p-1" aria-label="Twitter">
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
             </a>
-            <a href="#" className="hover:text-white transition-colors p-1" aria-label="Instagram">
+            <a href="/#" className="hover:text-white transition-colors p-1" aria-label="Instagram">
               <svg className="w-4 h-4 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
@@ -111,10 +111,10 @@ export default function Footer() {
               </svg>
             </a>
             {/* Behance Logo */}
-            <a href="#" className="hover:text-white transition-colors p-1 font-bold text-[11px] leading-none" aria-label="Behance">
+            <a href="/#" className="hover:text-white transition-colors p-1 font-bold text-[11px] leading-none" aria-label="Behance">
               Bē
             </a>
-            <a href="#" className="hover:text-white transition-colors p-1" aria-label="Website">
+            <a href="/#" className="hover:text-white transition-colors p-1" aria-label="Website">
               <svg className="w-4 h-4 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10"/>
                 <line x1="2" y1="12" x2="22" y2="12"/>

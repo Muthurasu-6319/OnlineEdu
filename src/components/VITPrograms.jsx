@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
+import BASE_URL from '../api.js';
 
-export default function VITPrograms() {
+export default function VITPrograms({ onEnquiryClick }) {
   const [activeTab, setActiveTab] = useState('UG');
+  const [dbPrograms, setDbPrograms] = useState({ UG: [], PG: [] });
+  const [loading, setLoading] = useState(true);
 
-  const programs = {
+  const hardcodedPrograms = {
     UG: [
       {
         title: 'BBA',
@@ -46,7 +49,43 @@ export default function VITPrograms() {
   // Actually, to exactly match the screenshot, if UG is active, maybe show MBA? No, I'll structure it properly.
   // Let's set default activeTab to 'PG' to match the courses shown, or just use the data.
 
-  const displayPrograms = activeTab === 'UG' ? programs.UG : programs.PG;
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/api/university-courses`);
+        if (res.ok) {
+          const data = await res.json();
+          const vitCourses = data.filter(c => c.university === 'VIT Vellore');
+          
+          const grouped = { UG: [], PG: [] };
+          vitCourses.forEach(c => {
+            const courseObj = {
+              title: c.title,
+              subtitle: c.description,
+              image: `${BASE_URL}${c.image_url}`
+            };
+            if (c.level === 'UG') grouped.UG.push(courseObj);
+            else if (c.level === 'PG') grouped.PG.push(courseObj);
+          });
+          
+          setDbPrograms(grouped);
+        }
+      } catch (err) {
+        console.error('Failed to fetch university courses', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchCourses();
+  }, []);
+
+  const programsToUse = {
+    UG: dbPrograms.UG.length > 0 ? dbPrograms.UG : (hardcodedPrograms.UG || []),
+    PG: dbPrograms.PG.length > 0 ? dbPrograms.PG : (hardcodedPrograms.PG || []),
+  };
+
+  const displayPrograms = activeTab === 'UG' ? programsToUse.UG : programsToUse.PG;
 
   return (
     <section className="bg-gradient-to-br from-white via-white to-purple-50 py-20 px-6 md:px-12 lg:px-24">
@@ -101,7 +140,7 @@ export default function VITPrograms() {
                 </p>
               </div>
               
-              <button className="mt-8 self-start border border-purple-300 text-purple-500 hover:bg-purple-50 font-semibold text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors">
+              <button className="mt-8 self-start border border-purple-300 text-purple-500 hover:bg-purple-50 font-semibold text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors" onClick={() => onEnquiryClick(program.title, 'VIT University')}>
                 Apply NOW <ArrowRight size={14} />
               </button>
             </div>

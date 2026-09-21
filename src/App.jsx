@@ -150,6 +150,15 @@ function App() {
     setWishlist(wishlist.filter(item => item.title !== title));
   };
 
+  const handleEnquiryClick = (courseTitle, university) => {
+    if (typeof courseTitle === 'string' && typeof university === 'string') {
+      setEnquiryForm(prev => ({ ...prev, course: `${courseTitle} - ${university}` }));
+    } else {
+      setEnquiryForm(prev => ({ ...prev, course: '' }));
+    }
+    setEnquiryOpen(true);
+  };
+
   const handleEnquirySubmit = async (e) => {
     e.preventDefault();
     try {
@@ -176,7 +185,7 @@ function App() {
       <Header 
         wishlistCount={wishlist.length} 
         onWishlistClick={() => setWishlistOpen(true)} 
-        onEnquiryClick={() => setEnquiryOpen(true)}
+        onEnquiryClick={handleEnquiryClick}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
@@ -185,93 +194,93 @@ function App() {
       <main className="flex-grow">
         {currentHash.startsWith('#alagappa') ? (
           <>
-            <AlagappaHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <AlagappaHero onEnquiryClick={handleEnquiryClick} />
             <AlagappaAbout />
             <AlagappaCollaboration />
             <AlagappaDDE />
-            <AlagappaPrograms />
+            <AlagappaPrograms  onEnquiryClick={handleEnquiryClick} />
           </>
         ) : currentHash.startsWith('#bharathidasan') ? (
           <>
-            <BharathidasanHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <BharathidasanHero onEnquiryClick={handleEnquiryClick} />
             <BharathidasanAbout />
             <BharathidasanCollaboration />
             <BharathidasanDetails />
-            <BharathidasanPrograms />
+            <BharathidasanPrograms  onEnquiryClick={handleEnquiryClick} />
           </>
         ) : currentHash.startsWith('#amity') ? (
           <>
             <AmityHero />
             <AmityAbout />
             <AmityChooseAndMba />
-            <AmityPrograms />
+            <AmityPrograms  onEnquiryClick={handleEnquiryClick} />
           </>
         ) : currentHash.startsWith('#vit') ? (
           <>
-            <VITHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <VITHero onEnquiryClick={handleEnquiryClick} />
             <VITAbout />
             <VITWhyChoose />
-            <VITPrograms />
+            <VITPrograms  onEnquiryClick={handleEnquiryClick} />
             <VITFaq />
             <VITHiringPartners />
             <VITContact />
           </>
         ) : currentHash.startsWith('#manipal') ? (
           <>
-            <ManipalHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <ManipalHero onEnquiryClick={handleEnquiryClick} />
             <ManipalAbout />
             <ManipalWhyChoose />
-            <ManipalPrograms />
+            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
             <ManipalFaq />
             <VITHiringPartners />
             <VITContact />
           </>
         ) : currentHash.startsWith('#christ') ? (
           <>
-            <ChristHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <ChristHero onEnquiryClick={handleEnquiryClick} />
             <ChristAbout />
             <ChristWhyChoose />
-            <ChristPrograms />
+            <ChristPrograms  onEnquiryClick={handleEnquiryClick} />
             <ChristFaq />
             <VITHiringPartners />
             <VITContact />
           </>
         ) : currentHash.startsWith('#andhra') ? (
           <>
-            <AndhraHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <AndhraHero onEnquiryClick={handleEnquiryClick} />
             <AndhraAbout />
             <AndhraWhyChoose />
-            <AndhraPrograms />
+            <AndhraPrograms  onEnquiryClick={handleEnquiryClick} />
             <AndhraFaq />
             <VITHiringPartners />
             <AndhraContact />
           </>
         ) : currentHash.startsWith('#dhayananth-sagar') ? (
           <>
-            <DayanandaHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <DayanandaHero onEnquiryClick={handleEnquiryClick} />
             <DayanandaAbout />
             <ManipalWhyChoose />
-            <ManipalPrograms />
+            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
             <ManipalFaq />
             <VITHiringPartners />
             <VITContact />
           </>
         ) : currentHash.startsWith('#alliance') ? (
           <>
-            <AllianceHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <AllianceHero onEnquiryClick={handleEnquiryClick} />
             <AllianceAbout />
             <ManipalWhyChoose />
-            <ManipalPrograms />
+            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
             <ManipalFaq />
             <VITHiringPartners />
             <VITContact />
           </>
         ) : currentHash.startsWith('#jain') ? (
           <>
-            <JainHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <JainHero onEnquiryClick={handleEnquiryClick} />
             <JainAbout />
             <JainWhyChoose />
-            <ManipalPrograms />
+            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
             <ManipalFaq />
             <VITHiringPartners />
             <VITContact />
@@ -286,17 +295,17 @@ function App() {
             <BoardDetails />
             <WhyChooseUs />
             <BoardSteps />
-            <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
+            <BoardOutro onEnquiryClick={handleEnquiryClick} />
           </>
         ) : currentHash.startsWith('#nios') ? (
           <>
             <BoardHero />
             <BoardMIOS />
-            <BoardOutro onEnquiryClick={() => setEnquiryOpen(true)} />
+            <BoardOutro onEnquiryClick={handleEnquiryClick} />
           </>
         ) : currentHash.startsWith('#about') ? (
           <>
-            <AboutHero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <AboutHero onEnquiryClick={handleEnquiryClick} />
             <AboutAcademy />
             <AboutPhilosophy />
             <AboutPartnerships />
@@ -324,7 +333,7 @@ function App() {
           </>
         ) : (
           <>
-            <Hero onEnquiryClick={() => setEnquiryOpen(true)} />
+            <Hero onEnquiryClick={handleEnquiryClick} />
             <Success />
             <Courses 
               toggleLike={toggleLike} 
@@ -471,6 +480,9 @@ function App() {
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#2ca785] focus:border-transparent transition-all bg-white"
                     >
                       <option value="">Choose Course Level</option>
+                      {enquiryForm.course && !['UG', 'PG', '10th_12th', ''].includes(enquiryForm.course) && (
+                        <option value={enquiryForm.course}>{enquiryForm.course}</option>
+                      )}
                       <option value="UG">UG Degrees (B.A, B.Sc, B.Com, BBA, BCA)</option>
                       <option value="PG">PG Degrees (M.A, M.Sc, M.Com, MBA, MCA)</option>
                       <option value="10th_12th">10th & 12th NIOS/BOSSE Exams</option>

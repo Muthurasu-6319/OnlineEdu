@@ -98,7 +98,7 @@ export default function BharathidasanHero({ onEnquiryClick }) {
             
             <div className="flex flex-wrap items-center gap-6 pt-2">
               <a 
-                href="#course" 
+                href="/#course" 
                 className="border-2 border-slate-400 hover:bg-slate-900 hover:text-white text-slate-800 font-semibold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 inline-block text-center bg-white/20"
               >
                 View Courses

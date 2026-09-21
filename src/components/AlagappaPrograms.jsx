@@ -1,7 +1,7 @@
 import React from 'react';
 import { BookOpen, Award, GraduationCap, Briefcase, FileText, User } from 'lucide-react';
 
-export default function AlagappaPrograms() {
+export default function AlagappaPrograms({ onEnquiryClick }) {
   const cards = [
     {
       title: 'UG Program Arts',

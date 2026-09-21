@@ -15,14 +15,14 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
           
           {/* Logo - VNET */}
           <div className="flex-shrink-0 flex items-center">
-            <a href="#home" className="flex items-center gap-2">
+            <a href="/#home" className="flex items-center gap-2">
               <img src={vnetLogo} alt="VNET DISTANCE ACADEMY" className="h-12 w-auto object-contain" />
             </a>
           </div>
 
           {/* Navigation Links - Desktop */}
           <nav className="hidden md:flex space-x-8 items-center">
-            <a href="#home" className="text-[#2ca785] font-semibold text-sm transition-colors duration-200">
+            <a href="/#home" className="text-[#2ca785] font-semibold text-sm transition-colors duration-200">
               Home
             </a>
             
@@ -43,8 +43,8 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
                     <ChevronRight size={14} />
                   </div>
                   <div className="absolute left-full top-0 hidden group-hover/distance:block w-64 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50 -ml-1">
-                    <a href="#alagappa" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alagappa University</a>
-                    <a href="#bharathidasan" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
+                    <a href="/#alagappa" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alagappa University</a>
+                    <a href="/#bharathidasan" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Bharathidasan University</a>
                   </div>
                 </div>
 
@@ -55,15 +55,15 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
                     <ChevronRight size={14} />
                   </div>
                   <div className="absolute left-full top-0 hidden group-hover/online:block w-72 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50 -ml-1 max-h-[70vh] overflow-y-auto">
-                    <a href="#amity" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
-                    <a href="#vit-vellore" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">VIT Vellore</a>
-                    <a href="#alliance" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alliance Bangalore</a>
-                    <a href="#christ" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Christ Bangalore</a>
-                    <a href="#andhra" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Andhra University Vishakapatnam</a>
-                    <a href="#jain" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Jain University</a>
-                    <a href="#sikkim-manipal" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Sikkim Manipal University</a>
-                    <a href="#manipal-jaipur" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Manipal University Jaipur</a>
-                    <a href="#dhayananth-sagar" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Dhayananth Sagar University Bangalore</a>
+                    <a href="/#amity" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Amity University</a>
+                    <a href="/#vit-vellore" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">VIT Vellore</a>
+                    <a href="/#alliance" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Alliance Bangalore</a>
+                    <a href="/#christ" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Christ Bangalore</a>
+                    <a href="/#andhra" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Andhra University Vishakapatnam</a>
+                    <a href="/#jain" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Jain University</a>
+                    <a href="/#sikkim-manipal" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Sikkim Manipal University</a>
+                    <a href="/#manipal-jaipur" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Manipal University Jaipur</a>
+                    <a href="/#dhayananth-sagar" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">Dhayananth Sagar University Bangalore</a>
                   </div>
                 </div>
               </div>
@@ -86,8 +86,8 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
                     <ChevronRight size={14} />
                   </div>
                   <div className="absolute left-full top-0 hidden group-hover/distanceCourse:block w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50 -ml-1">
-                    <a href="#ug-courses-distance" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
-                    <a href="#pg-courses-distance" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
+                    <a href="/#ug-courses-distance" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
+                    <a href="/#pg-courses-distance" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
                   </div>
                 </div>
 
@@ -98,8 +98,8 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
                     <ChevronRight size={14} />
                   </div>
                   <div className="absolute left-full top-0 hidden group-hover/onlineCourse:block w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50 -ml-1">
-                    <a href="#ug-courses-online" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
-                    <a href="#pg-courses-online" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
+                    <a href="/#ug-courses-online" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">UG Courses</a>
+                    <a href="/#pg-courses-online" className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">PG Courses</a>
                   </div>
                 </div>
               </div>
@@ -117,19 +117,19 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
               
               {boardDropdownOpen && (
                 <div className="absolute left-0 mt-3 w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
-                  <a href="#board" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">BOSSE</a>
-                  <a href="#nios" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">NIOS</a>
+                  <a href="/#board" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">BOSSE</a>
+                  <a href="/#nios" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">NIOS</a>
                 </div>
               )}
             </div>
 
-            <a href="#about" className="text-slate-700 hover:text-[#2ca785] font-semibold text-sm transition-colors duration-200">
+            <a href="/#about" className="text-slate-700 hover:text-[#2ca785] font-semibold text-sm transition-colors duration-200">
               About
             </a>
-            <a href="#testimonials-page" className="text-slate-700 hover:text-[#2ca785] font-semibold text-sm transition-colors duration-200">
+            <a href="/#testimonials-page" className="text-slate-700 hover:text-[#2ca785] font-semibold text-sm transition-colors duration-200">
               Testimonials
             </a>
-            <a href="#contact" className="text-slate-700 hover:text-[#2ca785] font-semibold text-sm transition-colors duration-200 whitespace-nowrap">
+            <a href="/#contact" className="text-slate-700 hover:text-[#2ca785] font-semibold text-sm transition-colors duration-200 whitespace-nowrap">
               Contact Us
             </a>
           </nav>
@@ -186,7 +186,7 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           </div>
 
-          <a href="#home" className="block px-3 py-2 rounded-md text-[#2ca785] font-semibold text-base">
+          <a href="/#home" className="block px-3 py-2 rounded-md text-[#2ca785] font-semibold text-base">
             Home
           </a>
           <button 
@@ -200,20 +200,20 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             <div className="pl-6 space-y-2">
               <div className="text-sm font-semibold text-slate-700 py-1">Distance</div>
               <div className="pl-4 space-y-1 border-l-2 border-slate-100">
-                <a href="#alagappa" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alagappa University</a>
-                <a href="#bharathidasan" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Bharathidasan University</a>
+                <a href="/#alagappa" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alagappa University</a>
+                <a href="/#bharathidasan" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Bharathidasan University</a>
               </div>
               <div className="text-sm font-semibold text-slate-700 py-1 mt-2">Online</div>
               <div className="pl-4 space-y-1 border-l-2 border-slate-100">
-                <a href="#amity" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Amity University</a>
-                <a href="#vit-vellore" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">VIT Vellore</a>
-                <a href="#alliance" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alliance Bangalore</a>
-                <a href="#christ" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Christ Bangalore</a>
-                <a href="#andhra" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Andhra University Vishakapatnam</a>
-                <a href="#jain" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Jain University</a>
-                <a href="#sikkim-manipal" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Sikkim Manipal University</a>
-                <a href="#manipal-jaipur" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Manipal University Jaipur</a>
-                <a href="#dhayananth-sagar" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Dhayananth Sagar University Bangalore</a>
+                <a href="/#amity" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Amity University</a>
+                <a href="/#vit-vellore" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">VIT Vellore</a>
+                <a href="/#alliance" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Alliance Bangalore</a>
+                <a href="/#christ" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Christ Bangalore</a>
+                <a href="/#andhra" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Andhra University Vishakapatnam</a>
+                <a href="/#jain" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Jain University</a>
+                <a href="/#sikkim-manipal" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Sikkim Manipal University</a>
+                <a href="/#manipal-jaipur" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Manipal University Jaipur</a>
+                <a href="/#dhayananth-sagar" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">Dhayananth Sagar University Bangalore</a>
               </div>
             </div>
           )}
@@ -229,13 +229,13 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
             <div className="pl-6 space-y-2">
               <div className="text-sm font-semibold text-slate-700 py-1">Distance</div>
               <div className="pl-4 space-y-1 border-l-2 border-slate-100">
-                <a href="#ug-courses-distance" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">UG Courses</a>
-                <a href="#pg-courses-distance" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">PG Courses</a>
+                <a href="/#ug-courses-distance" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">UG Courses</a>
+                <a href="/#pg-courses-distance" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">PG Courses</a>
               </div>
               <div className="text-sm font-semibold text-slate-700 py-1 mt-2">Online</div>
               <div className="pl-4 space-y-1 border-l-2 border-slate-100">
-                <a href="#ug-courses-online" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">UG Courses</a>
-                <a href="#pg-courses-online" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">PG Courses</a>
+                <a href="/#ug-courses-online" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">UG Courses</a>
+                <a href="/#pg-courses-online" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">PG Courses</a>
               </div>
             </div>
           )}
@@ -249,18 +249,18 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
           </button>
           {boardDropdownOpen && (
             <div className="pl-6 space-y-1">
-              <a href="#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">BOSSE</a>
-              <a href="#nios" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">NIOS</a>
+              <a href="/#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">BOSSE</a>
+              <a href="/#nios" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">NIOS</a>
             </div>
           )}
 
-          <a href="#about" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
+          <a href="/#about" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             About
           </a>
-          <a href="#testimonials-page" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
+          <a href="/#testimonials-page" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             Testimonials
           </a>
-          <a href="#contact" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
+          <a href="/#contact" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-slate-600 font-medium text-base">
             Contact Us
           </a>
           

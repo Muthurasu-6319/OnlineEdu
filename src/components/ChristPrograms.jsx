@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 
-export default function ChristPrograms() {
+export default function ChristPrograms({ onEnquiryClick }) {
   const [activeTab, setActiveTab] = useState('UG');
 
   const programs = {
@@ -96,7 +96,7 @@ export default function ChristPrograms() {
                 </p>
               </div>
               
-              <button className="mt-8 self-start border border-purple-300 text-purple-500 hover:bg-purple-50 font-semibold text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors">
+              <button className="mt-8 self-start border border-purple-300 text-purple-500 hover:bg-purple-50 font-semibold text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors" onClick={() => onEnquiryClick(program.title, 'Christ University')}>
                 Apply NOW <ArrowRight size={14} />
               </button>
             </div>
