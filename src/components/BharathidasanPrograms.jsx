@@ -1,7 +1,38 @@
-import React from 'react';
-import { BookOpen, GraduationCap, Briefcase, FileText, User, Award, Monitor } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { BookOpen, GraduationCap, Briefcase, FileText, User, Award, Monitor, ArrowRight } from 'lucide-react';
+import BASE_URL from '../api.js';
 
 export default function BharathidasanPrograms({ onEnquiryClick }) {
+  const [dbPrograms, setDbPrograms] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/api/university-courses`);
+        if (res.ok) {
+          const data = await res.json();
+          const uniCourses = data.filter(c => c.university === 'Bharathidasan University');
+          
+          const formatted = uniCourses.map(c => ({
+            title: c.title,
+            subtitle: c.description,
+            level: c.level,
+            image: c.image ? (c.image.startsWith('http') || c.image.startsWith('data:') ? c.image : `${BASE_URL}${c.image}`) : ''
+          }));
+          
+          setDbPrograms(formatted);
+        }
+      } catch (err) {
+        console.error('Failed to fetch university courses', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchCourses();
+  }, []);
+
   const cards = [
     {
       title: 'UG Program Arts',
@@ -160,6 +191,47 @@ export default function BharathidasanPrograms({ onEnquiryClick }) {
             );
           })}
         </div>
+
+        {/* Dynamically Added Courses from Admin Panel */}
+        {dbPrograms.length > 0 && (
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+                <span className="text-[#1a2b6d]">More </span>
+                <span className="text-[#2ca785]">Programs</span>
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {dbPrograms.map((program, index) => (
+                <div 
+                  key={index}
+                  className="bg-white rounded-md p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] flex flex-col"
+                >
+                  <img 
+                    src={program.image} 
+                    alt={program.title} 
+                    className="w-full h-48 object-cover rounded mb-6"
+                  />
+                  <div className="flex-grow flex flex-col items-start gap-2">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mb-2">
+                      {program.level}
+                    </span>
+                    <h3 className="text-xl font-black text-purple-500 uppercase tracking-wide">
+                      {program.title}
+                    </h3>
+                    <p className="text-[10px] font-bold text-slate-700 uppercase tracking-widest leading-relaxed">
+                      {program.subtitle}
+                    </p>
+                  </div>
+                  
+                  <button className="mt-8 self-start border border-purple-300 text-purple-500 hover:bg-purple-50 font-semibold text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors" onClick={() => onEnquiryClick(program.title, 'Bharathidasan University')}>
+                    Apply NOW <ArrowRight size={14} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
       </div>
     </section>

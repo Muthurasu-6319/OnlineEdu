@@ -259,7 +259,7 @@ function App() {
           <>
             <DayanandaHero onEnquiryClick={handleEnquiryClick} />
             <DayanandaAbout />
-            <ManipalWhyChoose />
+            <ManipalWhyChoose universityName="Dayananda Sagar" />
             <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
             <ManipalFaq />
             <VITHiringPartners />
@@ -269,7 +269,7 @@ function App() {
           <>
             <AllianceHero onEnquiryClick={handleEnquiryClick} />
             <AllianceAbout />
-            <ManipalWhyChoose />
+            <ManipalWhyChoose universityName="Alliance" />
             <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
             <ManipalFaq />
             <VITHiringPartners />

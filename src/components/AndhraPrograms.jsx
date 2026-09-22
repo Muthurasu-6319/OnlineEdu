@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import BASE_URL from '../api.js';
 import { ArrowRight } from 'lucide-react';
 
 export default function AndhraPrograms({ onEnquiryClick }) {
   const [activeTab, setActiveTab] = useState('UG');
+  const [dbPrograms, setDbPrograms] = useState({ UG: [], PG: [] });
+  const [loading, setLoading] = useState(true);
 
-  const programs = {
+  const hardcodedPrograms = {
     UG: [
       {
         title: 'BBA',
@@ -36,7 +39,44 @@ export default function AndhraPrograms({ onEnquiryClick }) {
     ]
   };
 
-  const displayPrograms = activeTab === 'UG' ? programs.UG : programs.PG;
+  
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/api/university-courses`);
+        if (res.ok) {
+          const data = await res.json();
+          const uniCourses = data.filter(c => c.university === 'Andhra University Vishakapatnam');
+          
+          const grouped = { UG: [], PG: [] };
+          uniCourses.forEach(c => {
+            const courseObj = {
+              title: c.title,
+              subtitle: c.description,
+              image: c.image ? (c.image.startsWith('http') || c.image.startsWith('data:') ? c.image : `${BASE_URL}${c.image}`) : ''
+            };
+            if (c.level === 'UG') grouped.UG.push(courseObj);
+            else if (c.level === 'PG') grouped.PG.push(courseObj);
+          });
+          
+          setDbPrograms(grouped);
+        }
+      } catch (err) {
+        console.error('Failed to fetch university courses', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchCourses();
+  }, []);
+
+  const programsToUse = {
+    UG: dbPrograms.UG.length > 0 ? dbPrograms.UG : (hardcodedPrograms.UG || []),
+    PG: dbPrograms.PG.length > 0 ? dbPrograms.PG : (hardcodedPrograms.PG || []),
+  };
+
+  const displayPrograms = activeTab === 'UG' ? programsToUse.UG : programsToUse.PG;
 
   return (
     <section className="bg-gradient-to-br from-white via-white to-purple-50 py-20 px-6 md:px-12 lg:px-24">
