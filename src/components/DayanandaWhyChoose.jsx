@@ -1,23 +1,23 @@
 import React from 'react';
-import { Briefcase, LineChart, GraduationCap, MonitorPlay } from 'lucide-react';
+import { Award, Cpu, Users, Rocket } from 'lucide-react';
 
 export default function DayanandaWhyChoose() {
   const reasons = [
     {
-      title: "Job Placement Assistance",
-      icon: <Briefcase className="w-6 h-6 text-purple-500" />
+      title: 'NAAC A+ Accreditation & National Rankings',
+      icon: <Award className="w-6 h-6 text-purple-500" />
     },
     {
-      title: "Flexible Online Learning",
-      icon: <LineChart className="w-6 h-6 text-purple-200" />
+      title: 'Industry-Embedded Labs & Tech Partnerships (IBM, NVIDIA, Bosch)',
+      icon: <Cpu className="w-6 h-6 text-purple-200" />
     },
     {
-      title: "100% placement assistance",
-      icon: <GraduationCap className="w-6 h-6 text-purple-100" />
+      title: '60-Year Educational Heritage & 10,000+ Alumni Network',
+      icon: <Users className="w-6 h-6 text-purple-100" />
     },
     {
-      title: "Skill Enhancement Workshops",
-      icon: <MonitorPlay className="w-6 h-6 text-purple-300" />
+      title: 'Govt-Backed Startup Incubation (DERBI Foundation)',
+      icon: <Rocket className="w-6 h-6 text-purple-300" />
     }
   ];
 
@@ -28,7 +28,7 @@ export default function DayanandaWhyChoose() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2 uppercase tracking-wide">
-            WHY CHOOSE DSU Online
+            FACILITIES
           </h2>
           <p className="text-slate-300 text-lg">
             Unlock The 360° Advantage

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BASE_URL from '../api.js';
 import { ArrowRight } from 'lucide-react';
 
-export default function ManipalPrograms({ onEnquiryClick, universityName = 'Manipal University Jaipur' }) {
+export default function SikkimManipalPrograms({ onEnquiryClick }) {
   const [activeTab, setActiveTab] = useState('UG');
   const [dbPrograms, setDbPrograms] = useState({ UG: [], PG: [] });
   const [loading, setLoading] = useState(true);
@@ -51,7 +51,7 @@ export default function ManipalPrograms({ onEnquiryClick, universityName = 'Mani
         const res = await fetch(`${BASE_URL}/api/university-courses`);
         if (res.ok) {
           const data = await res.json();
-          const uniCourses = data.filter(c => c.university === universityName);
+          const uniCourses = data.filter(c => c.university === 'Sikkim Manipal University');
           
           const grouped = { UG: [], PG: [] };
           uniCourses.forEach(c => {
@@ -88,7 +88,7 @@ export default function ManipalPrograms({ onEnquiryClick, universityName = 'Mani
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
         <h2 className="text-4xl md:text-5xl font-extrabold text-[#1f153a] mb-10 text-center leading-tight tracking-tight">
-          {universityName} <br /> Programes
+          Sikkim Manipal University <br /> Programes
         </h2>
 
         {/* Tabs */}
@@ -136,7 +136,7 @@ export default function ManipalPrograms({ onEnquiryClick, universityName = 'Mani
                 </p>
               </div>
               
-              <button className="mt-8 self-start border border-purple-300 text-purple-500 hover:bg-purple-50 font-semibold text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors" onClick={() => onEnquiryClick(program.title, universityName)}>
+              <button className="mt-8 self-start border border-purple-300 text-purple-500 hover:bg-purple-50 font-semibold text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors" onClick={() => onEnquiryClick(program.title, 'Sikkim Manipal University')}>
                 Apply NOW <ArrowRight size={14} />
               </button>
             </div>

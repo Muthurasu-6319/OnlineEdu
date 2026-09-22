@@ -1,36 +1,36 @@
 import React from 'react';
-import { Award, Globe, Building, Users, BookOpen, Briefcase } from 'lucide-react';
+import { Lightbulb, Cpu, CreditCard, Laptop, Briefcase, BookOpen } from 'lucide-react';
 
-export default function ManipalWhyChoose({ universityName = 'Manipal' }) {
+export default function AllianceWhyChoose() {
   const features = [
     {
-      title: 'NAAC A+ Accreditation, UGC Approval & Top-100 NIRF Ranking',
-      icon: <Award size={24} className="text-white" />,
+      title: 'Future-Driven Specializations',
+      icon: <Lightbulb size={24} className="text-white" />,
       iconBg: 'bg-purple-500',
     },
     {
-      title: 'Global Degree Recognition (WES, ICES, IQAS, ACU)',
-      icon: <Globe size={24} className="text-purple-500" />,
+      title: 'Industry-Aligned Curriculum with AI Integration',
+      icon: <Cpu size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     },
     {
-      title: '70+ Year Manipal Group Educational Legacy',
-      icon: <Building size={24} className="text-purple-500" />,
+      title: 'Easy Zero Cost EMI Facilities',
+      icon: <CreditCard size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     },
     {
-      title: '150,000+ Strong Global Alumni Network',
-      icon: <Users size={24} className="text-purple-500" />,
+      title: 'Seamless, Smart, Student-Friendly LMS',
+      icon: <Laptop size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     },
     {
-      title: 'Industry-Driven Curriculum & Emerging Tech Certifications',
-      icon: <BookOpen size={24} className="text-purple-500" />,
-      iconBg: 'bg-purple-100',
-    },
-    {
-      title: 'Active Placement Support & 100+ Corporate Recruiters',
+      title: 'Unmatched Career Support',
       icon: <Briefcase size={24} className="text-purple-500" />,
+      iconBg: 'bg-purple-100',
+    },
+    {
+      title: 'Access to an Expansive Digital Library',
+      icon: <BookOpen size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     }
   ];
@@ -41,7 +41,7 @@ export default function ManipalWhyChoose({ universityName = 'Manipal' }) {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider uppercase">
-            FACILITIES AT {universityName}
+            FACILITIES AT ALLIANCE UNIVERSITY
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-sm leading-relaxed">
             Unlock The 360° Advantage

@@ -9,11 +9,36 @@ export default function AndhraAbout() {
         {/* Left Side: Content */}
         <div className="w-full lg:w-1/2 flex flex-col items-start space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-[#2a304e]">
-            About Andhra University Online
+            About Andhra University - Online Degree Programs
           </h2>
           <p className="text-[#374151] font-medium leading-relaxed">
-            Andhra University is one of India's established public universities, offering a wide range of undergraduate, postgraduate, and professional education programs. Through flexible learning options, students can pursue higher education while managing work and other commitments.
+            Andhra University, established in 1926, boasts nearly a century of academic excellence. Re-accredited with a prestigious NAAC 'A++' Grade and ranked 23rd in the NIRF University Category, the institution offers top-tier higher education. Through its dedicated digital distance-learning platform, Andhra University provides UGC-entitled online postgraduate degree programs—including MBA, MCA, and M.A. in Sociology.
           </p>
+          <p className="text-[#374151] font-medium leading-relaxed">
+            Designed specifically for working professionals and learners needing flexibility, these online programs combine live interactive lectures, 24/7 access to learning resources via a dedicated LMS, and networking opportunities with industry experts and faculty. The curriculum equips students with practical domain expertise while matching the academic rigor of traditional on-campus degrees.
+          </p>
+          
+          <div className="mt-4 w-full">
+            <h3 className="text-lg font-bold text-[#2ca785] mb-3">Accreditations / Rankings</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>NIRF Rank 23</strong> (University Category)</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>NAAC A++ Accredited</strong></span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>UGC-Entitled</strong> Online Degree Programs</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>ISO 9001:2015 Certified</strong></span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Right Side: Image */}

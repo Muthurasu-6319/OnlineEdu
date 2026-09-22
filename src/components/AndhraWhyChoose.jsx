@@ -1,23 +1,23 @@
 import React from 'react';
-import { BookOpen, LineChart, GraduationCap, Briefcase } from 'lucide-react';
+import { Award, BookOpen, Video, Users } from 'lucide-react';
 
 export default function AndhraWhyChoose() {
   const reasons = [
     {
-      title: "Learning Pedagogy",
-      icon: <BookOpen className="w-6 h-6 text-purple-500" />
+      title: "NAAC A++ Accreditation & 23rd NIRF Ranking",
+      icon: <Award className="w-6 h-6 text-purple-500" />
     },
     {
-      title: "Flexible Online Learning",
-      icon: <LineChart className="w-6 h-6 text-purple-200" />
+      title: "Flexible & Convenient Online Pedagogy",
+      icon: <BookOpen className="w-6 h-6 text-purple-200" />
     },
     {
-      title: "100% placement assistance",
-      icon: <GraduationCap className="w-6 h-6 text-purple-100" />
+      title: "Live Interactive Lectures & 24x7 LMS Resources",
+      icon: <Video className="w-6 h-6 text-purple-100" />
     },
     {
-      title: "Career-Focused Education",
-      icon: <Briefcase className="w-6 h-6 text-purple-300" />
+      title: "Networking Opportunities with Industry Mentors",
+      icon: <Users className="w-6 h-6 text-purple-300" />
     }
   ];
 
@@ -28,7 +28,7 @@ export default function AndhraWhyChoose() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2 uppercase tracking-wide">
-            WHY CHOOSE ANDHRA UNIVERSITY
+            FACILITIES AT ANDHRA UNIVERSITY
           </h2>
           <p className="text-slate-300 text-lg">
             Unlock The 360° Advantage

@@ -1,38 +1,28 @@
 import React from 'react';
-import { Award, Globe, Building, Users, BookOpen, Briefcase } from 'lucide-react';
+import { Award, BookOpen, Monitor, Video } from 'lucide-react';
 
-export default function ManipalWhyChoose({ universityName = 'Manipal' }) {
+export default function SikkimManipalWhyChoose({ universityName = 'Sikkim Manipal' }) {
   const features = [
     {
-      title: 'NAAC A+ Accreditation, UGC Approval & Top-100 NIRF Ranking',
+      title: 'NAAC A+ Accreditation, UGC Entitlement & AICTE Compliance',
       icon: <Award size={24} className="text-white" />,
       iconBg: 'bg-purple-500',
     },
     {
-      title: 'Global Degree Recognition (WES, ICES, IQAS, ACU)',
-      icon: <Globe size={24} className="text-purple-500" />,
-      iconBg: 'bg-purple-100',
-    },
-    {
-      title: '70+ Year Manipal Group Educational Legacy',
-      icon: <Building size={24} className="text-purple-500" />,
-      iconBg: 'bg-purple-100',
-    },
-    {
-      title: '150,000+ Strong Global Alumni Network',
-      icon: <Users size={24} className="text-purple-500" />,
-      iconBg: 'bg-purple-100',
-    },
-    {
-      title: 'Industry-Driven Curriculum & Emerging Tech Certifications',
+      title: 'Central Library & Digital Library',
       icon: <BookOpen size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     },
     {
-      title: 'Active Placement Support & 100+ Corporate Recruiters',
-      icon: <Briefcase size={24} className="text-purple-500" />,
+      title: 'Proctored Online Examinations (OEBS)',
+      icon: <Monitor size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
-    }
+    },
+    {
+      title: 'Live Interactive & Recorded Classes',
+      icon: <Video size={24} className="text-purple-500" />,
+      iconBg: 'bg-purple-100',
+    },
   ];
 
   return (
@@ -49,7 +39,7 @@ export default function ManipalWhyChoose({ universityName = 'Manipal' }) {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {features.map((feature, index) => (
             <div 
               key={index}

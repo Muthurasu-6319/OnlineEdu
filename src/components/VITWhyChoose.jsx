@@ -1,26 +1,31 @@
 import React from 'react';
-import { CalendarCheck, TrendingUp, Pencil, Laptop } from 'lucide-react';
+import { Briefcase, BookOpen, Globe, Beaker, Users } from 'lucide-react';
 
 export default function VITWhyChoose() {
   const features = [
     {
-      title: 'UGC Entitled Degrees',
-      icon: <CalendarCheck size={24} className="text-purple-600" />,
+      title: 'Strong Placements',
+      icon: <Briefcase size={24} className="text-purple-600" />,
       iconBg: 'bg-purple-100',
     },
     {
-      title: 'VIT Faculty & Industry Experts',
-      icon: <TrendingUp size={24} className="text-purple-600" />,
+      title: 'Flexible Academics',
+      icon: <BookOpen size={24} className="text-purple-600" />,
       iconBg: 'bg-purple-50',
     },
     {
-      title: 'Industry-Focused Curriculum',
-      icon: <Pencil size={24} className="text-purple-600" />,
+      title: 'Global Exposure',
+      icon: <Globe size={24} className="text-purple-600" />,
       iconBg: 'bg-purple-50',
     },
     {
-      title: 'Flexible Learning',
-      icon: <Laptop size={24} className="text-purple-600" />,
+      title: 'Practical & Research Opportunities',
+      icon: <Beaker size={24} className="text-purple-600" />,
+      iconBg: 'bg-purple-50',
+    },
+    {
+      title: 'Vibrant Campus Life',
+      icon: <Users size={24} className="text-purple-600" />,
       iconBg: 'bg-purple-50',
     },
   ];
@@ -31,10 +36,10 @@ export default function VITWhyChoose() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-wider uppercase">
-            WHY CHOOSE VIT
+            FACILITIES AT VIT
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-sm leading-relaxed">
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+            Unlock The 360° Advantage
           </p>
         </div>
 

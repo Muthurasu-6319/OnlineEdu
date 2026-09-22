@@ -9,13 +9,44 @@ export default function JainAbout() {
         {/* Left Side: Content */}
         <div className="w-full lg:w-1/2 flex flex-col items-start space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-[#2a304e]">
-            About Jain University Online
+            About JAIN (Deemed-to-be University)
           </h2>
           <p className="text-[#374151] font-medium leading-relaxed">
-            Ranked among the top universities in India and considered a cerebral destination for students across the world and Bangalore in particular, for its illustrious history of developing talent, JAIN (Deemed-to-be University) is a hub for learning in every sense of the word.
-            <br/><br/>
-            The University which is based in Bangalore – the Silicon Valley of India, offers a conducive environment for learning, be it academically or extracurricular activities. Known for its emphasis on education, entrepreneurship, research and sports, JAIN (Deemed-to-be University) has some of the best minds in the educational and research fields, and centers that inspire entrepreneurship and groundbreaking work to simplify and manage life better.
+            JAIN (Deemed-to-be University) Centre for Distance and Online Education offers career-focused, globally recognized undergraduate and postgraduate degree programs designed for ambitious students and working professionals.
           </p>
+          <p className="text-[#374151] font-medium leading-relaxed">
+            Accredited with an A++ grade by NAAC and entitled by UGC-DEB, our programs feature a 100% flexible self-paced learning management system (LMS), live weekend masterclasses, and dedicated placement support—enabling learners to elevate their careers anytime, anywhere without interrupting their professional journey.
+          </p>
+          
+          <div className="mt-4 w-full">
+            <h3 className="text-lg font-bold text-[#2ca785] mb-3">Accreditations / Rankings</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>NAAC A++ Grade</strong></span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>UGC-DEB Entitled</strong></span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>NIRF Top 100</strong></span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>AICTE Approved</strong></span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>QS World Ranked</strong></span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>AIU Member</strong></span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Right Side: Image */}

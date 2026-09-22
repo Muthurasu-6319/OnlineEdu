@@ -1,10 +1,11 @@
 import React from 'react';
 
-export default function VITHiringPartners() {
+export default function ChristHiringPartners() {
   const partners = [
-    'Microsoft', 'Amazon', 'Google', 'TCS', 'Infosys', 
-    'Wipro', 'Accenture', 'Deloitte', 'PwC', 'Cognizant', 
-    'Cisco', 'Intel', 'Qualcomm', 'Adobe', 'Morgan Stanley'
+    'Amazon', 'Deloitte', 'Ernst & Young (EY)', 'KPMG', 'PwC', 
+    'Goldman Sachs', 'JP Morgan Chase & Co.', 'McKinsey & Company', 
+    'Boston Consulting Group (BCG)', 'Bain & Company', 'Infosys', 
+    'TCS', 'Wipro', 'Accenture', 'Cognizant', 'Cisco'
   ];
 
   return (

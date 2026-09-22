@@ -8,11 +8,36 @@ export default function VITAbout() {
         {/* Left Text */}
         <div className="lg:w-1/2 w-full flex flex-col gap-6">
           <h2 className="text-3xl font-extrabold text-[#111827]">
-            About Vit University Online
+            About Vellore Institute of Technology (VIT)
           </h2>
           <p className="text-[13px] font-medium text-slate-800 leading-[1.8] text-justify tracking-tight">
-            VIT was established with the aim of providing quality higher education on par with international standards. It persistently seeks and adopts innovative methods to improve the quality of higher education on a consistent basis.The campus has a cosmopolitan atmosphere with students from all corners of the globe. Experienced and learned teachers are strongly encouraged to nurture the students. The global standards set at VIT in the field of teaching and research spur us on in our relentless pursuit of excellence. In fact, it has become a way of life for us. The highly motivated youngsters on the campus are a constant source of pride. Our Memoranda of Understanding with various international universities are our major strength. They provide for an exchange of students and faculty and encourage joint research projects for the mutual benefit of these universities. Many of our students, who pursue their research projects in foreign universities, bring high quality to their work and esteem to India and have done us proud. With steady steps, we continue our march forward. We look forward to meeting you here at VIT.
+            Vellore Institute of Technology (VIT) is a top-ranked private deemed university based in Vellore, Tamil Nadu, India. Established in 1984, the institution offers a wide array of undergraduate, postgraduate, integrated, and doctoral programs across engineering, science, management, architecture, and humanities.
           </p>
+          <p className="text-[13px] font-medium text-slate-800 leading-[1.8] text-justify tracking-tight">
+            Recognized as an Institution of Eminence by the Government of India, VIT is accredited with a NAAC 'A++' Grade and consistently ranks among the top engineering and research universities in India (ranked 16th in Engineering and 14th in University Category by NIRF). The university is renowned for its global partnerships, advanced research centers, flexible credit system, and strong placement records with major national and international recruiters.
+          </p>
+          
+          <div className="mt-4">
+            <h3 className="text-lg font-bold text-[#2ca785] mb-3">Accreditations / Rankings</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>NAAC A++ Accredited</strong></span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>NIRF Rankings:</strong> #14 in University Category, #14 in Research, #16 in Engineering, #21 in Overall Category</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>Shanghai ARWU:</strong> Top 2 in India (501–600 Globally)</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>QS World University Rankings:</strong> 119th globally in Engineering & Technology</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Right Image */}

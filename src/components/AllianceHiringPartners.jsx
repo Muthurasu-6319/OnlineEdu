@@ -1,10 +1,9 @@
 import React from 'react';
 
-export default function VITHiringPartners() {
+export default function AllianceHiringPartners() {
   const partners = [
-    'Microsoft', 'Amazon', 'Google', 'TCS', 'Infosys', 
-    'Wipro', 'Accenture', 'Deloitte', 'PwC', 'Cognizant', 
-    'Cisco', 'Intel', 'Qualcomm', 'Adobe', 'Morgan Stanley'
+    'Aditya Birla', 'Altair', 'CavinKare', 'Cafe Coffee Day', 
+    'Exide', 'CBRE', 'GoMMT', 'FactSet', 'Digit'
   ];
 
   return (

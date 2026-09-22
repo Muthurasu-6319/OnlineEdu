@@ -8,12 +8,44 @@ export default function ChristAbout() {
         {/* Left Text */}
         <div className="lg:w-1/2 w-full flex flex-col gap-6">
           <h2 className="text-3xl font-extrabold text-[#111827]">
-            About Christ University Online
+            About CHRIST (Deemed to be University)
           </h2>
           <p className="text-[13px] font-medium text-slate-800 leading-[1.8] text-justify tracking-tight">
-            CHRIST (Deemed to be University) was established as 'Christ College' in 1969. It undertook path-breaking initiatives in Indian higher education with the introduction of innovative and modern curricula, insistence on academic discipline, imparting of Holistic Education and adoption of global higher education practices with the support of creative and dedicated staff.<br /><br />
-            The University Grants Commission (UGC) of India conferred Autonomy to Christ College in 2004 and identified it as an Institution with Potential for Excellence in 2006. In 2008 under Section 3 of the UGC Act, 1956, the Ministry of Human Resource Development of the Government of India, declared the institution a Deemed to be University, in the name and style of Christ University.
+            CHRIST (Deemed to be University) was established in 1969 as Christ College and was declared a Deemed to be University by the Ministry of HRD, Government of India, in 2008. Built on a vision of "Excellence and Service," it is one of India's premier multi-disciplinary higher education institutions, offering comprehensive undergraduate, postgraduate, and doctoral programs across campuses in Bengaluru, Delhi-NCR, and Pune.
           </p>
+          <p className="text-[13px] font-medium text-slate-800 leading-[1.8] text-justify tracking-tight">
+            CHRIST emphasizes industry-integrated education, holistic development, and global academic partnerships. Recognized globally and nationally for academic rigor, the university consistently ranks among top institutions in major evaluations, including the Times Higher Education (THE) Asia Rankings, QS World & Asia University Rankings, WURI (World University Rankings for Innovation), and India Today-MDRA Best Colleges survey.
+          </p>
+          
+          <div className="mt-4">
+            <h3 className="text-lg font-bold text-[#2ca785] mb-3">Accreditations / Rankings</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>NAAC A+ Accredited</strong></span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>NIRF Rankings:</strong> Ranked #63 among Universities in India</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>UGC & AICTE Approved:</strong> UGC Deemed-to-be University with AICTE, BCI, and COA approvals</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>THE Asia Rankings 2026:</strong> Ranked in Times Higher Education Asia University Rankings</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>WURI 2026:</strong> World University Rankings for Innovation</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
+                <span><strong>QS Global MBA Rankings 2027:</strong> Ranked 51= in Asia</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Right Image */}

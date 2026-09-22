@@ -9,11 +9,40 @@ export default function DayanandaAbout() {
         {/* Left Side: Content */}
         <div className="w-full lg:w-1/2 flex flex-col items-start space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-[#2a304e]">
-            About Dayananda University Online
+            About Dayananda Sagar University
           </h2>
           <p className="text-[#374151] font-medium leading-relaxed">
-            DSU Online provides learners with a blend of traditional teaching-learning experience along with innovative techniques to enhance the process of learning. By integrating Information & Communication Technology, DSU Online elevates learning to meet the ever-evolving demands of the rapidly changing industry requirements. It fosters a collaborative learning environment, with a dedicated faculty to ensure that students achieve their full potential. The platform creates learning opportunities for students and enables them to forge careers in the corporate sector, public and social fields, and research.
+            Dayananda Sagar University (DSU) was established in 2014 under a Karnataka State Act, building on the legacy of Dayananda Sagar Institutions founded in the 1960s by late Sri R. Dayananda Sagar. Located near Harohalli, just 45 km from Bengaluru, the university’s modern 130-acre campus offers a scenic, pollution-free environment equipped for hands-on, experiential learning. DSU comprises eight distinct academic and research schools spanning Engineering, Commerce & Management, Computer Applications, Design, Law, Health Sciences, Journalism, and Basic Sciences.
           </p>
+          <p className="text-[#374151] font-medium leading-relaxed">
+            Designed for the digital era, DSU offers cutting-edge undergraduate and postgraduate programs that prepare students to become next-generation leaders and innovators. Students can specialize in high-demand fields such as Artificial Intelligence & Machine Learning, Data Science, Cyber Security, AI & Robotics, Product Design, and Game Design. Additionally, its advanced management programs provide specialized training in Business Analytics, Fintech, and AI to equip graduates for data-driven global leadership.
+          </p>
+          
+          <div className="mt-6">
+            <h3 className="text-xl font-bold text-[#2ca785] mb-4">Accolades</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-1">•</span>
+                <span>NAAC A+ Accredited University</span>
+              </li>
+              <li className="flex items-start gap-3 text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-1">•</span>
+                <span>Ranked #4 among new universities in Karnataka by KSURF</span>
+              </li>
+              <li className="flex items-start gap-3 text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-1">•</span>
+                <span>Top Private University according to NIRF & QS I-Gauge (Rated for Teaching, Employability, and Innovation)</span>
+              </li>
+              <li className="flex items-start gap-3 text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-1">•</span>
+                <span>Top Business School: Ranked #9 in Karnataka & #39 Nationally by IIRF; Top 5 B-School in Bangalore by Business World</span>
+              </li>
+              <li className="flex items-start gap-3 text-[#374151]">
+                <span className="text-[#2ca785] font-bold mt-1">•</span>
+                <span>Top Engineering & Innovation: Ranked #1 Emerging Engineering Institute by Times of India; recognized for Innovation & Entrepreneurship by ARIIA</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Right Side: Image */}

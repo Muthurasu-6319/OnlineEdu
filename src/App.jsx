@@ -32,16 +32,18 @@ import VITPrograms from './components/VITPrograms';
 import VITFaq from './components/VITFaq';
 import VITHiringPartners from './components/VITHiringPartners';
 import VITContact from './components/VITContact';
-import ManipalHero from './components/ManipalHero';
-import ManipalAbout from './components/ManipalAbout';
-import ManipalWhyChoose from './components/ManipalWhyChoose';
-import ManipalPrograms from './components/ManipalPrograms';
-import ManipalFaq from './components/ManipalFaq';
 import ChristHero from './components/ChristHero';
 import ChristAbout from './components/ChristAbout';
 import ChristWhyChoose from './components/ChristWhyChoose';
 import ChristPrograms from './components/ChristPrograms';
 import ChristFaq from './components/ChristFaq';
+import ChristHiringPartners from './components/ChristHiringPartners';
+import ManipalHero from './components/ManipalHero';
+import ManipalAbout from './components/ManipalAbout';
+import ManipalWhyChoose from './components/ManipalWhyChoose';
+import ManipalPrograms from './components/ManipalPrograms';
+import ManipalFaq from './components/ManipalFaq';
+import ManipalHiringPartners from './components/ManipalHiringPartners';
 import AndhraHero from './components/AndhraHero';
 import AndhraAbout from './components/AndhraAbout';
 import AndhraWhyChoose from './components/AndhraWhyChoose';
@@ -54,11 +56,15 @@ import DayanandaWhyChoose from './components/DayanandaWhyChoose';
 import DayanandaPrograms from './components/DayanandaPrograms';
 import DayanandaFaq from './components/DayanandaFaq';
 import DayanandaContact from './components/DayanandaContact';
+import DayanandaHiringPartners from './components/DayanandaHiringPartners';
 import AllianceHero from './components/AllianceHero';
 import AllianceAbout from './components/AllianceAbout';
+import AllianceWhyChoose from './components/AllianceWhyChoose';
+import AllianceHiringPartners from './components/AllianceHiringPartners';
 import JainHero from './components/JainHero';
 import JainAbout from './components/JainAbout';
 import JainWhyChoose from './components/JainWhyChoose';
+import JainHiringPartners from './components/JainHiringPartners';
 import BASE_URL from './api.js';
 import AboutHero from './components/AboutHero';
 import AboutAcademy from './components/AboutAcademy';
@@ -98,7 +104,7 @@ function App() {
   }, []);
 
   // Page-level hashes that should always scroll to the very top (hero section)
-  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#vit', '#manipal', '#christ', '#andhra', '#dhayananth-sagar', '#alliance', '#jain', '#about', '#contact', '#blog', '#course', '#testimonials-page', '#ug-courses', '#pg-courses'];
+  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#vit', '#manipal', '#sikkim-manipal', '#christ', '#andhra', '#dhayananth-sagar', '#alliance', '#jain', '#about', '#contact', '#blog', '#course', '#testimonials-page', '#ug-courses', '#pg-courses'];
 
   useEffect(() => {
     if (!currentHash || currentHash === '#home') {
@@ -229,10 +235,20 @@ function App() {
           <>
             <ManipalHero onEnquiryClick={handleEnquiryClick} />
             <ManipalAbout />
-            <ManipalWhyChoose />
-            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
+            <ManipalWhyChoose universityName="Manipal University Jaipur" />
+            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} universityName="Manipal University Jaipur" />
             <ManipalFaq />
-            <VITHiringPartners />
+            <ManipalHiringPartners />
+            <VITContact />
+          </>
+        ) : currentHash.startsWith('#sikkim-manipal') ? (
+          <>
+            <SikkimManipalHero onEnquiryClick={handleEnquiryClick} />
+            <SikkimManipalAbout />
+            <SikkimManipalWhyChoose />
+            <SikkimManipalPrograms onEnquiryClick={handleEnquiryClick} />
+            <SikkimManipalFaq />
+            <SikkimManipalHiringPartners />
             <VITContact />
           </>
         ) : currentHash.startsWith('#christ') ? (
@@ -242,7 +258,7 @@ function App() {
             <ChristWhyChoose />
             <ChristPrograms  onEnquiryClick={handleEnquiryClick} />
             <ChristFaq />
-            <VITHiringPartners />
+            <ChristHiringPartners />
             <VITContact />
           </>
         ) : currentHash.startsWith('#andhra') ? (
@@ -252,27 +268,26 @@ function App() {
             <AndhraWhyChoose />
             <AndhraPrograms  onEnquiryClick={handleEnquiryClick} />
             <AndhraFaq />
-            <VITHiringPartners />
             <AndhraContact />
           </>
         ) : currentHash.startsWith('#dhayananth-sagar') ? (
           <>
             <DayanandaHero onEnquiryClick={handleEnquiryClick} />
             <DayanandaAbout />
-            <ManipalWhyChoose universityName="Dayananda Sagar" />
-            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
+            <DayanandaWhyChoose />
+            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} universityName="Dhayananth Sagar University Bangalore" />
             <ManipalFaq />
-            <VITHiringPartners />
+            <DayanandaHiringPartners />
             <VITContact />
           </>
         ) : currentHash.startsWith('#alliance') ? (
           <>
             <AllianceHero onEnquiryClick={handleEnquiryClick} />
             <AllianceAbout />
-            <ManipalWhyChoose universityName="Alliance" />
-            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
+            <AllianceWhyChoose />
+            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} universityName="Alliance Bangalore" />
             <ManipalFaq />
-            <VITHiringPartners />
+            <AllianceHiringPartners />
             <VITContact />
           </>
         ) : currentHash.startsWith('#jain') ? (
@@ -280,33 +295,6 @@ function App() {
             <JainHero onEnquiryClick={handleEnquiryClick} />
             <JainAbout />
             <JainWhyChoose />
-            <ManipalPrograms  onEnquiryClick={handleEnquiryClick} />
-            <ManipalFaq />
-            <VITHiringPartners />
-            <VITContact />
-          </>
-        ) : currentHash.startsWith('#board') ? (
-          <>
-            <BoardHero />
-            <BoardAbout />
-            <BoardCourses />
-            <BoardPlacement />
-            <BoardIntro />
-            <BoardDetails />
-            <WhyChooseUs />
-            <BoardSteps />
-            <BoardOutro onEnquiryClick={handleEnquiryClick} />
-          </>
-        ) : currentHash.startsWith('#nios') ? (
-          <>
-            <BoardHero />
-            <BoardMIOS />
-            <BoardOutro onEnquiryClick={handleEnquiryClick} />
-          </>
-        ) : currentHash.startsWith('#about') ? (
-          <>
-            <AboutHero onEnquiryClick={handleEnquiryClick} />
-            <AboutAcademy />
             <AboutPhilosophy />
             <AboutPartnerships />
           </>

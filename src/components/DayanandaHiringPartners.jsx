@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function VITHiringPartners() {
+export default function DayanandaHiringPartners() {
   const partners = [
-    'Microsoft', 'Amazon', 'Google', 'TCS', 'Infosys', 
-    'Wipro', 'Accenture', 'Deloitte', 'PwC', 'Cognizant', 
-    'Cisco', 'Intel', 'Qualcomm', 'Adobe', 'Morgan Stanley'
+    'Amazon', 'Accenture', 'Bosch', 'Capgemini', 'Cognizant', 'Deloitte', 
+    'EY (Ernst & Young)', 'IBM', 'Infosys', 'JP Morgan Chase & Co.', 
+    'KPMG', 'LTIMindtree', 'Mercedes-Benz', 'Nokia', 'PwC', 'TCS', 'Wipro'
   ];
 
   return (
