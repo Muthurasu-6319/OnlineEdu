@@ -16,7 +16,7 @@ export default function JainHiringPartners() {
             Our Placement & Hiring Partners
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-sm leading-relaxed font-medium">
-            Collaborating with leading companies to create career opportunities for skilled and industry-ready professionals.
+            400+ active recruiters visiting annually across top corporate sectors.
           </p>
         </div>
 

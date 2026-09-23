@@ -44,6 +44,12 @@ import ManipalWhyChoose from './components/ManipalWhyChoose';
 import ManipalPrograms from './components/ManipalPrograms';
 import ManipalFaq from './components/ManipalFaq';
 import ManipalHiringPartners from './components/ManipalHiringPartners';
+import SikkimManipalHero from './components/SikkimManipalHero';
+import SikkimManipalAbout from './components/SikkimManipalAbout';
+import SikkimManipalWhyChoose from './components/SikkimManipalWhyChoose';
+import SikkimManipalPrograms from './components/SikkimManipalPrograms';
+import SikkimManipalFaq from './components/SikkimManipalFaq';
+import SikkimManipalHiringPartners from './components/SikkimManipalHiringPartners';
 import AndhraHero from './components/AndhraHero';
 import AndhraAbout from './components/AndhraAbout';
 import AndhraWhyChoose from './components/AndhraWhyChoose';
@@ -61,6 +67,7 @@ import AllianceHero from './components/AllianceHero';
 import AllianceAbout from './components/AllianceAbout';
 import AllianceWhyChoose from './components/AllianceWhyChoose';
 import AllianceHiringPartners from './components/AllianceHiringPartners';
+import AllianceFaq from './components/AllianceFaq';
 import JainHero from './components/JainHero';
 import JainAbout from './components/JainAbout';
 import JainWhyChoose from './components/JainWhyChoose';
@@ -286,7 +293,7 @@ function App() {
             <AllianceAbout />
             <AllianceWhyChoose />
             <ManipalPrograms  onEnquiryClick={handleEnquiryClick} universityName="Alliance Bangalore" />
-            <ManipalFaq />
+            <AllianceFaq />
             <AllianceHiringPartners />
             <VITContact />
           </>
@@ -295,6 +302,13 @@ function App() {
             <JainHero onEnquiryClick={handleEnquiryClick} />
             <JainAbout />
             <JainWhyChoose />
+            <JainHiringPartners />
+            <VITContact />
+          </>
+        ) : currentHash.startsWith('#about') ? (
+          <>
+            <AboutHero onEnquiryClick={handleEnquiryClick} />
+            <AboutAcademy />
             <AboutPhilosophy />
             <AboutPartnerships />
           </>

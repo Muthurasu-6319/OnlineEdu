@@ -68,7 +68,7 @@ export default function ContactDetails() {
                   EMail
                 </h3>
                 <p className="text-[#1c2d76] font-bold font-sans text-[15px] sm:text-base">
-                  vnet2023@gmail.com
+                  vnetacademy2024@gmail.com
                 </p>
               </div>
             </div>

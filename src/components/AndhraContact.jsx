@@ -35,7 +35,7 @@ export default function AndhraContact() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">My Email</p>
-                  <p className="text-sm font-semibold text-slate-700">vnet3333@gmail.com</p>
+                  <p className="text-sm font-semibold text-slate-700">vnetacademy2024@gmail.com</p>
                 </div>
               </div>
               

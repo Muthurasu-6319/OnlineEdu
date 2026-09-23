@@ -1,15 +1,15 @@
 import React from 'react';
 
-export default function ChristFaq() {
+export default function AllianceFaq() {
   const faqs = [
     {
-      question: 'What online UG and PG programs are offered by Christ University Online?',
-      answer: 'Christ University Online offers a wide range of undergraduate and postgraduate programs, including BBA, BCA, B.Com, MBA, MCA, M.Com, MA Economics, MA Journalism & Mass Communication, and M.Sc Mathematics.',
+      question: 'What online UG and PG programs are offered by Alliance University Online?',
+      answer: 'Alliance University Online offers a wide range of undergraduate and postgraduate programs, including BBA, BCA, B.Com, MBA, MCA, M.Com, MA Economics, MA Journalism & Mass Communication, and M.Sc Mathematics.',
       active: true,
     },
     {
-      question: 'Are Christ University Online degrees UGC entitled?',
-      answer: 'Yes. The online degree programs offered by Christ University Online are UGC-entitled and designed to provide a recognized higher education qualification.',
+      question: 'Are Alliance University Online degrees UGC entitled?',
+      answer: 'Yes. The online degree programs offered by Alliance University Jaipur are UGC-entitled and designed to provide a recognized higher education qualification.',
       active: false,
     },
     {
@@ -25,11 +25,11 @@ export default function ChristFaq() {
         {/* Left Side */}
         <div className="lg:w-5/12 w-full flex flex-col gap-6">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#374151] leading-tight">
-            Christ Online Programmes <br />
+            Alliance Online Programmes <br />
             FAQ Section
           </h2>
           <p className="text-sm font-semibold text-slate-600 leading-relaxed max-w-md">
-            Find answers to common questions about Christ University Online programs, eligibility, admission process, course duration, fees, examinations, and career opportunities.
+            Find answers to common questions about Alliance University Online programs, eligibility, admission process, course duration, fees, examinations, and career opportunities.
           </p>
           <button className="bg-[#a855f7] hover:bg-[#9333ea] text-white font-semibold text-sm px-8 py-3 rounded-md shadow-sm transition-colors w-max mt-2">
             Say Hello!

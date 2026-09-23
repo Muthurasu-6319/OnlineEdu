@@ -12,10 +12,13 @@ export default function JainAbout() {
             About JAIN (Deemed-to-be University)
           </h2>
           <p className="text-[#374151] font-medium leading-relaxed">
-            JAIN (Deemed-to-be University) Centre for Distance and Online Education offers career-focused, globally recognized undergraduate and postgraduate degree programs designed for ambitious students and working professionals.
+            JAIN (Deemed-to-be University) in Bangalore is a leading educational destination recognized across India and globally for its illustrious history of nurturing talent.
           </p>
           <p className="text-[#374151] font-medium leading-relaxed">
-            Accredited with an A++ grade by NAAC and entitled by UGC-DEB, our programs feature a 100% flexible self-paced learning management system (LMS), live weekend masterclasses, and dedicated placement support—enabling learners to elevate their careers anytime, anywhere without interrupting their professional journey.
+            Promoted by the JAIN University Trust, the institution offers a vibrant academic environment focused on education, entrepreneurship, research, and sports.
+          </p>
+          <p className="text-[#374151] font-medium leading-relaxed">
+            With six distinct faculties spanning Commerce, Creative Arts & Design, Engineering and Technology, Management, Humanities & Social Sciences, and Sciences across ten campuses, JAIN University empowers students through an open-minded, ever-evolving educational approach designed to foster resilience and career success.
           </p>
           
           <div className="mt-4 w-full">
@@ -23,27 +26,19 @@ export default function JainAbout() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-[#374151]">
                 <span className="text-[#2ca785] font-bold mt-0.5">•</span>
-                <span><strong>NAAC A++ Grade</strong></span>
+                <span><strong>Association of Indian Universities (AIU)</strong></span>
               </li>
               <li className="flex items-start gap-3 text-sm text-[#374151]">
                 <span className="text-[#2ca785] font-bold mt-0.5">•</span>
-                <span><strong>UGC-DEB Entitled</strong></span>
+                <span><strong>Association of Universities of Asia and the Pacific (AUAP)</strong></span>
               </li>
               <li className="flex items-start gap-3 text-sm text-[#374151]">
                 <span className="text-[#2ca785] font-bold mt-0.5">•</span>
-                <span><strong>NIRF Top 100</strong></span>
+                <span><strong>Network of International Business and Economics Schools (NIBES)</strong></span>
               </li>
               <li className="flex items-start gap-3 text-sm text-[#374151]">
                 <span className="text-[#2ca785] font-bold mt-0.5">•</span>
-                <span><strong>AICTE Approved</strong></span>
-              </li>
-              <li className="flex items-start gap-3 text-sm text-[#374151]">
-                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
-                <span><strong>QS World Ranked</strong></span>
-              </li>
-              <li className="flex items-start gap-3 text-sm text-[#374151]">
-                <span className="text-[#2ca785] font-bold mt-0.5">•</span>
-                <span><strong>AIU Member</strong></span>
+                <span><strong>Association of Commonwealth Universities (ACU)</strong></span>
               </li>
             </ul>
           </div>

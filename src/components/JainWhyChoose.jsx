@@ -4,32 +4,32 @@ import { Award, Laptop, Users, Briefcase, CreditCard, Globe } from 'lucide-react
 export default function JainWhyChoose() {
   const features = [
     {
-      title: 'UGC-DEB & NAAC A++ Credibility',
+      title: '10 Thriving Campuses',
       icon: <Award size={24} className="text-white" />,
       iconBg: 'bg-purple-500',
     },
     {
-      title: '100% Flexible Self-Paced LMS',
+      title: '35,000+ Graduates Placed',
       icon: <Laptop size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     },
     {
-      title: 'World-Class Faculty & Mentors',
+      title: '400+ Top Recruiters',
       icon: <Users size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     },
     {
-      title: 'Dedicated Placement Assistance',
+      title: '197 National & International MoUs',
       icon: <Briefcase size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     },
     {
-      title: 'Affordable Fees with 0% EMI',
+      title: '140+ Undergraduate & Postgraduate Programs',
       icon: <CreditCard size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     },
     {
-      title: '50,000+ Global Alumni Network',
+      title: 'Global Student Body from 54+ Countries',
       icon: <Globe size={24} className="text-purple-500" />,
       iconBg: 'bg-purple-100',
     }

@@ -49,7 +49,7 @@ export default function VITContact() {
                 <div>
                   <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">My Email:</h4>
                   <p className="text-xs font-bold text-slate-800">
-                    info2023@gmail.com
+                    vnetacademy2024@gmail.com
                   </p>
                 </div>
               </div>

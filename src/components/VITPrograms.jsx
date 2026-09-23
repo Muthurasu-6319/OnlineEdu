@@ -85,7 +85,7 @@ export default function VITPrograms({ onEnquiryClick }) {
     PG: dbPrograms.PG.length > 0 ? dbPrograms.PG : (hardcodedPrograms.PG || []),
   };
 
-  const displayPrograms = activeTab === 'UG' ? programsToUse.UG : programsToUse.PG;
+  const displayPrograms = programsToUse.PG;
 
   return (
     <section className="bg-gradient-to-br from-white via-white to-purple-50 py-20 px-6 md:px-12 lg:px-24">
@@ -95,29 +95,7 @@ export default function VITPrograms({ onEnquiryClick }) {
           Vit University <br /> Programes
         </h2>
 
-        {/* Tabs */}
-        <div className="flex items-center gap-4 mb-16">
-          <button 
-            onClick={() => setActiveTab('UG')}
-            className={`px-8 py-3 font-bold text-lg transition-colors ${
-              activeTab === 'UG' 
-                ? 'bg-[#0b0c2a] text-white' 
-                : 'bg-gray-200 text-[#1f2937] hover:bg-gray-300'
-            }`}
-          >
-            UG Programs
-          </button>
-          <button 
-            onClick={() => setActiveTab('PG')}
-            className={`px-8 py-3 font-bold text-lg transition-colors ${
-              activeTab === 'PG' 
-                ? 'bg-[#0b0c2a] text-white' 
-                : 'bg-gray-200 text-[#1f2937] hover:bg-gray-300'
-            }`}
-          >
-            PG Programs
-          </button>
-        </div>
+        {/* Tabs Removed */}
 
         {/* Program Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
