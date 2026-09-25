@@ -41,9 +41,7 @@ export default function ChristHero({ onEnquiryClick }) {
           {/* Subtitle */}
           <p className="text-[11px] lg:text-xs font-semibold text-slate-500 uppercase tracking-widest leading-relaxed mt-4">
             RANKING AND RECOGNITION · Christ <br />
-            university Global Rankings · Manipal Best <br />
-            Institution of the world in the Engineering <br />
-            and Technology
+            university Global Rankings
           </p>
           {/* Using text precisely as shown in the screenshot */}
 

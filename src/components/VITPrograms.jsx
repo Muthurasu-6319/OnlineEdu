@@ -113,9 +113,17 @@ export default function VITPrograms({ onEnquiryClick }) {
                 <h3 className="text-xl font-black text-purple-500 uppercase tracking-wide">
                   {program.title}
                 </h3>
-                <p className="text-[10px] font-bold text-slate-700 uppercase tracking-widest leading-relaxed">
-                  {program.subtitle}
-                </p>
+                <div className="text-[10px] font-bold text-slate-700 uppercase tracking-widest leading-relaxed w-full">
+                  {program.subtitle && program.subtitle.includes('|') ? (
+                    <ul className="space-y-1 w-full">
+                      {program.subtitle.split('|').map((item, index) => (
+                        <li key={index}>. {item.trim()}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="whitespace-pre-line">{program.subtitle}</p>
+                  )}
+                </div>
               </div>
               
               <button className="mt-8 self-start border border-purple-300 text-purple-500 hover:bg-purple-50 font-semibold text-xs px-4 py-2 rounded flex items-center gap-2 transition-colors" onClick={() => onEnquiryClick(program.title, 'VIT University')}>

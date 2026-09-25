@@ -40,9 +40,8 @@ export default function ManipalHero({ onEnquiryClick }) {
 
           {/* Subtitle */}
           <p className="text-[11px] lg:text-xs font-semibold text-slate-500 uppercase tracking-widest leading-relaxed mt-4">
-            RANKING AND RECOGNITION · VIT National & <br />
-            Global Rankings · VIT 119 Best Institution of <br />
-            the world in the Engineering and Technology
+            RANKING AND RECOGNITION · Manipal National & <br />
+            Global Rankings
           </p>
           {/* Using same subtitle as screenshot because mockups often duplicate this text. 
               The screenshot shows "VIT National & Global Rankings" for Manipal too, so I'll keep it as in the design to match exactly, or change it to Manipal if preferred. Let's just keep what the image literally shows to be safe. */}

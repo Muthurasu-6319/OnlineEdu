@@ -77,14 +77,14 @@ function CourseCard({ course }) {
     .filter(item => item.length > 0);
 
   return (
-    <div className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-100 h-full overflow-hidden transition-all duration-300 hover:bg-[#0ea5e9] hover:text-white hover:-translate-y-1 text-slate-600">
+    <div className={`group relative bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-100 h-full overflow-hidden transition-all duration-300 hover:text-white hover:-translate-y-1 text-slate-600 ${isYellow ? 'hover:bg-yellow-400' : 'hover:bg-[#0ea5e9]'}`}>
       {/* Decorative Circle */}
-      <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-blue-50/70 rounded-full group-hover:bg-white/10 transition-colors duration-300 pointer-events-none"></div>
+      <div className={`absolute -bottom-16 -right-16 w-40 h-40 rounded-full group-hover:bg-white/10 transition-colors duration-300 pointer-events-none ${isYellow ? 'bg-yellow-50/70' : 'bg-blue-50/70'}`}></div>
 
       <div className="relative z-10">
         {/* Header */}
         <div className="mb-6">
-          <div className="p-3.5 rounded-xl bg-blue-50 w-fit text-[#0ea5e9] group-hover:bg-white/20 group-hover:text-white transition-colors duration-300 mb-5">
+          <div className={`p-3.5 rounded-xl w-fit group-hover:bg-white/20 group-hover:text-white transition-colors duration-300 mb-5 ${isYellow ? 'bg-yellow-50 text-yellow-500' : 'bg-blue-50 text-[#0ea5e9]'}`}>
             <User size={32} />
           </div>
           <h3 className="text-2xl md:text-3xl font-extrabold text-slate-800 group-hover:text-white transition-colors duration-300 leading-tight">
@@ -96,7 +96,7 @@ function CourseCard({ course }) {
         <ul className="space-y-4 px-1">
           {courseListArray.map((item, index) => (
             <li key={index} className="flex items-start gap-3 font-semibold text-base md:text-lg">
-              <span className="mt-2.5 w-2 h-2 rounded-full bg-[#0ea5e9] shrink-0 group-hover:bg-white transition-colors duration-300"></span>
+              <span className={`mt-2.5 w-2 h-2 rounded-full shrink-0 group-hover:bg-white transition-colors duration-300 ${isYellow ? 'bg-yellow-400' : 'bg-[#0ea5e9]'}`}></span>
               <span>{item}</span>
             </li>
           ))}

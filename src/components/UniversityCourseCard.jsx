@@ -23,9 +23,17 @@ export default function UniversityCourseCard({ course, onApplyClick }) {
           {course.title}
         </h3>
         
-        <p className="text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-wide mb-6 flex-grow">
-          {course.description}
-        </p>
+        <div className="text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-wide mb-6 flex-grow">
+          {course.university !== 'Amity University' && course.description ? (
+            <ul className="space-y-1">
+              {course.description.split('|').map((item, index) => (
+                <li key={index}>. {item.trim()}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>{course.description}</p>
+          )}
+        </div>
 
         {/* Action Button */}
         <div>

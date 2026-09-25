@@ -45,7 +45,7 @@ export default function DayanandaContact() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Call Me Now</p>
-                  <p className="text-sm font-semibold text-slate-700">88703 29333 | 91710 13344</p>
+                  <p className="text-sm font-semibold text-slate-700">88703 95554 | 88703 25552</p>
                 </div>
               </div>
             </div>

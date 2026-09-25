@@ -9,7 +9,7 @@ export default function AlagappaAbout() {
         {/* Left Content Column */}
         <div className="flex flex-col space-y-6">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#1a2b6d] tracking-tight">
-            Course Offerd
+            Courses Offerd
           </h2>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed font-sans">
             Alagappa University is a reputed State Government University located in Karaikudi, Tamil Nadu. Known for its commitment to academic excellence, quality education, innovation, and research, the university provides a supportive learning environment that helps students enhance their knowledge, skills, and career opportunities

@@ -333,6 +333,7 @@ export default function AdminDashboard({ onLogout }) {
     e.preventDefault();
     
     const courseData = {
+      mode: courseMode,
       level: courseLevel,
       title: courseTitle,
       color_theme: courseColor,

@@ -24,7 +24,7 @@ export default function Success() {
           Our Success
         </h2>
         <p className="text-sm xl:text-base text-slate-500 font-medium tracking-wide mb-12 xl:mb-16">
-          Vnet Bharathidasn University at a Glance
+          Vnet Bharathidasan University at a Glance
         </p>
 
         {/* Stats Grid */}

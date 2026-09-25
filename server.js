@@ -428,8 +428,8 @@ app.post('/api/courses', async (req, res) => {
   const { mode, level, title, color_theme, courses_list } = req.body;
   try {
     const [result] = await pool.query(
-      'INSERT INTO course_categories (level, title, color_theme, courses_list) VALUES (?, ?, ?, ?)',
-      [level, title, color_theme, courses_list]
+      'INSERT INTO course_categories (mode, level, title, color_theme, courses_list) VALUES (?, ?, ?, ?, ?)',
+      [mode || 'Distance', level, title, color_theme, courses_list]
     );
     res.status(201).json({ id: result.insertId, ...req.body });
   } catch (err) {
@@ -440,11 +440,11 @@ app.post('/api/courses', async (req, res) => {
 // PUT (update) a course category
 app.put('/api/courses/:id', async (req, res) => {
   const { id } = req.params;
-  const { level, title, color_theme, courses_list } = req.body;
+  const { mode, level, title, color_theme, courses_list } = req.body;
   try {
     await pool.query(
-      'UPDATE course_categories SET level = ?, title = ?, color_theme = ?, courses_list = ? WHERE id = ?',
-      [level, title, color_theme, courses_list, id]
+      'UPDATE course_categories SET mode = ?, level = ?, title = ?, color_theme = ?, courses_list = ? WHERE id = ?',
+      [mode || 'Distance', level, title, color_theme, courses_list, id]
     );
     res.json({ id, ...req.body });
   } catch (err) {

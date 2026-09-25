@@ -32,7 +32,7 @@ export default function AndhraHero({ onEnquiryClick }) {
           </div>
           
           <p className="text-slate-500 text-sm leading-relaxed max-w-lg font-medium">
-            RANKING AND RECOGNITION -Andhra university Global Rankings - Manipal Best Institution of the world in the Engineering and Technology
+            RANKING AND RECOGNITION -Andhra university Global Rankings
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-4">

@@ -62,7 +62,7 @@ export default function VITContact() {
                 <div>
                   <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Call Me Now:</h4>
                   <p className="text-xs font-bold text-slate-800">
-                    88733 26652 | 91710 18844
+                    88703 95554 | 88703 25552
                   </p>
                 </div>
               </div>
