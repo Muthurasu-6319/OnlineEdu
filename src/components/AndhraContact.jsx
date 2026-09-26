@@ -14,7 +14,7 @@ export default function AndhraContact() {
                 Let's discuss your<br />Program
               </h2>
               <p className="text-[#6b7280] text-sm leading-relaxed">
-                Choose the right online programme for your career goals. Our admission team is here to help you with programme details, eligibility, fees, admission process, and other queries.
+                Choose the right online program for your career goals. Our admission team is here to help you with program details, eligibility, fees, admission process, and other queries.
               </p>
             </div>
 

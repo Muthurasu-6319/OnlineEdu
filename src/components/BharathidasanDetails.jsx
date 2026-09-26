@@ -23,10 +23,10 @@ export default function BharathidasanDetails() {
           
           <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed font-sans font-medium">
             <p>
-              The Centre for Distance Education offers around 41 programmes including 20 UG, 21 PG in select disciplines including MCA and MBA programmes.
+              The Centre for Distance Education offers around 41 programs including 20 UG, 21 PG in select disciplines including MCA and MBA programs.
             </p>
             <p>
-              Besides the conventional courses, the Centre for Distance Education is offering programmes in Computer Science and Applications, Information Technology, E-Commerce, Bank Management, Financial Management, Library and Information Science, Animation etc. The laboratory oriented programmes are meticulously planned and executed with the same vigor as regular programmes, without compromising the practical requirements.
+              Besides the conventional courses, the Centre for Distance Education is offering programs in Computer Science and Applications, Information Technology, E-Commerce, Bank Management, Financial Management, Library and Information Science, Animation etc. The laboratory oriented programs are meticulously planned and executed with the same vigor as regular programs, without compromising the practical requirements.
             </p>
           </div>
         </div>

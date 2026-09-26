@@ -211,7 +211,7 @@ export default function AmityPrograms({ onEnquiryClick }) {
                     <h3 className="text-xl font-black text-purple-500 uppercase tracking-wide">
                       {program.title}
                     </h3>
-                    <p className="text-[10px] font-bold text-slate-700 uppercase tracking-widest leading-relaxed">
+                    <p className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-widest leading-relaxed">
                       {program.subtitle}
                     </p>
                   </div>

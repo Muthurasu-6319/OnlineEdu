@@ -117,7 +117,7 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
               
               {boardDropdownOpen && (
                 <div className="absolute left-0 mt-3 w-48 rounded-xl bg-white shadow-xl border border-gray-100 py-2 z-50">
-                  <a href="/#board" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">BOSSE</a>
+                  <a href="/#bosse" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">BOSSE</a>
                   <a href="/#nios" onClick={() => setBoardDropdownOpen(false)} className="block px-5 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-[#2ca785] transition-colors font-medium">NIOS</a>
                 </div>
               )}
@@ -249,7 +249,7 @@ export default function Header({ wishlistCount, onWishlistClick, onEnquiryClick,
           </button>
           {boardDropdownOpen && (
             <div className="pl-6 space-y-1">
-              <a href="/#board" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">BOSSE</a>
+              <a href="/#bosse" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">BOSSE</a>
               <a href="/#nios" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-sm text-slate-500 hover:text-[#2ca785]">NIOS</a>
             </div>
           )}

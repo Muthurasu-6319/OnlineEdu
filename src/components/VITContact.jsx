@@ -22,7 +22,7 @@ export default function VITContact() {
               Let's discuss your <br /> Program
             </h2>
             <p className="text-xs text-slate-500 leading-relaxed mb-8 font-medium">
-              Choose the right online programme for your career goals. Our admission team is here to help you with programme details, eligibility, fees, admission process, and other queries.
+              Choose the right online program for your career goals. Our admission team is here to help you with program details, eligibility, fees, admission process, and other queries.
             </p>
 
             <div className="flex flex-col gap-6 mb-10">

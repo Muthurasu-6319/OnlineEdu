@@ -3,13 +3,13 @@ import React from 'react';
 export default function VITFaq() {
   const faqs = [
     {
-      question: 'What online programmes does VIT offer?',
-      answer: 'VIT Online offers flexible online degree programmes designed for students, working professionals, and learners who want to pursue higher education remotely.',
+      question: 'What online programs does VIT offer?',
+      answer: 'VIT Online offers flexible online degree programs designed for students, working professionals, and learners who want to pursue higher education remotely.',
       active: true,
     },
     {
-      question: 'Are VIT Online programmes UGC entitled?',
-      answer: 'Yes. Eligible VIT Online degree programmes are offered under the applicable UGC entitlement framework.',
+      question: 'Are VIT Online programs UGC entitled?',
+      answer: 'Yes. Eligible VIT Online degree programs are offered under the applicable UGC entitlement framework.',
       active: false,
     },
     {
@@ -25,11 +25,11 @@ export default function VITFaq() {
         {/* Left Side */}
         <div className="lg:w-5/12 w-full flex flex-col gap-6">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#374151] leading-tight">
-            VIT Online Programmes <br />
+            VIT Online programs <br />
             FAQ Section
           </h2>
           <p className="text-sm font-semibold text-slate-600 leading-relaxed max-w-md">
-            Find answers to the most common questions about VIT Online programmes, including eligibility, admission, learning methods, examinations, programme duration, academic support, and more.
+            Find answers to the most common questions about VIT Online programs, including eligibility, admission, learning methods, examinations, program duration, academic support, and more.
           </p>
           <button className="bg-[#a855f7] hover:bg-[#9333ea] text-white font-semibold text-sm px-8 py-3 rounded-md shadow-sm transition-colors w-max mt-2">
             Say Hello!

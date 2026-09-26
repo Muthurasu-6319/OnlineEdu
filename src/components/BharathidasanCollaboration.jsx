@@ -27,7 +27,7 @@ export default function BharathidasanCollaboration() {
           </div>
           
           <p className="text-slate-600 text-sm md:text-base leading-relaxed font-sans font-medium">
-            Bharathidasan University established in February 1982, and was named after the great revolutionary Tamil Poet, <span className="underline decoration-slate-400">Bharathidasan</span> The Centre for Distance Education (CDE) of Bharathidasan University (BDU) was established in the year 1992 to serve the students who could not enter the regular colleges for higher education. As the educational programmes offered and the degrees awarded through distance mode are on par with the regular mode, qualitatively there is a demand for the programmes offered by the CDE of Bharathidasan University.
+            Bharathidasan University established in February 1982, and was named after the great revolutionary Tamil Poet, <span className="underline decoration-slate-400">Bharathidasan</span> The Centre for Distance Education (CDE) of Bharathidasan University (BDU) was established in the year 1992 to serve the students who could not enter the regular colleges for higher education. As the educational programs offered and the degrees awarded through distance mode are on par with the regular mode, qualitatively there is a demand for the programs offered by the CDE of Bharathidasan University.
           </p>
         </div>
 

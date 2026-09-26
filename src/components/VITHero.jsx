@@ -24,7 +24,7 @@ export default function VITHero({ onEnquiryClick }) {
           {/* Heading */}
           <div className="flex flex-col gap-2 w-full">
             <h1 className="text-3xl lg:text-4xl font-extrabold text-[#1f2937] leading-tight">
-              NAAC A++ Acrediated <br />
+              NAAC A++ Accredited <br />
               Online Degree From
             </h1>
             <div className="bg-[#00b4ff] inline-block px-4 py-3 mt-2 self-start">

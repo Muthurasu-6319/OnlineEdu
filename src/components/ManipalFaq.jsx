@@ -25,7 +25,7 @@ export default function ManipalFaq() {
         {/* Left Side */}
         <div className="lg:w-5/12 w-full flex flex-col gap-6">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#374151] leading-tight">
-            Manipal Online Programmes <br />
+            Manipal Online programs <br />
             FAQ Section
           </h2>
           <p className="text-sm font-semibold text-slate-600 leading-relaxed max-w-md">

@@ -69,7 +69,7 @@ export default function BharathidasanPrograms({ onEnquiryClick }) {
         'B.com (Bank Management)',
         'B.B.A.',
         'B.B.A. (Retail Management)',
-        'BLIS (one year programmes)'
+        'BLIS (one year programs)'
       ]
     },
     {
@@ -132,7 +132,7 @@ export default function BharathidasanPrograms({ onEnquiryClick }) {
       ]
     },
     {
-      title: 'UG & PG LIBRARY & INFORMATION SCIENCE (ONE Year Programme)',
+      title: 'UG & PG LIBRARY & INFORMATION SCIENCE (ONE Year program)',
       icon: FileText,
       items: [
         'BLIS',
@@ -219,11 +219,11 @@ export default function BharathidasanPrograms({ onEnquiryClick }) {
                     <h3 className="text-xl font-black text-purple-500 uppercase tracking-wide">
                       {program.title}
                     </h3>
-                    <div className="text-[10px] font-bold text-slate-700 uppercase tracking-widest leading-relaxed w-full">
+                    <div className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-widest leading-relaxed w-full">
                   {program.subtitle && program.subtitle.includes('|') ? (
                     <ul className="space-y-1 w-full">
-                      {program.subtitle.split('|').map((item, index) => (
-                        <li key={index}>. {item.trim()}</li>
+                      {program.subtitle.split('|').filter(item => item.trim() !== '').map((item, index) => (
+                        <li key={index}>• {item.trim()}</li>
                       ))}
                     </ul>
                   ) : (

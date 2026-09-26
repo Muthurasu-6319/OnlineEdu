@@ -23,7 +23,7 @@ export default function DayanandaFaq() {
         {/* Left Side: Title */}
         <div className="w-full lg:w-1/3 flex flex-col items-start gap-6">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#1f2937] leading-tight">
-            Dayananda Online Programmes FAQ Section
+            Dayananda Online programs FAQ Section
           </h2>
           <p className="text-[#4b5563] text-sm leading-relaxed font-medium">
             Get answers to frequently asked questions about Dayananda Sagar University Online programs, including UG and PG courses, eligibility, admission process, course duration, online learning, examinations, and career opportunities.

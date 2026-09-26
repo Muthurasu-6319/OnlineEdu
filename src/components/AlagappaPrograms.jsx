@@ -70,7 +70,7 @@ export default function AlagappaPrograms({ onEnquiryClick }) {
       icon: Award,
       colSpan: 'lg:col-span-2',
       items: [
-        'Certificate Programme in Library and Information Science', 'Certificate Programme in C Programming', 'Certificate Programme in Computer Fundamentals', 'Certificate Programme in Web Designing', 'Certificate Programme in GST', 'Certificate Programme in Astrology', 'Certificate Programme in Office Automation'
+        'Certificate program in Library and Information Science', 'Certificate program in C Programming', 'Certificate program in Computer Fundamentals', 'Certificate program in Web Designing', 'Certificate program in GST', 'Certificate program in Astrology', 'Certificate program in Office Automation'
       ]
     },
     {
@@ -206,11 +206,11 @@ export default function AlagappaPrograms({ onEnquiryClick }) {
                     <h3 className="text-xl font-black text-purple-500 uppercase tracking-wide">
                       {program.title}
                     </h3>
-                    <div className="text-[10px] font-bold text-slate-700 uppercase tracking-widest leading-relaxed w-full">
+                    <div className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-widest leading-relaxed w-full">
                   {program.subtitle && program.subtitle.includes('|') ? (
                     <ul className="space-y-1 w-full">
-                      {program.subtitle.split('|').map((item, index) => (
-                        <li key={index}>. {item.trim()}</li>
+                      {program.subtitle.split('|').filter(item => item.trim() !== '').map((item, index) => (
+                        <li key={index}>• {item.trim()}</li>
                       ))}
                     </ul>
                   ) : (

@@ -25,6 +25,10 @@ import BoardPlacement from './components/BoardPlacement';
 import BoardSteps from './components/BoardSteps';
 import BoardIntro from './components/BoardIntro';
 import BoardOutro from './components/BoardOutro';
+import NiosIntro from './components/NiosIntro';
+import NiosAbout from './components/NiosAbout';
+import NiosCourses from './components/NiosCourses';
+import NiosHero from './components/NiosHero';
 import VITHero from './components/VITHero';
 import VITAbout from './components/VITAbout';
 import VITWhyChoose from './components/VITWhyChoose';
@@ -111,7 +115,7 @@ function App() {
   }, []);
 
   // Page-level hashes that should always scroll to the very top (hero section)
-  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#board', '#vit', '#manipal', '#sikkim-manipal', '#christ', '#andhra', '#dhayananth-sagar', '#alliance', '#jain', '#about', '#contact', '#blog', '#course', '#testimonials-page', '#ug-courses', '#pg-courses'];
+  const PAGE_HASHES = ['#home', '#alagappa', '#bharathidasan', '#amity', '#bosse', '#nios', '#vit', '#manipal', '#sikkim-manipal', '#christ', '#andhra', '#dhayananth-sagar', '#alliance', '#jain', '#about', '#contact', '#blog', '#course', '#testimonials-page', '#ug-courses', '#pg-courses'];
 
   useEffect(() => {
     if (!currentHash || currentHash === '#home') {
@@ -228,6 +232,31 @@ function App() {
             <AmityChooseAndMba />
             <AmityPrograms  onEnquiryClick={handleEnquiryClick} />
           </>
+        ) : currentHash.startsWith('#bosse') ? (
+          <>
+            <BoardHero onEnquiryClick={handleEnquiryClick} />
+            <BoardIntro />
+            <BoardAbout />
+            <WhyChooseUs />
+            <BoardDetails />
+            <BoardCourses onEnquiryClick={handleEnquiryClick} />
+            <BoardPlacement />
+            <BoardSteps />
+            <BoardOutro />
+          </>
+        ) : currentHash.startsWith('#nios') ? (
+          <>
+            <NiosHero onEnquiryClick={handleEnquiryClick} />
+            <NiosIntro />
+            <NiosAbout />
+            <WhyChooseUs />
+            <BoardDetails />
+            <NiosCourses />
+            <BoardMIOS />
+            <BoardPlacement />
+            <BoardSteps />
+            <BoardOutro />
+          </>
         ) : currentHash.startsWith('#vit') ? (
           <>
             <VITHero onEnquiryClick={handleEnquiryClick} />
@@ -302,6 +331,7 @@ function App() {
             <JainHero onEnquiryClick={handleEnquiryClick} />
             <JainAbout />
             <JainWhyChoose />
+            <ManipalPrograms onEnquiryClick={handleEnquiryClick} universityName="Jain University" />
             <JainHiringPartners />
             <VITContact />
           </>

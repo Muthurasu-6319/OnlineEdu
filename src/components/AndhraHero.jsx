@@ -23,7 +23,7 @@ export default function AndhraHero({ onEnquiryClick }) {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#1f2937] leading-tight">
-            NAAC A++ Acrediated <br />
+            NAAC A++ Accredited <br />
             Online Degree From
           </h1>
           

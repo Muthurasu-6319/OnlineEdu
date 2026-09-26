@@ -23,7 +23,7 @@ export default function AndhraFaq() {
         {/* Left Side: Title */}
         <div className="w-full lg:w-1/3 flex flex-col items-start gap-6">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#1f2937] leading-tight">
-            Andhra Online Programmes FAQ Section
+            Andhra Online programs FAQ Section
           </h2>
           <p className="text-[#4b5563] text-sm leading-relaxed font-medium">
             Find answers to frequently asked questions about Andhra University Online programs, including eligibility, admission, course duration, examinations, learning methods, fees, and career opportunities.

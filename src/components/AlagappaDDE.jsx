@@ -22,10 +22,10 @@ export default function AlagappaDDE() {
               As per UGC-DEB Regulations 2020, the DDE was renamed as Centre for Distance and Online Education (CDOE). Under CDOE, both Open & Distance Learning (ODL) and Online Learning (OL) wings are in operation. Distance Education
             </p>
             <p>
-              The Directorate of Distance Education was established in the University during the year 1992. The Directorate offers Under Graduate and Post Graduate Programmes in the disciplines of Arts, Science, Education and Management.
+              The Directorate of Distance Education was established in the University during the year 1992. The Directorate offers Under Graduate and Post Graduate programs in the disciplines of Arts, Science, Education and Management.
             </p>
             <p>
-              The Directorate offers various innovative, job-oriented and socially relevant academic programmes in the field of Arts, Science, Education and Management. It has an excellent network of many Learning Centres for providing effective service to the student community.
+              The Directorate offers various innovative, job-oriented and socially relevant academic programs in the field of Arts, Science, Education and Management. It has an excellent network of many Learning Centres for providing effective service to the student community.
             </p>
           </div>
         </div>

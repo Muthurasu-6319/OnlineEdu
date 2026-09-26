@@ -92,7 +92,7 @@ export default function VITPrograms({ onEnquiryClick }) {
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Header */}
         <h2 className="text-4xl md:text-5xl font-extrabold text-[#1f153a] mb-10 text-center leading-tight tracking-tight">
-          Vit University <br /> Programes
+          Vit University <br /> Programs
         </h2>
 
         {/* Tabs Removed */}
@@ -113,11 +113,11 @@ export default function VITPrograms({ onEnquiryClick }) {
                 <h3 className="text-xl font-black text-purple-500 uppercase tracking-wide">
                   {program.title}
                 </h3>
-                <div className="text-[10px] font-bold text-slate-700 uppercase tracking-widest leading-relaxed w-full">
+                <div className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-widest leading-relaxed w-full">
                   {program.subtitle && program.subtitle.includes('|') ? (
                     <ul className="space-y-1 w-full">
-                      {program.subtitle.split('|').map((item, index) => (
-                        <li key={index}>. {item.trim()}</li>
+                      {program.subtitle.split('|').filter(item => item.trim() !== '').map((item, index) => (
+                        <li key={index}>• {item.trim()}</li>
                       ))}
                     </ul>
                   ) : (
